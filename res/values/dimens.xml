@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen
+        name="title_size">12pt</dimen>
+    <dimen
+        name="desc_size">6pt</dimen>
+    <dimen
+        name="version_size">5pt</dimen>
+    <dimen
+        name="version_spacing">2pt</dimen>
+
+</resources>
