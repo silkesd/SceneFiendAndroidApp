@@ -53,7 +53,7 @@ public class ScoresActivity extends SceneFiendAndroidAppActivity
         host.addTab(highScoresTab);
         
         // Set the default tab - the all scores tab
-        host.setCurrentTabByTag("allTab");
+        host.setCurrentTabByTag("highscoresTab");
         
      // Retrieve the TableLayout references
         TableLayout allScoresTable = (TableLayout) findViewById(R.id.TableLayout_AllScores);
@@ -149,7 +149,7 @@ public class ScoresActivity extends SceneFiendAndroidAppActivity
     private void insertScoreRow(final TableLayout scoreTable, String scoreValue, String scoreRank, String scoreUserName) {
         final TableRow newRow = new TableRow(this);
         int textColor = getResources().getColor(R.color.title_color);
-        float textSize = getResources().getDimension(R.dimen.help_text_size);
+        float textSize = getResources().getDimension(R.dimen.score_text_size);
         addTextToRowWithValues(newRow, scoreUserName, textColor, textSize);
         addTextToRowWithValues(newRow, scoreValue, textColor, textSize);
         addTextToRowWithValues(newRow, scoreRank, textColor, textSize);

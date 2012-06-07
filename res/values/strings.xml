@@ -28,7 +28,7 @@
     <string name="no_scores">"No Scores Can Be Shown Here"</string>
     <string name="username">"Username"</string>
     <string name="fiend">"Fiend of the Day"</string>
-    <string name="rank">"Ranking"</string>
+    <string name="rank">"Rank"</string>
     <string name="score">"Score"</string>
     <string name="wait_msg">"Retrieving Scores&#8230;"</string>
     <string name="wait_title">"Loading&#8230;"</string>

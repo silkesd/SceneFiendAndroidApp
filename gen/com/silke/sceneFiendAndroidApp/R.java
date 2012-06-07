@@ -24,7 +24,7 @@ public final class R {
         public static final int version_color=0x7f070001;
     }
     public static final class dimen {
-        public static final int avatar_size=0x7f08000e;
+        public static final int avatar_size=0x7f08000f;
         public static final int desc_size=0x7f080001;
         public static final int help_text_padding=0x7f08000b;
         public static final int help_text_padding_bottom=0x7f080009;
@@ -32,11 +32,12 @@ public final class R {
         public static final int help_text_padding_right=0x7f080008;
         public static final int help_text_padding_top=0x7f08000a;
         public static final int help_text_size=0x7f080006;
-        public static final int login_passwd_button_margin=0x7f08000d;
+        public static final int login_passwd_button_margin=0x7f08000e;
         public static final int menu_item_size=0x7f080005;
         /**  set the heading size for username, rank and points in the score screen 
          */
         public static final int score_heading_text_size=0x7f08000c;
+        public static final int score_text_size=0x7f08000d;
         public static final int screen_title_size=0x7f080004;
         public static final int title_size=0x7f080000;
         public static final int version_size=0x7f080002;

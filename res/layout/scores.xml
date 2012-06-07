@@ -67,7 +67,8 @@
                         android:id="@+id/TableLayout_MyScores"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:stretchColumns="*"></TableLayout>
+                        android:stretchColumns="*">
+                    </TableLayout>
                 </ScrollView>
                 <ScrollView
                     android:id="@+id/ScrollViewHighScores"
@@ -78,7 +79,8 @@
                         android:id="@+id/TableLayout_HighScores"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:stretchColumns="*"></TableLayout>
+                        android:stretchColumns="*">
+                    </TableLayout>
                 </ScrollView>
             </FrameLayout>
         </LinearLayout>

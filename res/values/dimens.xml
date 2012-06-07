@@ -27,7 +27,9 @@
 	
     <!-- set the heading size for username, rank and points in the score screen -->
      <dimen
-        name="score_heading_text_size">8pt</dimen>
+        name="score_heading_text_size">19px</dimen>
+     <dimen
+        name="score_text_size">13px</dimen>
         
      <dimen name="login_passwd_button_margin">300px</dimen>
      
