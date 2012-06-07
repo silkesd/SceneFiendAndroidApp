@@ -77,15 +77,20 @@ public final class R {
         public static final int help=0x7f050000;
     }
     public static final class string {
+        /**   Scores Screen Strings
+         */
+        public static final int all_scores=0x7f08000f;
         public static final int app_desc=0x7f080001;
         /**  Generic App String Information (predominantly for splash screen) 
          */
         public static final int app_name=0x7f080000;
         public static final int app_version_info=0x7f080002;
+        public static final int fiend=0x7f080014;
         public static final int game=0x7f080006;
         /**  Title screens 
          */
         public static final int help=0x7f080003;
+        public static final int high_scores=0x7f080011;
         public static final int login=0x7f080009;
         public static final int menu=0x7f080007;
         public static final int menu_item_help=0x7f08000d;
@@ -95,8 +100,15 @@ public final class R {
         /**  Menu Strings 
          */
         public static final int menu_item_settings=0x7f08000a;
+        public static final int my_scores=0x7f080010;
+        public static final int no_scores=0x7f080012;
+        public static final int rank=0x7f080015;
+        public static final int score=0x7f080016;
         public static final int scores=0x7f080008;
         public static final int settings=0x7f080005;
         public static final int splash=0x7f080004;
+        public static final int username=0x7f080013;
+        public static final int wait_msg=0x7f080017;
+        public static final int wait_title=0x7f080018;
     }
 }
