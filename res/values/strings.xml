@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="hello">Hello World, SceneFiendAndroidAppActivity!</string>
+	<!-- Generic App String Information (predominantly for splash screen) -->
     <string name="app_name">Scene Fiend</string>
-
+	<string name="app_desc">The Ultimate Quiz Game for Film Fiends!</string>
+    <string name="app_version_info">Version 1.0.0\nCopyright © 2012 Silke Stienen-Durand\n All Rights Reserved</string>
+    
 </resources>
