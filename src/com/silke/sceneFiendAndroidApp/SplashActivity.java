@@ -1,8 +1,7 @@
 package com.silke.sceneFiendAndroidApp;
-
-import com.silke.sceneFiendAndroidApp.MenuActivity;
 import com.silke.sceneFiendAndroidApp.R;
 import com.silke.sceneFiendAndroidApp.SplashActivity;
+import com.silke.sceneFiendAndroidApp.MenuActivity;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -23,8 +22,8 @@ public class SplashActivity extends SceneFiendAndroidAppActivity {
                 "fonts/lucindablack.ttf");
         TextView tv = (TextView) findViewById(R.id.CustomFont);
         tv.setTypeface(tf);
-        
-      //calling the animation
+       
+        //calling the animation
         startAnimating();
     }
     
@@ -86,4 +85,5 @@ public class SplashActivity extends SceneFiendAndroidAppActivity {
         // Start again from the beginning of the splash animation
         startAnimating();
     }
+
 }
