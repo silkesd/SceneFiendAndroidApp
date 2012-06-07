@@ -16,6 +16,8 @@ public final class R {
     }
     public static final class color {
         public static final int logo_color=0x7f050000;
+        public static final int menu_color=0x7f050004;
+        public static final int menu_glow=0x7f050005;
         public static final int title_color=0x7f050003;
         public static final int version_bkgrd=0x7f050002;
         public static final int version_color=0x7f050001;
@@ -50,9 +52,10 @@ public final class R {
         public static final int help=0x7f030001;
         public static final int login=0x7f030002;
         public static final int menu=0x7f030003;
-        public static final int scores=0x7f030004;
-        public static final int settings=0x7f030005;
-        public static final int splash=0x7f030006;
+        public static final int menu_item=0x7f030004;
+        public static final int scores=0x7f030005;
+        public static final int settings=0x7f030006;
+        public static final int splash=0x7f030007;
     }
     public static final class string {
         public static final int app_desc=0x7f070001;
