@@ -32,4 +32,23 @@
     <string name="score">"Score"</string>
     <string name="wait_msg">"Retrieving Scores&#8230;"</string>
     <string name="wait_title">"Loading&#8230;"</string>
+    
+    <!-- Login and Registration Strings-->
+    <string name="login">Join Us</string>
+    <string name="login_username">Username:</string>
+    <string name="login_email">Email:</string>
+    
+    <string name="login_gender">Gender:</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="gender_neutral">Prefer Not To Say</string>
+    
+    <string name="login_button_pwd">Set Password</string>
+    <string name="login_password">Password:</string>
+    <string name="login_password2">Password (again):</string>
+    <string name="login_pwd_set">Password Set</string>
+    <string name="login_pwd_not_set">No Password Set</string>
+    <string name="login_pwd_not_equal">Passwords do not match, please try again.</string>
+    <string name="login_pwd_equal">Passwords match.</string>
+    <string name="set_password_string">Set Password</string>
 </resources>

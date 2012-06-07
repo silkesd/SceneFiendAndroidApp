@@ -44,12 +44,13 @@ public final class R {
         public static final int version_spacing=0x7f080003;
     }
     public static final class drawable {
-        public static final int bkgrnd=0x7f020000;
-        public static final int bkgrnd_clear=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int icon=0x7f020003;
-        public static final int splash=0x7f020004;
-        public static final int textured=0x7f020005;
+        public static final int avatar=0x7f020000;
+        public static final int bkgrnd=0x7f020001;
+        public static final int bkgrnd_clear=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int icon=0x7f020004;
+        public static final int splash=0x7f020005;
+        public static final int textured=0x7f020006;
     }
     public static final class id {
         public static final int CustomFont=0x7f0a0000;

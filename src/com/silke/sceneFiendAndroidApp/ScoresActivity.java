@@ -55,7 +55,7 @@ public class ScoresActivity extends SceneFiendAndroidAppActivity
         // Set the default tab - the all scores tab
         host.setCurrentTabByTag("highscoresTab");
         
-     // Retrieve the TableLayout references
+        // Retrieve the TableLayout references
         TableLayout allScoresTable = (TableLayout) findViewById(R.id.TableLayout_AllScores);
         TableLayout myScoresTable = (TableLayout) findViewById(R.id.TableLayout_MyScores);
         TableLayout highScoresTable = (TableLayout) findViewById(R.id.TableLayout_HighScores);
