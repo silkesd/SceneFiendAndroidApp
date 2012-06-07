@@ -18,24 +18,29 @@ public class MenuActivity extends SceneFiendAndroidAppActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
         
+        //the custom title font
         Typeface tf = Typeface.createFromAsset(getAssets(),
                 "fonts/lucindablack.ttf");
         TextView tv = (TextView) findViewById(R.id.CustomFont);
         tv.setTypeface(tf);
         
+        
+        //the menu items 
         ListView menuList = (ListView) findViewById(R.id.ListView_Menu);
         String[] items = { getResources().getString(R.string.menu_item_play),
                 getResources().getString(R.string.menu_item_scores),
                 getResources().getString(R.string.menu_item_settings),
                 getResources().getString(R.string.menu_item_help),
                 getResources().getString(R.string.menu_item_login)};
+        
+        //data adapter maps data to the layout templates specified via the array that stores the menu items
         ArrayAdapter<String> adapt = new ArrayAdapter<String>(this, R.layout.menu_item, items);
         menuList.setAdapter(adapt);
         menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             
+        	//when an item is clicked a specified activity is launched
         	public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
-                // Note: if the list was built "by hand" the id could be used.
-                // As-is, though, each item has the same id
+
                 TextView textView = (TextView) itemClicked;
                 String strText = textView.getText().toString();
                 
