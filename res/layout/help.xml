@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/bkgrnd">
+    android:background="@drawable/bkgrnd"
+    android:orientation="vertical" >
 
     <TextView
         android:id="@+id/CustomFont"
@@ -25,23 +24,32 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal" >
     </RelativeLayout>
-    <TextView android:textSize="@dimen/help_text_size" 
-        android:layout_height="fill_parent" 
-        android:textColorLink="@color/logo_color" 
-        android:isScrollContainer="true" 
-        android:fadingEdgeLength="25dp" 
-        android:autoLink="all" 
-        android:scrollbarStyle="outsideOverlay" 
-        android:id="@+id/TextView_HelpText" 
-        android:bufferType="spannable" 
-        android:fadingEdge="vertical" 
-        android:scrollbars="vertical" 
-        android:linksClickable="true" 
-        android:drawablePadding="5dp" 
-        android:layout_width="match_parent" 
-        android:paddingLeft="@dimen/help_text_padding_left" 
-        android:paddingTop="@dimen/help_text_padding_top" 
-        android:paddingBottom="@dimen/help_text_padding_bottom" 
-        android:paddingRight="@dimen/help_text_padding_right" 
-        android:textColor="@color/help_text"></TextView>
+	
+	<ScrollView
+	    android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        
+	    <TextView
+	        android:id="@+id/TextView_HelpText"
+	        android:layout_width="278dp"
+	        android:layout_height="0dp"
+	        android:layout_gravity="right"
+	        android:layout_weight="0.88"
+	        android:autoLink="all"
+	        android:bufferType="spannable"
+	        android:drawablePadding="5dp"
+	        android:fadingEdge="vertical"
+	        android:fadingEdgeLength="25dp"
+	        android:isScrollContainer="true"
+	        android:linksClickable="true"
+	        android:paddingBottom="@dimen/help_text_padding_bottom"
+	        android:paddingLeft="@dimen/help_text_padding_left"
+	        android:paddingRight="@dimen/help_text_padding_right"
+	        android:paddingTop="@dimen/help_text_padding_top"
+	        android:scrollbarStyle="outsideOverlay"
+	        android:scrollbars="vertical"
+	        android:textColor="@color/help_text"
+	        android:textColorLink="@color/logo_color"
+	        android:textSize="@dimen/help_text_size" />
+		</ScrollView>
 </LinearLayout>

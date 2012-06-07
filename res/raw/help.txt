@@ -1,6 +1,8 @@
 SCENE FIEND is a movie quiz game for the ultimate film fanatic. 
 
-Just answer a series of multiple choice questions to gain points and compete with your friends to become the number one film fiend. Your scores will then be visible on the Scene Fiend website for the world to see. 
+Just answer a series of multiple choice questions to gain points and compete with your friends to become the number one film fiend. 
+
+Your scores will then be visible for the world to see. 
 
 GAME SETTINGS
 
