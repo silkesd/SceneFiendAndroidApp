@@ -5,41 +5,45 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/bkgrnd_clear">
+
+    <TextView
+        android:id="@+id/CustomFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:shadowColor="@android:color/white"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="10"
+        android:text="@string/login"
+        android:textColor="@color/title_color"
+        android:textSize="@dimen/screen_title_size" />
+
+    <ImageButton
+        android:id="@+id/ImageButton_Avatar"
+        android:layout_width="84dp"
+        android:layout_height="65dp"
+        android:adjustViewBounds="true"
+        android:maxHeight="@dimen/avatar_size"
+        android:minHeight="@dimen/avatar_size"
+        android:scaleType="fitXY"
+        android:src="@drawable/avatar" />
+
+    <TextView
+        android:id="@+id/TextView_Nickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/login_username"
+        android:textColor="@color/title_color"
+        android:textSize="@dimen/help_text_size"
+        android:textStyle="bold" />
+
     <RelativeLayout
         android:id="@+id/RelativeLayout01"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <ImageView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/ImageView_MenuHeader"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"></ImageView>
-        <TextView
-            android:id="@+id/CustomFont"
-            android:layout_height="wrap_content"
-            android:text="@string/login"
-            android:textSize="@dimen/screen_title_size"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="10"
-            android:layout_width="wrap_content"
-            android:layout_gravity="fill_horizontal|center"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:shadowColor="@android:color/white"
-            android:textColor="@color/title_color"></TextView>
-        <ImageView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/ImageView_MenuHeader2"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon"
-            android:layout_gravity="right|center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"></ImageView>
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal" >
     </RelativeLayout>
     <ScrollView
         android:id="@+id/ScrollView01"

@@ -34,7 +34,6 @@
     <string name="wait_title">"Loading&#8230;"</string>
     
     <!-- Login and Registration Strings-->
-    <string name="login">Join Us</string>
     <string name="login_username">Username:</string>
     <string name="login_email">Email:</string>
     
@@ -51,4 +50,9 @@
     <string name="login_pwd_not_equal">Passwords do not match, please try again.</string>
     <string name="login_pwd_equal">Passwords match.</string>
     <string name="set_password_string">Set Password</string>
+    
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="no_questions">No more questions available. Try back later.</string>
+    <string name="exit">Exit</string>
 </resources>
