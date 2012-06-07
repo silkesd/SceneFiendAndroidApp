@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <color name="logo_color">#FFCC66</color>
+    <color name="version_color">#FFCC66</color>
+    <color name="version_bkgrd">#000000</color>
+    <color name="title_color">#FFCC66</color>
+</resources>

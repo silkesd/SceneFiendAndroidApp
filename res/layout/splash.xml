@@ -13,7 +13,9 @@
     		android:id="@+id/CustomFont"
     		android:layout_height="wrap_content" 
     		android:layout_width="fill_parent"
-    		android:gravity="top|center">
+    		android:gravity="top|center"
+    		android:textSize="@dimen/title_size"
+    		android:textColor="@color/title_color">
     </TextView>
     
     <!-- the description below the title -->
@@ -22,7 +24,9 @@
     		android:id="@+id/TextViewTopTitleDesc"
     		android:layout_height="wrap_content" 
     		android:layout_width="fill_parent"
-    		android:gravity="top|center">
+    		android:gravity="top|center"
+    		android:textSize="@dimen/desc_size"
+    		android:textColor="@color/logo_color">
     </TextView>
     
     <!-- the frame containing the image for the splash screen -->
@@ -37,13 +41,16 @@
     	</ImageView>
 	</FrameLayout>
 	
-		<!-- the version text below the image on the splash screen -->
+	<!-- the version text below the image on the splash screen -->
 	<TextView 
 			android:text="@string/app_version_info" 
 			android:layout_height="fill_parent" 
 			android:layout_width="fill_parent"
 			android:id="@+id/TextViewBottomVersion"
-			android:gravity="center">
+			android:gravity="center"
+			android:textSize="@dimen/version_size"
+			android:lineSpacingExtra="@dimen/version_spacing"
+			android:textColor="@color/version_color">
 	</TextView>
 
 </LinearLayout>
