@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Main layout box -->
-<LinearLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" 
-    android:background="@android:color/black">
+    android:layout_height="wrap_content"
+    android:background="@android:color/black"
+    android:orientation="vertical" >
 
     <!-- The title text area -->
     <TextView 
@@ -34,23 +33,26 @@
 			android:layout_height="wrap_content" 
 			android:layout_width="fill_parent" 
 			android:id="@+id/frameLayout1">  	
-    	<ImageView 
-    			android:id="@+id/imageView1" 
-    			android:src="@drawable/splash" 
-    			android:layout_width="match_parent" android:layout_height="238dp">
+
+    	<ImageView
+    	    android:id="@+id/imageView1"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="337dp"
+    	    android:src="@drawable/splash" >
+
     	</ImageView>
 	</FrameLayout>
 	
 	<!-- the version text below the image on the splash screen -->
-	<TextView 
-			android:text="@string/app_version_info" 
-			android:layout_height="fill_parent" 
-			android:layout_width="fill_parent"
-			android:id="@+id/TextViewBottomVersion"
-			android:gravity="center"
-			android:textSize="@dimen/version_size"
-			android:lineSpacingExtra="@dimen/version_spacing"
-			android:textColor="@color/version_color">
-	</TextView>
+
+	<TextView
+	    android:id="@+id/TextViewBottomVersion"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:gravity="center"
+	    android:lineSpacingExtra="@dimen/version_spacing"
+	    android:text="@string/app_version_info"
+	    android:textColor="@color/version_color"
+	    android:textSize="@dimen/version_size" />
 
 </LinearLayout>
