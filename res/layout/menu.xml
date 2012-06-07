@@ -1,12 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<!-- the main layout box for the menu screen -->
+<LinearLayout
+    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:background="@drawable/bkgrnd"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- THE HEADER AREA (icons and title) -->
 
     <TextView
-        android:layout_width="fill_parent"
+        android:id="@+id/CustomFont"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_desc" />
+        android:layout_gravity="center_horizontal"
+        android:shadowColor="@android:color/white"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="10"
+        android:text="@string/menu"
+        android:textColor="@color/title_color"
+        android:textSize="@dimen/screen_title_size" />
 
+    <RelativeLayout
+        android:id="@+id/RelativeLayout01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+  
+    </RelativeLayout>
+	
+	<!-- THE CONTENT AREA - menu items -->   
+    <RelativeLayout
+        android:id="@+id/RelativeLayout02"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent">
+       
+       <!-- the list view contains all items in the menu list -->
+        <ListView
+            android:layout_height="wrap_content"
+            android:id="@+id/ListView_Menu"
+            android:layout_width="fill_parent"
+            android:listSelector="@drawable/textured"
+            android:layout_alignParentTop="true"></ListView>
+    </RelativeLayout>
 </LinearLayout>

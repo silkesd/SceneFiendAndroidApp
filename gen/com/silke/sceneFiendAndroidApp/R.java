@@ -22,21 +22,28 @@ public final class R {
     }
     public static final class dimen {
         public static final int desc_size=0x7f060001;
+        public static final int menu_item_size=0x7f060005;
+        public static final int screen_title_size=0x7f060004;
         public static final int title_size=0x7f060000;
         public static final int version_size=0x7f060002;
         public static final int version_spacing=0x7f060003;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int icon=0x7f020001;
-        public static final int splash=0x7f020002;
+        public static final int bkgrnd=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
+        public static final int icon=0x7f020002;
+        public static final int splash=0x7f020003;
+        public static final int textured=0x7f020004;
     }
     public static final class id {
         public static final int CustomFont=0x7f080000;
-        public static final int TextViewBottomVersion=0x7f080004;
-        public static final int TextViewTopTitleDesc=0x7f080001;
-        public static final int frameLayout1=0x7f080002;
-        public static final int imageView1=0x7f080003;
+        public static final int ListView_Menu=0x7f080003;
+        public static final int RelativeLayout01=0x7f080001;
+        public static final int RelativeLayout02=0x7f080002;
+        public static final int TextViewBottomVersion=0x7f080007;
+        public static final int TextViewTopTitleDesc=0x7f080004;
+        public static final int frameLayout1=0x7f080005;
+        public static final int imageView1=0x7f080006;
     }
     public static final class layout {
         public static final int game=0x7f030000;

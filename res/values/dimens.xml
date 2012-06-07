@@ -8,5 +8,9 @@
         name="version_size">5pt</dimen>
     <dimen
         name="version_spacing">2pt</dimen>
+    <dimen
+        name="screen_title_size">13pt</dimen>
+    <dimen
+        name="menu_item_size">12pt</dimen>
 
 </resources>
