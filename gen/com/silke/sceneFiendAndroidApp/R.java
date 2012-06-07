@@ -69,6 +69,13 @@ public final class R {
         public static final int help=0x7f070003;
         public static final int login=0x7f070009;
         public static final int menu=0x7f070007;
+        public static final int menu_item_help=0x7f07000d;
+        public static final int menu_item_login=0x7f07000e;
+        public static final int menu_item_play=0x7f07000b;
+        public static final int menu_item_scores=0x7f07000c;
+        /**  Menu Strings 
+         */
+        public static final int menu_item_settings=0x7f07000a;
         public static final int scores=0x7f070008;
         public static final int settings=0x7f070005;
         public static final int splash=0x7f070004;
