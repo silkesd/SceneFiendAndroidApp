@@ -63,38 +63,20 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:gravity="fill">
-                <ImageButton
-                    android:id="@+id/ImageButton_Avatar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/avatar"
-                    android:adjustViewBounds="true"
-                    android:maxHeight="@dimen/avatar_size"
-                    android:minHeight="@dimen/avatar_size"
-                    android:scaleType="fitXY"></ImageButton>
                 <LinearLayout
                     xmlns:android="http://schemas.android.com/apk/res/android"
                     android:orientation="vertical"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">           
-		            <TextView 
-		            	android:id="@+id/TextView_Nickname" 
-		            	android:textSize="@dimen/help_text_size" 
-		           	 	android:layout_gravity="fill_horizontal|center" 
-		            	android:layout_height="wrap_content" 
-		            	android:text="@string/login_username" 
-		            	android:textStyle="bold" 
-		            	android:textColor="@color/title_color" 
-		            	android:layout_width="match_parent" 
-		            	android:gravity="center_horizontal">
-		            </TextView>
+                    android:layout_height="fill_parent">
+
 		            <EditText
 		                android:id="@+id/EditText_Nickname"
-		                android:layout_height="wrap_content"
-		                android:maxLength="20"
 		                android:layout_width="fill_parent"
-		                android:maxLines="1"
-		                android:inputType="textPersonName"></EditText>
+		                android:layout_height="wrap_content"
+		                android:inputType="textPersonName"
+		                android:maxLength="20"
+		                android:maxLines="1" >
+</EditText>
 		        </LinearLayout>
             </LinearLayout>
             <TextView
@@ -121,10 +103,12 @@
             	android:layout_width="match_parent" 
             	android:textColor="@color/title_color">
             </TextView>
-            <Spinner 
-            	android:layout_height="wrap_content" 
-            	android:id="@+id/Spinner_Gender" 
-            	android:layout_width="fill_parent">
+
+            <Spinner
+                android:id="@+id/Spinner_Gender"
+                android:layout_width="fill_parent"
+                android:layout_height="37dp" >
+
             </Spinner>
             <TextView
             	android:id="@+id/TextView_Password" 
@@ -142,12 +126,13 @@
                 android:orientation="horizontal"
                 android:layout_height="wrap_content"
                 android:layout_width="fill_parent">
-                <Button 
-                	android:id="@+id/Button_Password" 
-                	android:layout_height="wrap_content" 
-                	android:text="@string/login_button_pwd" 
-                	android:layout_width="wrap_content">
-                </Button>
+
+                <Button
+                    android:id="@+id/Button_Password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/login_button_pwd" />
+
                 <TextView
                     android:id="@+id/TextView_Password_Info"
                     android:layout_width="fill_parent"
