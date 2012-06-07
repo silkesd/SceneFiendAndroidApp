@@ -12,5 +12,17 @@
         name="screen_title_size">13pt</dimen>
     <dimen
         name="menu_item_size">12pt</dimen>
+    <dimen
+        name="help_text_size">8pt</dimen>
+    <dimen
+        name="help_text_padding_left">55px</dimen>
+        <dimen
+        name="help_text_padding_right">10px</dimen>
+        <dimen
+        name="help_text_padding_bottom">40px</dimen>
+    <dimen
+        name="help_text_padding_top">10px</dimen>
+    <dimen
+        name="help_text_padding">15px</dimen>
 
 </resources>

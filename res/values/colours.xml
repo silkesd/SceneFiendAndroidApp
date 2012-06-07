@@ -7,4 +7,5 @@
     <color name="title_color">#FFCC66</color>
     <color name="menu_color">#FFCC66</color>
     <color name="menu_glow">#F11</color>
+    <color name="help_text">#FFFF99</color>
 </resources>

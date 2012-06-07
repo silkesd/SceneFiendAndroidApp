@@ -1,12 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:background="@drawable/bkgrnd">
 
     <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/app_desc" />
+        android:id="@+id/CustomFont"
+        android:layout_width="wrap_content"
+        android:layout_height="54dp"
+        android:layout_gravity="center_horizontal"
+        android:shadowColor="@android:color/white"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="10"
+        android:text="@string/help"
+        android:textColor="@color/title_color"
+        android:textSize="@dimen/screen_title_size" />
 
+    <RelativeLayout
+        android:id="@+id/RelativeLayout01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal" >
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/help_text_size" 
+        android:layout_height="fill_parent" 
+        android:textColorLink="@color/logo_color" 
+        android:isScrollContainer="true" 
+        android:fadingEdgeLength="25dp" 
+        android:autoLink="all" 
+        android:scrollbarStyle="outsideOverlay" 
+        android:id="@+id/TextView_HelpText" 
+        android:bufferType="spannable" 
+        android:fadingEdge="vertical" 
+        android:scrollbars="vertical" 
+        android:linksClickable="true" 
+        android:drawablePadding="5dp" 
+        android:layout_width="match_parent" 
+        android:paddingLeft="@dimen/help_text_padding_left" 
+        android:paddingTop="@dimen/help_text_padding_top" 
+        android:paddingBottom="@dimen/help_text_padding_bottom" 
+        android:paddingRight="@dimen/help_text_padding_right" 
+        android:textColor="@color/help_text"></TextView>
 </LinearLayout>

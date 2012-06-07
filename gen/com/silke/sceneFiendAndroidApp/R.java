@@ -15,6 +15,7 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        public static final int help_text=0x7f060006;
         public static final int logo_color=0x7f060000;
         public static final int menu_color=0x7f060004;
         public static final int menu_glow=0x7f060005;
@@ -24,6 +25,12 @@ public final class R {
     }
     public static final class dimen {
         public static final int desc_size=0x7f070001;
+        public static final int help_text_padding=0x7f07000b;
+        public static final int help_text_padding_bottom=0x7f070009;
+        public static final int help_text_padding_left=0x7f070007;
+        public static final int help_text_padding_right=0x7f070008;
+        public static final int help_text_padding_top=0x7f07000a;
+        public static final int help_text_size=0x7f070006;
         public static final int menu_item_size=0x7f070005;
         public static final int screen_title_size=0x7f070004;
         public static final int title_size=0x7f070000;
@@ -39,13 +46,14 @@ public final class R {
     }
     public static final class id {
         public static final int CustomFont=0x7f090000;
-        public static final int ListView_Menu=0x7f090003;
+        public static final int ListView_Menu=0x7f090004;
         public static final int RelativeLayout01=0x7f090001;
-        public static final int RelativeLayout02=0x7f090002;
-        public static final int TextViewBottomVersion=0x7f090007;
-        public static final int TextViewTopTitleDesc=0x7f090004;
-        public static final int frameLayout1=0x7f090005;
-        public static final int imageView1=0x7f090006;
+        public static final int RelativeLayout02=0x7f090003;
+        public static final int TextViewBottomVersion=0x7f090008;
+        public static final int TextViewTopTitleDesc=0x7f090005;
+        public static final int TextView_HelpText=0x7f090002;
+        public static final int frameLayout1=0x7f090006;
+        public static final int imageView1=0x7f090007;
     }
     public static final class layout {
         public static final int game=0x7f030000;
