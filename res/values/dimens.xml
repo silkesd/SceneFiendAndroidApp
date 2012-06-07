@@ -24,5 +24,13 @@
         name="help_text_padding_top">10px</dimen>
     <dimen
         name="help_text_padding">15px</dimen>
-
+	
+    <!-- set the heading size for username, rank and points in the score screen -->
+     <dimen
+        name="score_heading_text_size">8pt</dimen>
+        
+     <dimen name="login_passwd_button_margin">300px</dimen>
+     
+      <dimen
+        name="avatar_size">75px</dimen>
 </resources>
