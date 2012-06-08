@@ -16,11 +16,12 @@ public class SceneFiendAndroidAppActivity extends Activity
 	
 	public static final String GAME_PREFERENCES_PLAYER_ID = "ServerId"; // Integer
 	
-	// XML tag names for questions in the game
+	// XML tags for questions in the game
     public static final String XML_TAG_QUESTION_BLOCK = "questions";
     public static final String XML_TAG_QUESTION = "question";
     public static final String XML_TAG_QUESTION_ATTRIBUTE_NUMBER = "number";
     public static final String XML_TAG_QUESTION_ATTRIBUTE_TEXT = "text";
+    public static final String XML_TAG_QUESTION_ATTRIBUTE_VIDEO = "video";    
     public static final String XML_TAG_QUESTION_ATTRIBUTE_IMAGEURL = "imageUrl";
     public static final int QUESTION_BATCH_SIZE = 5; // 15;
 	

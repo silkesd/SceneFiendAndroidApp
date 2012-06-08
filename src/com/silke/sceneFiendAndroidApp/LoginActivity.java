@@ -1,6 +1,13 @@
 package com.silke.sceneFiendAndroidApp;
 
+import com.silke.sceneFiendAndroidApp.R;
+
 import java.io.File;
+
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore.Images.Media;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -10,11 +17,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
-import android.graphics.Typeface;
 import android.graphics.Bitmap.CompressFormat;
-import android.net.Uri;
-import android.os.Bundle;
-import android.provider.MediaStore.Images.Media;
+import android.graphics.Typeface;
+
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -30,7 +35,8 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class LoginActivity extends SceneFiendAndroidAppActivity {
+public class LoginActivity extends SceneFiendAndroidAppActivity
+{
 	SharedPreferences mGameSettings;
 	static final int PASSWORD_DIALOG_ID = 1;
 	static final int TAKE_AVATAR_CAMERA_REQUEST = 1;
@@ -385,4 +391,3 @@ public class LoginActivity extends SceneFiendAndroidAppActivity {
             return;
     }
 }
-
