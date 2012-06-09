@@ -18,7 +18,7 @@ public class LoginActivity extends SceneFiendAndroidAppActivity
     public void onCreate(Bundle savedInstanceState) 
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+        setContentView(R.layout.login_menu);
         
         //the custom title font
         Typeface tf = Typeface.createFromAsset(getAssets(),

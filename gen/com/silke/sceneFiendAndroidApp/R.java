@@ -62,47 +62,49 @@ public final class R {
         public static final int CustomFont=0x7f0b0000;
         public static final int EditText_Email=0x7f0b0008;
         public static final int EditText_Nickname=0x7f0b0006;
-        public static final int EditText_Pwd1=0x7f0b0013;
-        public static final int EditText_Pwd2=0x7f0b0015;
+        public static final int EditText_Pwd1=0x7f0b0014;
+        public static final int EditText_Pwd2=0x7f0b0016;
         public static final int ImageButton_Avatar=0x7f0b0003;
         public static final int LinearLayoutPassword=0x7f0b000c;
-        public static final int ListView_Menu=0x7f0b0010;
+        public static final int ListView_Login=0x7f0b0010;
+        public static final int ListView_Menu=0x7f0b0011;
         public static final int RelativeLayout01=0x7f0b0001;
         public static final int RelativeLayout02=0x7f0b000f;
         public static final int ScrollView01=0x7f0b0005;
-        public static final int ScrollViewAllScores=0x7f0b0018;
-        public static final int ScrollViewHighScores=0x7f0b001c;
-        public static final int ScrollViewMyScores=0x7f0b001a;
+        public static final int ScrollViewAllScores=0x7f0b0019;
+        public static final int ScrollViewHighScores=0x7f0b001d;
+        public static final int ScrollViewMyScores=0x7f0b001b;
         public static final int Spinner_Gender=0x7f0b000a;
-        public static final int TabHost1=0x7f0b0017;
-        public static final int TableLayout_AllScores=0x7f0b0019;
-        public static final int TableLayout_HighScores=0x7f0b001d;
-        public static final int TableLayout_MyScores=0x7f0b001b;
-        public static final int TextViewBottomVersion=0x7f0b0021;
-        public static final int TextViewTopTitleDesc=0x7f0b001e;
+        public static final int TabHost1=0x7f0b0018;
+        public static final int TableLayout_AllScores=0x7f0b001a;
+        public static final int TableLayout_HighScores=0x7f0b001e;
+        public static final int TableLayout_MyScores=0x7f0b001c;
+        public static final int TextViewBottomVersion=0x7f0b0022;
+        public static final int TextViewTopTitleDesc=0x7f0b001f;
         public static final int TextView_Email=0x7f0b0007;
         public static final int TextView_Gender=0x7f0b0009;
         public static final int TextView_HelpText=0x7f0b0002;
         public static final int TextView_Nickname=0x7f0b0004;
         public static final int TextView_Password=0x7f0b000b;
         public static final int TextView_Password_Info=0x7f0b000e;
-        public static final int TextView_Pwd1=0x7f0b0012;
-        public static final int TextView_Pwd2=0x7f0b0014;
-        public static final int TextView_PwdProblem=0x7f0b0016;
-        public static final int frameLayout1=0x7f0b001f;
-        public static final int imageView1=0x7f0b0020;
-        public static final int root=0x7f0b0011;
+        public static final int TextView_Pwd1=0x7f0b0013;
+        public static final int TextView_Pwd2=0x7f0b0015;
+        public static final int TextView_PwdProblem=0x7f0b0017;
+        public static final int frameLayout1=0x7f0b0020;
+        public static final int imageView1=0x7f0b0021;
+        public static final int root=0x7f0b0012;
     }
     public static final class layout {
         public static final int game=0x7f030000;
         public static final int help=0x7f030001;
         public static final int login=0x7f030002;
-        public static final int menu=0x7f030003;
-        public static final int menu_item=0x7f030004;
-        public static final int password_dialog=0x7f030005;
-        public static final int scores=0x7f030006;
-        public static final int settings=0x7f030007;
-        public static final int splash=0x7f030008;
+        public static final int login_menu=0x7f030003;
+        public static final int menu=0x7f030004;
+        public static final int menu_item=0x7f030005;
+        public static final int password_dialog=0x7f030006;
+        public static final int scores=0x7f030007;
+        public static final int settings=0x7f030008;
+        public static final int splash=0x7f030009;
     }
     public static final class raw {
         public static final int help=0x7f060000;
@@ -110,62 +112,63 @@ public final class R {
     public static final class string {
         /**   Scores Screen Strings
          */
-        public static final int all_scores=0x7f0a000f;
+        public static final int all_scores=0x7f0a0010;
         public static final int app_desc=0x7f0a0001;
         /**  Generic App String Information (predominantly for splash screen) 
          */
         public static final int app_name=0x7f0a0000;
         public static final int app_version_info=0x7f0a0002;
-        public static final int exit=0x7f0a002d;
-        public static final int fiend=0x7f0a0014;
+        public static final int exit=0x7f0a002e;
+        public static final int fiend=0x7f0a0015;
         public static final int game=0x7f0a0006;
-        public static final int gender_female=0x7f0a0020;
-        public static final int gender_male=0x7f0a001f;
-        public static final int gender_neutral=0x7f0a0021;
+        public static final int gender_female=0x7f0a0021;
+        public static final int gender_male=0x7f0a0020;
+        public static final int gender_neutral=0x7f0a0022;
         /**  Title screens 
          */
         public static final int help=0x7f0a0003;
-        public static final int high_scores=0x7f0a0011;
-        public static final int login=0x7f0a0009;
-        public static final int login_button_pwd=0x7f0a0022;
-        public static final int login_email=0x7f0a001d;
-        public static final int login_gender=0x7f0a001e;
-        public static final int login_item_register=0x7f0a001b;
+        public static final int high_scores=0x7f0a0012;
+        public static final int login=0x7f0a000a;
+        public static final int login_button_pwd=0x7f0a0023;
+        public static final int login_email=0x7f0a001e;
+        public static final int login_gender=0x7f0a001f;
+        public static final int login_item_register=0x7f0a001c;
         /**  Login Menu Strings 
          */
-        public static final int login_item_scenefiendlogin=0x7f0a0019;
-        public static final int login_item_twitterlogin=0x7f0a001a;
-        public static final int login_password=0x7f0a0023;
-        public static final int login_password2=0x7f0a0024;
-        public static final int login_pwd_equal=0x7f0a0028;
-        public static final int login_pwd_not_equal=0x7f0a0027;
-        public static final int login_pwd_not_set=0x7f0a0026;
-        public static final int login_pwd_set=0x7f0a0025;
+        public static final int login_item_scenefiendlogin=0x7f0a001a;
+        public static final int login_item_twitterlogin=0x7f0a001b;
+        public static final int login_menu=0x7f0a0009;
+        public static final int login_password=0x7f0a0024;
+        public static final int login_password2=0x7f0a0025;
+        public static final int login_pwd_equal=0x7f0a0029;
+        public static final int login_pwd_not_equal=0x7f0a0028;
+        public static final int login_pwd_not_set=0x7f0a0027;
+        public static final int login_pwd_set=0x7f0a0026;
         /**  Login and Registration Strings
          */
-        public static final int login_username=0x7f0a001c;
+        public static final int login_username=0x7f0a001d;
         public static final int menu=0x7f0a0007;
-        public static final int menu_item_help=0x7f0a000d;
-        public static final int menu_item_login=0x7f0a000e;
-        public static final int menu_item_play=0x7f0a000b;
-        public static final int menu_item_scores=0x7f0a000c;
+        public static final int menu_item_help=0x7f0a000e;
+        public static final int menu_item_login=0x7f0a000f;
+        public static final int menu_item_play=0x7f0a000c;
+        public static final int menu_item_scores=0x7f0a000d;
         /**  Menu Strings 
          */
-        public static final int menu_item_settings=0x7f0a000a;
-        public static final int my_scores=0x7f0a0010;
-        public static final int no=0x7f0a002b;
-        public static final int no_questions=0x7f0a002c;
-        public static final int no_scores=0x7f0a0012;
-        public static final int rank=0x7f0a0015;
-        public static final int score=0x7f0a0016;
+        public static final int menu_item_settings=0x7f0a000b;
+        public static final int my_scores=0x7f0a0011;
+        public static final int no=0x7f0a002c;
+        public static final int no_questions=0x7f0a002d;
+        public static final int no_scores=0x7f0a0013;
+        public static final int rank=0x7f0a0016;
+        public static final int score=0x7f0a0017;
         public static final int scores=0x7f0a0008;
-        public static final int set_password_string=0x7f0a0029;
+        public static final int set_password_string=0x7f0a002a;
         public static final int settings=0x7f0a0005;
         public static final int splash=0x7f0a0004;
-        public static final int username=0x7f0a0013;
-        public static final int wait_msg=0x7f0a0017;
-        public static final int wait_title=0x7f0a0018;
-        public static final int yes=0x7f0a002a;
+        public static final int username=0x7f0a0014;
+        public static final int wait_msg=0x7f0a0018;
+        public static final int wait_title=0x7f0a0019;
+        public static final int yes=0x7f0a002b;
     }
     public static final class xml {
         public static final int allscores=0x7f050000;

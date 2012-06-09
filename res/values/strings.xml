@@ -12,6 +12,7 @@
     <string name="game">Game</string>
     <string name="menu">Main Menu</string>
     <string name="scores">Scores</string>
+     <string name="login_menu">Login Menu</string>
     <string name="login">Join Us</string>
     
     <!-- Menu Strings -->
