@@ -33,6 +33,11 @@
     <string name="wait_msg">"Retrieving Scores&#8230;"</string>
     <string name="wait_title">"Loading&#8230;"</string>
     
+    <!-- Login Menu Strings -->
+    <string name="login_item_scenefiendlogin">Scene Fiend Login</string>
+    <string name="login_item_twitterlogin">Twitter Login</string>
+    <string name="login_item_register">Register with Scene Fiend</string>
+    
     <!-- Login and Registration Strings-->
     <string name="login_username">Username:</string>
     <string name="login_email">Email:</string>

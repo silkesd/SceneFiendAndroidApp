@@ -116,29 +116,34 @@ public final class R {
          */
         public static final int app_name=0x7f0a0000;
         public static final int app_version_info=0x7f0a0002;
-        public static final int exit=0x7f0a002a;
+        public static final int exit=0x7f0a002d;
         public static final int fiend=0x7f0a0014;
         public static final int game=0x7f0a0006;
-        public static final int gender_female=0x7f0a001d;
-        public static final int gender_male=0x7f0a001c;
-        public static final int gender_neutral=0x7f0a001e;
+        public static final int gender_female=0x7f0a0020;
+        public static final int gender_male=0x7f0a001f;
+        public static final int gender_neutral=0x7f0a0021;
         /**  Title screens 
          */
         public static final int help=0x7f0a0003;
         public static final int high_scores=0x7f0a0011;
         public static final int login=0x7f0a0009;
-        public static final int login_button_pwd=0x7f0a001f;
-        public static final int login_email=0x7f0a001a;
-        public static final int login_gender=0x7f0a001b;
-        public static final int login_password=0x7f0a0020;
-        public static final int login_password2=0x7f0a0021;
-        public static final int login_pwd_equal=0x7f0a0025;
-        public static final int login_pwd_not_equal=0x7f0a0024;
-        public static final int login_pwd_not_set=0x7f0a0023;
-        public static final int login_pwd_set=0x7f0a0022;
+        public static final int login_button_pwd=0x7f0a0022;
+        public static final int login_email=0x7f0a001d;
+        public static final int login_gender=0x7f0a001e;
+        public static final int login_item_register=0x7f0a001b;
+        /**  Login Menu Strings 
+         */
+        public static final int login_item_scenefiendlogin=0x7f0a0019;
+        public static final int login_item_twitterlogin=0x7f0a001a;
+        public static final int login_password=0x7f0a0023;
+        public static final int login_password2=0x7f0a0024;
+        public static final int login_pwd_equal=0x7f0a0028;
+        public static final int login_pwd_not_equal=0x7f0a0027;
+        public static final int login_pwd_not_set=0x7f0a0026;
+        public static final int login_pwd_set=0x7f0a0025;
         /**  Login and Registration Strings
          */
-        public static final int login_username=0x7f0a0019;
+        public static final int login_username=0x7f0a001c;
         public static final int menu=0x7f0a0007;
         public static final int menu_item_help=0x7f0a000d;
         public static final int menu_item_login=0x7f0a000e;
@@ -148,19 +153,19 @@ public final class R {
          */
         public static final int menu_item_settings=0x7f0a000a;
         public static final int my_scores=0x7f0a0010;
-        public static final int no=0x7f0a0028;
-        public static final int no_questions=0x7f0a0029;
+        public static final int no=0x7f0a002b;
+        public static final int no_questions=0x7f0a002c;
         public static final int no_scores=0x7f0a0012;
         public static final int rank=0x7f0a0015;
         public static final int score=0x7f0a0016;
         public static final int scores=0x7f0a0008;
-        public static final int set_password_string=0x7f0a0026;
+        public static final int set_password_string=0x7f0a0029;
         public static final int settings=0x7f0a0005;
         public static final int splash=0x7f0a0004;
         public static final int username=0x7f0a0013;
         public static final int wait_msg=0x7f0a0017;
         public static final int wait_title=0x7f0a0018;
-        public static final int yes=0x7f0a0027;
+        public static final int yes=0x7f0a002a;
     }
     public static final class xml {
         public static final int allscores=0x7f050000;
