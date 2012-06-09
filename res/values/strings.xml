@@ -57,6 +57,17 @@
     <string name="login_pwd_equal">Passwords match.</string>
     <string name="set_password_string">Set Password</string>
     
+    <!-- Twitter Login and Registration Strings-->
+    <string name="twitter_email">Email</string>
+    <string name="twitter_password">Password</string>
+    <string name="twitter_login">Login</string>
+    <string name="twitter_register_link">New to Twitter? Register here</string>
+    <string name="twitter_login_link">Already have an account? Login here!</string>
+    <string name="twitter_register">Register New Account</string>
+    <string name="twitter_register_password">Password</string>
+    <string name="twitter_register_email">Email</string>
+    <string name="twitter_register_full_name">Full Name</string>
+    
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="no_questions">No more questions available. Try back later.</string>

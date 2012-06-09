@@ -93,17 +93,16 @@ public final class R {
         public static final int TextView_Pwd1=0x7f0b0013;
         public static final int TextView_Pwd2=0x7f0b0015;
         public static final int TextView_PwdProblem=0x7f0b0017;
-        public static final int btnLogin=0x7f0b0025;
-        public static final int btnRegister=0x7f0b002a;
-        public static final int footer=0x7f0b0024;
+        public static final int btnLogin=0x7f0b0024;
+        public static final int btnRegister=0x7f0b0029;
         public static final int frameLayout1=0x7f0b0020;
         public static final int header=0x7f0b0023;
         public static final int imageView1=0x7f0b0021;
-        public static final int link_to_login=0x7f0b002b;
-        public static final int link_to_register=0x7f0b0026;
-        public static final int reg_email=0x7f0b0028;
-        public static final int reg_fullname=0x7f0b0027;
-        public static final int reg_password=0x7f0b0029;
+        public static final int link_to_login=0x7f0b002a;
+        public static final int link_to_register=0x7f0b0025;
+        public static final int reg_email=0x7f0b0027;
+        public static final int reg_fullname=0x7f0b0026;
+        public static final int reg_password=0x7f0b0028;
         public static final int root=0x7f0b0012;
     }
     public static final class layout {
@@ -135,7 +134,7 @@ public final class R {
          */
         public static final int app_name=0x7f0a0000;
         public static final int app_version_info=0x7f0a0002;
-        public static final int exit=0x7f0a002e;
+        public static final int exit=0x7f0a0037;
         public static final int fiend=0x7f0a0015;
         public static final int game=0x7f0a0006;
         public static final int gender_female=0x7f0a0021;
@@ -173,8 +172,8 @@ public final class R {
          */
         public static final int menu_item_settings=0x7f0a000b;
         public static final int my_scores=0x7f0a0011;
-        public static final int no=0x7f0a002c;
-        public static final int no_questions=0x7f0a002d;
+        public static final int no=0x7f0a0035;
+        public static final int no_questions=0x7f0a0036;
         public static final int no_scores=0x7f0a0013;
         public static final int rank=0x7f0a0016;
         public static final int score=0x7f0a0017;
@@ -182,10 +181,21 @@ public final class R {
         public static final int set_password_string=0x7f0a002a;
         public static final int settings=0x7f0a0005;
         public static final int splash=0x7f0a0004;
+        /**  Twitter Login and Registration Strings
+         */
+        public static final int twitter_email=0x7f0a002b;
+        public static final int twitter_login=0x7f0a002d;
+        public static final int twitter_login_link=0x7f0a002f;
+        public static final int twitter_password=0x7f0a002c;
+        public static final int twitter_register=0x7f0a0030;
+        public static final int twitter_register_email=0x7f0a0032;
+        public static final int twitter_register_full_name=0x7f0a0033;
+        public static final int twitter_register_link=0x7f0a002e;
+        public static final int twitter_register_password=0x7f0a0031;
         public static final int username=0x7f0a0014;
         public static final int wait_msg=0x7f0a0018;
         public static final int wait_title=0x7f0a0019;
-        public static final int yes=0x7f0a002b;
+        public static final int yes=0x7f0a0034;
     }
     public static final class xml {
         public static final int allscores=0x7f050000;

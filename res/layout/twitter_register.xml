@@ -6,32 +6,27 @@
   android:fillViewport="true">
   <RelativeLayout 
   		android:layout_width="fill_parent"
-  		android:layout_height="wrap_content" android:background="#fff">
+  		android:layout_height="wrap_content" android:background="#000">
   		
   		<!--  Header  Starts-->
   		<LinearLayout android:id="@+id/header"
   				android:layout_width="fill_parent"
   				android:layout_height="wrap_content"
-  				android:background="@layout/twitter_header_gradient"
   				android:paddingTop="5dip"
   				android:paddingBottom="5dip">
-  				<!-- Logo Start-->
-  				<ImageView android:src="@drawable/twitter_logo"
-  							android:layout_width="wrap_content"
-  							android:layout_height="wrap_content"
-  							android:layout_marginLeft="10dip"/>
+  				
+  		    <!-- logo starts -->
+  				<ImageView
+  		        android:layout_width="wrap_content"
+  		        android:layout_height="match_parent"
+  		        android:layout_gravity="center_horizontal"
+  		        android:layout_marginLeft="10dip"
+  		        android:layout_weight="0.30"
+  		        android:src="@drawable/twitter_logo" />
   				<!-- Logo Ends -->
   		</LinearLayout>
-  		<!--  Header Ends --> 
-  		<!-- Footer Start -->
-  		<LinearLayout android:id="@+id/footer"
-  				android:layout_width="fill_parent"
-  				android:layout_height="90dip"
-  				android:background="@layout/twitter_footer_repeat"
-  				android:layout_alignParentBottom="true">
-  		</LinearLayout>
-  		<!-- Footer Ends --> 
-  		
+  		<!--  Header Ends -->
+  		 		
   		<!-- Registration Form -->
 		<LinearLayout
 		  xmlns:android="http://schemas.android.com/apk/res/android"
@@ -39,56 +34,63 @@
 		  android:layout_width="match_parent"
 		  android:layout_height="wrap_content"
 		  android:padding="10dip"
+		  android:background="@drawable/bkgrnd_clear"
 		  android:layout_below="@id/header">
+		  
 		  <!-- Full Name Label -->
 		  <TextView android:layout_width="fill_parent"
 		  		android:layout_height="wrap_content"
-		  		android:textColor="#372c24"
-		  		android:text="Full Name"/>
+		  		android:textColor="#fff"
+		  		android:text="@string/twitter_register_full_name"/>
 		  <EditText android:id="@+id/reg_fullname" 
 		  		android:layout_width="fill_parent"
 		  		android:layout_height="wrap_content"
 		  		android:layout_marginTop="5dip"
 		  		android:singleLine="true"
 		  		android:layout_marginBottom="20dip"/>
+		  
 		  <!--  Email Label -->
 		  <TextView android:layout_width="fill_parent"
 		  		android:layout_height="wrap_content"
-		  		android:textColor="#372c24"
-		  		android:text="Email"/>
+		  		android:textColor="#fff"
+		  		android:text="@string/twitter_register_email"/>
 		  <EditText android:id="@+id/reg_email" 
 		  		android:layout_width="fill_parent"
 		  		android:layout_height="wrap_content"
 		  		android:layout_marginTop="5dip"
 		  		android:singleLine="true"
 		  		android:layout_marginBottom="20dip"/>
+		  
 		  <!-- Password Label -->
 		  <TextView android:layout_width="fill_parent"
 		  		android:layout_height="wrap_content"
-		  		android:textColor="#372c24"
-		  		android:text="Password"/>
+		  		android:textColor="#fff"
+		  		android:text="@string/twitter_register_password"/>
 		  <EditText android:id="@+id/reg_password" 
 		        android:layout_width="fill_parent"
 		  		android:layout_height="wrap_content"
 		  		android:password="true"
 		  		android:singleLine="true"
 		  		android:layout_marginTop="5dip"/>
+		  
 		  <!-- Register Button -->		
 		  <Button android:id="@+id/btnRegister" 
 		  		android:layout_width="fill_parent"
 		  		android:layout_height="wrap_content"
 		  		android:layout_marginTop="10dip"
-		  		android:text="Register New Account"/>
+		  		android:text="@string/twitter_register"/>
 		  <!-- Link to Login Screen -->
-		  <TextView android:id="@+id/link_to_login" 
-		  		android:layout_width="fill_parent"
-		  		android:layout_height="wrap_content"
-		  		android:layout_marginTop="40dip"
-		  		android:layout_marginBottom="40dip"
-		  		android:text="Already have an account? Login here!"
-		  		android:gravity="center"
-		  		android:textSize="18dip"
-		  		android:textColor="#025f7c"/>
+
+		  <TextView
+		      android:id="@+id/link_to_login"
+		      android:layout_width="fill_parent"
+		      android:layout_height="wrap_content"
+		      android:layout_marginBottom="40dip"
+		      android:layout_marginTop="40dip"
+		      android:gravity="center"
+		      android:text="@string/twitter_login_link"
+		      android:textColor="#fff"
+		      android:textSize="18dip" />
 		    
 		</LinearLayout>
   		<!-- Registration Form Ends -->

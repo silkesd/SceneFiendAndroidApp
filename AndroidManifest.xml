@@ -43,6 +43,11 @@
         <activity android:name="HelpActivity"></activity>
         <activity android:name="MenuActivity"></activity>
         <activity android:name="LoginActivity"></activity>
+        <activity android:name="RegisterActivity"></activity>
+        <activity android:name="SceneFiendLoginActivity"></activity>
+        <activity android:name="SpalshActivity"></activity>
+        <activity android:name="TwitterLoginActivity"></activity>
+        <activity android:name="TwitterRegisterActivity"></activity>
         
     </application>
   
