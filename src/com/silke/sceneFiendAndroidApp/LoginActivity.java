@@ -27,39 +27,39 @@ public class LoginActivity extends SceneFiendAndroidAppActivity
         tv.setTypeface(tf);
        
         //the login type menu items
-        //ListView loginList = (ListView) findViewById(R.id.ListView_Login);
-        //String[] loginItems = { 
-                //getResources().getString(R.string.login_item_scenefiendlogin),
-                //getResources().getString(R.string.login_item_twitterlogin),
-        		//getResources().getString(R.string.login_item_register)};
+        ListView loginList = (ListView) findViewById(R.id.ListView_Login);
+        String[] loginItems = { 
+                getResources().getString(R.string.login_item_scenefiendlogin),
+                getResources().getString(R.string.login_item_twitterlogin),
+        		getResources().getString(R.string.login_item_register)};
         
         //data adapter maps data to the layout templates specified via the array that stores the menu items
-        ArrayAdapter<String> adapt = new ArrayAdapter<String>(this, R.layout.login_item, items);
-        //loginList.setAdapter(adapt);
-        //loginList.setOnItemClickListener(new AdapterView.OnItemClickListener() 
+        ArrayAdapter<String> adapt = new ArrayAdapter<String>(this, R.layout.login_item, loginItems);
+        loginList.setAdapter(adapt);
+        loginList.setOnItemClickListener(new AdapterView.OnItemClickListener() 
         {        
         	//when an item is clicked a specified activity is launched
-        	public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) 
+        	public void onItemClick(AdapterView<?> parent, View loginItemClicked, int position, long id) 
         	{
         		//getting the text view and passing the text to that view
-                //TextView textView = (TextView) loginItemClicked;
-                //String strText = textView.getText().toString();
+                TextView textView = (TextView) loginItemClicked;
+                String strText = textView.getText().toString();
                 
                 //if the menu item selected is menu_item_play launch the game activity
-                //if (strText.equalsIgnoreCase(getResources().getString(R.string.login_item_scenefiendlogin))) 
+                if (strText.equalsIgnoreCase(getResources().getString(R.string.login_item_scenefiendlogin))) 
                 {
                     // Launch the Scene Fiend Login Activity
-                    //startActivity(new Intent(LoginActivity.this, SceneFiendLoginActivity.class));
+                    startActivity(new Intent(LoginActivity.this, SceneFiendLoginActivity.class));
                 } 
-                //else if (strText.equalsIgnoreCase(getResources().getString(R.string.login_item_twitterlogin))) 
+                else if (strText.equalsIgnoreCase(getResources().getString(R.string.login_item_twitterlogin))) 
                 {
                     // Launch the Twitter Login Activity
-                    //startActivity(new Intent(LoginActivity.this, TwitterLoginActivity.class));
+                    startActivity(new Intent(LoginActivity.this, TwitterLoginActivity.class));
                 } 
-                //else if (strText.equalsIgnoreCase(getResources().getString(R.string.login_item_register))) 
+                else if (strText.equalsIgnoreCase(getResources().getString(R.string.login_item_register))) 
                 {
                     // Launch the Register Activity
-                    //startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                    startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
                 } 
 			}
         });
