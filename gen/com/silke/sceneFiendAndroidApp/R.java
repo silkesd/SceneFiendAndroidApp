@@ -29,20 +29,21 @@ public final class R {
         public static final int version_color=0x7f080001;
     }
     public static final class dimen {
-        public static final int avatar_size=0x7f09000f;
+        public static final int avatar_size=0x7f090010;
         public static final int desc_size=0x7f090001;
-        public static final int help_text_padding=0x7f09000b;
-        public static final int help_text_padding_bottom=0x7f090009;
-        public static final int help_text_padding_left=0x7f090007;
-        public static final int help_text_padding_right=0x7f090008;
-        public static final int help_text_padding_top=0x7f09000a;
-        public static final int help_text_size=0x7f090006;
-        public static final int login_passwd_button_margin=0x7f09000e;
+        public static final int help_text_padding=0x7f09000c;
+        public static final int help_text_padding_bottom=0x7f09000a;
+        public static final int help_text_padding_left=0x7f090008;
+        public static final int help_text_padding_right=0x7f090009;
+        public static final int help_text_padding_top=0x7f09000b;
+        public static final int help_text_size=0x7f090007;
+        public static final int login_item_size=0x7f090006;
+        public static final int login_passwd_button_margin=0x7f09000f;
         public static final int menu_item_size=0x7f090005;
         /**  set the heading size for username, rank and points in the score screen 
          */
-        public static final int score_heading_text_size=0x7f09000c;
-        public static final int score_text_size=0x7f09000d;
+        public static final int score_heading_text_size=0x7f09000d;
+        public static final int score_text_size=0x7f09000e;
         public static final int screen_title_size=0x7f090004;
         public static final int title_size=0x7f090000;
         public static final int version_size=0x7f090002;
@@ -56,6 +57,8 @@ public final class R {
         public static final int icon=0x7f020004;
         public static final int splash=0x7f020005;
         public static final int textured=0x7f020006;
+        public static final int twitter_bg=0x7f020007;
+        public static final int twitter_logo=0x7f020008;
     }
     public static final class id {
         public static final int Button_Password=0x7f0b000d;
@@ -90,8 +93,17 @@ public final class R {
         public static final int TextView_Pwd1=0x7f0b0013;
         public static final int TextView_Pwd2=0x7f0b0015;
         public static final int TextView_PwdProblem=0x7f0b0017;
+        public static final int btnLogin=0x7f0b0025;
+        public static final int btnRegister=0x7f0b002a;
+        public static final int footer=0x7f0b0024;
         public static final int frameLayout1=0x7f0b0020;
+        public static final int header=0x7f0b0023;
         public static final int imageView1=0x7f0b0021;
+        public static final int link_to_login=0x7f0b002b;
+        public static final int link_to_register=0x7f0b0026;
+        public static final int reg_email=0x7f0b0028;
+        public static final int reg_fullname=0x7f0b0027;
+        public static final int reg_password=0x7f0b0029;
         public static final int root=0x7f0b0012;
     }
     public static final class layout {
@@ -106,6 +118,10 @@ public final class R {
         public static final int scores=0x7f030008;
         public static final int settings=0x7f030009;
         public static final int splash=0x7f03000a;
+        public static final int twitter_footer_repeat=0x7f03000b;
+        public static final int twitter_header_gradient=0x7f03000c;
+        public static final int twitter_login=0x7f03000d;
+        public static final int twitter_register=0x7f03000e;
     }
     public static final class raw {
         public static final int help=0x7f060000;

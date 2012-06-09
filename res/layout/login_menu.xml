@@ -13,7 +13,7 @@
     <TextView
         android:id="@+id/CustomFont"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_gravity="center_horizontal"
         android:shadowColor="@android:color/white"
         android:shadowDx="0"
@@ -37,11 +37,12 @@
         android:layout_width="fill_parent">
        
        <!-- the list view contains all items in the login menu list -->
+
         <ListView
-            android:layout_height="wrap_content"
             android:id="@+id/ListView_Login"
             android:layout_width="fill_parent"
-            android:listSelector="@drawable/textured"
-            android:layout_alignParentTop="true"></ListView>
+            android:layout_height="wrap_content"
+            android:listSelector="@drawable/textured" >
+</ListView>
     </RelativeLayout>
 </LinearLayout>

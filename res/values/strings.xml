@@ -37,7 +37,7 @@
     <!-- Login Menu Strings -->
     <string name="login_item_scenefiendlogin">Scene Fiend Login</string>
     <string name="login_item_twitterlogin">Twitter Login</string>
-    <string name="login_item_register">Register with Scene Fiend</string>
+    <string name="login_item_register">Register</string>
     
     <!-- Login and Registration Strings-->
     <string name="login_username">Username:</string>
