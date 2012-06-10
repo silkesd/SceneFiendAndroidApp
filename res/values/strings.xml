@@ -43,11 +43,6 @@
     <string name="login_username">Username:</string>
     <string name="login_email">Email:</string>
     
-    <string name="login_gender">Gender:</string>
-    <string name="gender_male">Male</string>
-    <string name="gender_female">Female</string>
-    <string name="gender_neutral">Prefer Not To Say</string>
-    
     <string name="login_button_pwd">Set Password</string>
     <string name="login_password">Password:</string>
     <string name="login_password2">Password (again):</string>

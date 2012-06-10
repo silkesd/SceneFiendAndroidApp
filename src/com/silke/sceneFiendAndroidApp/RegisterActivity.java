@@ -27,12 +27,9 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.Spinner;
+import android.widget.ImageButton;   
 import android.widget.TextView;
 
 public class RegisterActivity extends SceneFiendAndroidAppActivity
@@ -44,9 +41,10 @@ public class RegisterActivity extends SceneFiendAndroidAppActivity
    
 	/** Called when the activity is first created. */
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) 
+    {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+        setContentView(R.layout.register);
         
         Typeface tf = Typeface.createFromAsset(getAssets(),
                 "fonts/lucindablack.ttf");

@@ -9,8 +9,6 @@ import org.json.JSONObject;
 
 import android.content.Context;
 
-import com.example.androidhive.library.DatabaseHandler;
-
 
 public class UserFunctions 
 {
