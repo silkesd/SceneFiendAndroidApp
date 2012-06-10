@@ -15,6 +15,7 @@
      <string name="login_menu">Login Menu</string>
     <string name="register">Join Us</string>
     <string name="login">Login</string>
+    <string name="logout">Logout</string>
     
     <!-- Menu Strings -->
     <string name="menu_item_settings">Settings</string>
@@ -45,6 +46,8 @@
     <string name="register_email">Email:</string>
     <string name="register_button_pwd">Set Password</string>
     <string name="register_password">Password:</string>
+    <string name="linkToLogin">Already registred. Login Me!</string>
+    <string name="registerText">Register</string>
     
     <string name="login_password2">Password (again):</string>
     <string name="login_pwd_set">Password Set</string>

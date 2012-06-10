@@ -1,42 +1,19 @@
 package com.silke.sceneFiendAndroidApp;
+
 import com.silke.sceneFiendAndroidApp.R;
 import com.silke.sceneFiendAndroidApp.handlers.DBHandler;
 import com.silke.sceneFiendAndroidApp.handlers.UserFunctions;
 
-import java.io.File;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore.Images.Media;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Typeface;
-
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity
@@ -80,11 +57,11 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity
 
  			public void onClick(View view) 
  			{
- 				String email = inputUsername.getText().toString();
+ 				String player_name = inputUsername.getText().toString();
  				String password = inputPassword.getText().toString();
  				UserFunctions userFunction = new UserFunctions();
  				Log.d("Button", "Login");
- 				JSONObject json = userFunction.loginUser(email, password);
+ 				JSONObject json = userFunction.loginUser(player_name, password);
 
  				// check for login response
  				try {
@@ -101,7 +78,15 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity
  							
  							// Clear all previous data in database
  							userFunction.logoutUser(getApplicationContext());
- 							db.addUser(json_user.getString(KEY_NAME), json_user.getString(KEY_EMAIL), json.getString(KEY_ID));						
+ 							db.addUser(json.getString(KEY_ID), json_user.getString(KEY_NAME), json_user.getString(KEY_EMAIL));						
+ 							
+ 							// Launch Menu Screen
+							Intent menu = new Intent(getApplicationContext(), MenuActivity.class);
+							
+							// Close all views before launching Menu
+							menu.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+							startActivity(menu);
+ 							
  							// Close Login Screen
  							finish();
  						}

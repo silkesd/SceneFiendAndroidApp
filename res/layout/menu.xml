@@ -44,4 +44,15 @@
             android:listSelector="@drawable/textured"
             android:layout_alignParentTop="true"></ListView>
     </RelativeLayout>
+    
+        
+    <Button android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/logout"
+        android:textSize="20dip"
+        android:textColor="#fff"
+        android:textStyle="bold" 
+        android:id="@+id/btnLogout"
+        android:layout_marginTop="80dip"
+        android:background="@null"/>
 </LinearLayout>

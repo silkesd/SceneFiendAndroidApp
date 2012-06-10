@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/bkgrnd_clear">
-
+	<LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:padding="10dip" >
+    
+	<!--  View Title Label -->
     <TextView
         android:id="@+id/CustomFont"
         android:layout_width="wrap_content"
@@ -19,67 +25,23 @@
         android:textColor="@color/title_color"
         android:textSize="@dimen/screen_title_size" />
 
-    <ImageButton
-        android:id="@+id/ImageButton_Avatar"
-        android:layout_width="84dp"
-        android:layout_height="65dp"
-        android:adjustViewBounds="true"
-        android:maxHeight="@dimen/avatar_size"
-        android:minHeight="@dimen/avatar_size"
-        android:scaleType="fitXY"
-        android:src="@drawable/avatar" />
-
     <TextView
         android:id="@+id/TextView_Nickname"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="@string/register_username"
         android:textColor="@color/title_color"
         android:textSize="@dimen/help_text_size"
         android:textStyle="bold" />
-
-    <RelativeLayout
-        android:id="@+id/RelativeLayout01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal" >
-    </RelativeLayout>
-    <ScrollView
-        android:id="@+id/ScrollView01"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:isScrollContainer="true"
-        android:scrollbars="vertical"
-        android:scrollbarAlwaysDrawVerticalTrack="true">
-        <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="vertical"
+		<!--  Name TextField -->
+        <EditText
+            android:id="@+id/registerName"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-			<LinearLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:gravity="fill">
-                <LinearLayout
-                    xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:orientation="vertical"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
+            android:layout_height="wrap_content" />
 
-		            <EditText
-		                android:id="@+id/EditText_Nickname"
-		                android:layout_width="fill_parent"
-		                android:layout_height="wrap_content"
-		                android:inputType="textPersonName"
-		                android:maxLength="20"
-		                android:maxLines="1" >
-</EditText>
-		        </LinearLayout>
-            </LinearLayout>
-            <TextView
+		<!--  Email Label -->
+       <TextView
                 android:id="@+id/TextView_Email"
                  android:layout_height="wrap_content"
                 android:layout_gravity="fill_horizontal|center"
@@ -91,45 +53,54 @@
                 android:gravity="center_horizontal">
             </TextView>
             <EditText
-                android:id="@+id/EditText_Email"
+                android:id="@+id/registerEmail"
                 android:layout_height="wrap_content"
                 android:layout_width="fill_parent"
-                android:maxLines="1"
-                android:inputType="textEmailAddress">
+                android:maxLines="1">
             </EditText>
             
-            <TextView
-            	android:id="@+id/TextView_Password" 
-            	android:textSize="@dimen/help_text_size" 
-            	android:layout_gravity="fill_horizontal|center" 
-            	android:layout_height="wrap_content" 
-            	android:text="@string/register_password"
-            	android:textStyle="bold" 
-            	android:textColor="@color/title_color" 
-            	android:layout_width="match_parent" 
-            	android:gravity="center_horizontal">
-            </TextView>
-            <LinearLayout
-                android:id="@+id/LinearLayoutPassword"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent">
+            <!--  Password Label -->
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:text="@string/register_password" 
+            android:textSize="@dimen/help_text_size"
+            android:textStyle="bold" 
+            android:textColor="@color/title_color"
+  			android:gravity="center_horizontal"/>
+         <!--  Password TextField -->
+        <EditText
+            android:id="@+id/registerPassword"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:password="true" />  
+        <!--  Error message -->
+        <TextView android:id="@+id/register_error"
+            		android:layout_width="fill_parent"
+            		android:layout_height="wrap_content"
+            		android:textColor="#fff"
+            		android:padding="10dip"
+            		android:textStyle="bold"/>
 
-                <Button
-                    android:id="@+id/Button_Password"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/register_button_pwd" />
+		<!--  Login Button -->        
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:text="@string/registerText" />
 
-                <TextView
-                    android:id="@+id/TextView_Password_Info"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:textSize="@dimen/help_text_size"
-                    android:textStyle="bold"
-                    android:gravity="center">
-                </TextView>
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+        <!--  Link to Login Screen -->
+        <Button
+            android:id="@+id/btnLinkToLoginScreen"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dip"
+            android:background="@null"
+            android:text="@string/linkToLogin"
+            android:textColor="#fff"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</ScrollView>

@@ -53,14 +53,14 @@ public class UserFunctions
 	 * @param password
 	 * @param player_avatar
 	 * */
-	public JSONObject registerUser(String player_name, String player_email, String password, String player_avatar){
+	public JSONObject registerUser(String player_name, String player_email, String password)
+	{
 		// Building Parameters
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("tag", register_tag));
 		params.add(new BasicNameValuePair("player_name", player_name));
 		params.add(new BasicNameValuePair("player_email", player_email));
 		params.add(new BasicNameValuePair("password", password));
-		params.add(new BasicNameValuePair("player_avatar", player_avatar));
 		
 		// getting JSON Object from register url with params
 		//password is prior to encryption in php files
