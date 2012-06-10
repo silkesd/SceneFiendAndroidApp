@@ -17,10 +17,10 @@ public class DBHandler extends SQLiteOpenHelper
 	// Database Name
 	private static final String DATABASE_NAME = "SceneFiendDB";
 
-	// Login table name
+	// Player Login table name
 	private static final String TABLE_PLAYER = "scene__player";
 
-	// Login Table Columns names
+	// Player Login Table Columns names
 	private static final String KEY_ID = "player_id";
 	private static final String KEY_NAME = "player_name";
 	private static final String KEY_EMAIL = "player_email";
@@ -31,9 +31,10 @@ public class DBHandler extends SQLiteOpenHelper
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 
-	// Creating Tables
+	// Creating Player Table
 	@Override
-	public void onCreate(SQLiteDatabase db) {
+	public void onCreate(SQLiteDatabase db) 
+	{
 		String CREATE_PLAYER_TABLE = "CREATE TABLE " + TABLE_PLAYER + "("
 				+ KEY_ID + " INTEGER PRIMARY KEY," 
 				+ KEY_NAME + " VARCHAR,"
@@ -43,7 +44,8 @@ public class DBHandler extends SQLiteOpenHelper
 
 	// Upgrading database
 	@Override
-	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) 
+	{
 		// Drop older table if exists
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_PLAYER);
 
@@ -52,9 +54,10 @@ public class DBHandler extends SQLiteOpenHelper
 	}
 
 	/**
-	 * Storing user details in database
+	 * Storing user details in local database
 	 * */
-	public void addUser(String player_id, String player_name, String player_email) {
+	public void addUser(String player_id, String player_name, String player_email) 
+	{
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
@@ -69,7 +72,8 @@ public class DBHandler extends SQLiteOpenHelper
 	/**
 	 * Getting user data from database
 	 * */
-	public HashMap<String, String> getUserDetails(){
+	public HashMap<String, String> getUserDetails()
+	{
 		HashMap<String,String> user = new HashMap<String,String>();
 		String selectQuery = "SELECT  * FROM " + TABLE_PLAYER;
 		 
@@ -77,7 +81,8 @@ public class DBHandler extends SQLiteOpenHelper
 	    Cursor cursor = db.rawQuery(selectQuery, null);
 	    // Move to first row
 	    cursor.moveToFirst();
-	    if(cursor.getCount() > 0){
+	    if(cursor.getCount() > 0)
+	    {
 	    	user.put("player_id", cursor.getString(1));
 	    	user.put("player_name", cursor.getString(2));
 	    	user.put("player_email", cursor.getString(3));
@@ -90,9 +95,10 @@ public class DBHandler extends SQLiteOpenHelper
 
 	/**
 	 * Getting user login status
-	 * return true if rows are there in table
+	 * return true if rows are in table
 	 * */
-	public int getRowCount() {
+	public int getRowCount() 
+	{
 		String countQuery = "SELECT  * FROM " + TABLE_PLAYER;
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.rawQuery(countQuery, null);
@@ -105,10 +111,11 @@ public class DBHandler extends SQLiteOpenHelper
 	}
 
 	/**
-	 * Re crate database
+	 * Re-create database
 	 * Delete all tables and create them again
 	 * */
-	public void resetTables(){
+	public void resetTables()
+	{
 		SQLiteDatabase db = this.getWritableDatabase();
 		// Delete All Rows
 		db.delete(TABLE_PLAYER, null, null);
