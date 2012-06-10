@@ -15,7 +15,7 @@
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="10"
-        android:text="@string/login"
+        android:text="@string/register"
         android:textColor="@color/title_color"
         android:textSize="@dimen/screen_title_size" />
 
@@ -34,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="@string/login_username"
+        android:text="@string/register_username"
         android:textColor="@color/title_color"
         android:textSize="@dimen/help_text_size"
         android:textStyle="bold" />
@@ -83,9 +83,13 @@
                 android:id="@+id/TextView_Email"
                  android:layout_height="wrap_content"
                 android:layout_gravity="fill_horizontal|center"
-                android:text="@string/login_email"
+                android:text="@string/register_email"
                 android:textSize="@dimen/help_text_size"
-                android:textStyle="bold" android:textColor="@color/title_color" android:layout_width="match_parent" android:gravity="center_horizontal"></TextView>
+                android:textStyle="bold" 
+                android:textColor="@color/title_color" 
+                android:layout_width="match_parent" 
+                android:gravity="center_horizontal">
+            </TextView>
             <EditText
                 android:id="@+id/EditText_Email"
                 android:layout_height="wrap_content"
@@ -99,7 +103,7 @@
             	android:textSize="@dimen/help_text_size" 
             	android:layout_gravity="fill_horizontal|center" 
             	android:layout_height="wrap_content" 
-            	android:text="@string/login_password"
+            	android:text="@string/register_password"
             	android:textStyle="bold" 
             	android:textColor="@color/title_color" 
             	android:layout_width="match_parent" 
@@ -115,7 +119,7 @@
                     android:id="@+id/Button_Password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/login_button_pwd" />
+                    android:text="@string/register_button_pwd" />
 
                 <TextView
                     android:id="@+id/TextView_Password_Info"

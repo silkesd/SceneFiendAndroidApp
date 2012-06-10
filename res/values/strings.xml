@@ -13,7 +13,8 @@
     <string name="menu">Main Menu</string>
     <string name="scores">Scores</string>
      <string name="login_menu">Login Menu</string>
-    <string name="login">Join Us</string>
+    <string name="register">Join Us</string>
+    <string name="login">Login</string>
     
     <!-- Menu Strings -->
     <string name="menu_item_settings">Settings</string>
@@ -39,18 +40,26 @@
     <string name="login_item_twitterlogin">Twitter Login</string>
     <string name="login_item_register">Register</string>
     
-    <!-- Login and Registration Strings-->
-    <string name="login_username">Username:</string>
-    <string name="login_email">Email:</string>
+    <!-- Register Strings-->
+    <string name="register_username">Username:</string>
+    <string name="register_email">Email:</string>
+    <string name="register_button_pwd">Set Password</string>
+    <string name="register_password">Password:</string>
     
-    <string name="login_button_pwd">Set Password</string>
-    <string name="login_password">Password:</string>
     <string name="login_password2">Password (again):</string>
     <string name="login_pwd_set">Password Set</string>
     <string name="login_pwd_not_set">No Password Set</string>
     <string name="login_pwd_not_equal">Passwords do not match, please try again.</string>
     <string name="login_pwd_equal">Passwords match.</string>
     <string name="set_password_string">Set Password</string>
+    
+    <!-- Login Strings-->
+    <string name="login_username">Username:</string>
+    <string name="login_email">Email:</string>
+    <string name="login_button_pwd">Set Password</string>
+    <string name="login_password">Password:</string>
+    <string name="linkToReg">I don't have an account. Register Me!</string>
+    
     
     <!-- Twitter Login and Registration Strings-->
     <string name="twitter_email">Email</string>

@@ -148,7 +148,7 @@ public class RegisterActivity extends SceneFiendAndroidAppActivity
 
         // Update the settings screen
         ImageButton avatarButton = (ImageButton) findViewById(R.id.ImageButton_Avatar);
-        String strAvatarUri = mGameSettings.getString(GAME_PREFERENCES_AVATAR, "android.resource://com.androidbook.triviaquiz13/drawable/avatar");
+        String strAvatarUri = mGameSettings.getString(GAME_PREFERENCES_AVATAR, "android.resource://com.silke.sceneFiendAndroidApp/drawable/avatar");
         Uri imageUri = Uri.parse(strAvatarUri);
         avatarButton.setImageURI(null); // Workaround for refreshing an ImageButton, which tries to cache the previous image Uri. Passing null effectively resets it.
         avatarButton.setImageURI(imageUri);
@@ -175,7 +175,7 @@ public class RegisterActivity extends SceneFiendAndroidAppActivity
         ImageButton avatarButton = (ImageButton) findViewById(R.id.ImageButton_Avatar);
 
         if (mGameSettings.contains(GAME_PREFERENCES_AVATAR)) {
-            String strAvatarUri = mGameSettings.getString(GAME_PREFERENCES_AVATAR, "android.resource://com.androidbook.triviaquiz13/drawable/avatar");
+            String strAvatarUri = mGameSettings.getString(GAME_PREFERENCES_AVATAR, "android.resource://com.silke.sceneFiendAndroidApp/drawable/avatar");
             Uri imageUri = Uri.parse(strAvatarUri);
             avatarButton.setImageURI(imageUri);
         } else {
