@@ -64,8 +64,6 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity
         initEmailEntry();
         // Initialize the Password chooser
         initPasswordChooser();
-        // Initialize the spinner
-        initGenderSpinner();
     }
    
     @Override
@@ -163,7 +161,6 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity
         Log.d(DEBUG_TAG, "SHARED PREFERENCES");
         Log.d(DEBUG_TAG, "Nickname is: " + mGameSettings.getString(GAME_PREFERENCES_NICKNAME, "Not set"));
         Log.d(DEBUG_TAG, "Email is: " + mGameSettings.getString(GAME_PREFERENCES_EMAIL, "Not set"));
-        Log.d(DEBUG_TAG, "Gender (M=1, F=2, U=0) is: " + mGameSettings.getInt(GAME_PREFERENCES_GENDER, 0));
         Log.d(DEBUG_TAG, "Password is: " + mGameSettings.getString(GAME_PREFERENCES_PASSWORD, "Not set"));
         Log.d(DEBUG_TAG, "Avatar is: " + mGameSettings.getString(GAME_PREFERENCES_AVATAR, "Not set"));
        
@@ -273,33 +270,7 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity
     }
 
 
-    /**
-     * Initialize the spinner
-     */
-    private void initGenderSpinner() 
-    {
-        // Populate Spinner control with genders
-        final Spinner spinner = (Spinner) findViewById(R.id.Spinner_Gender);
-        ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.genders,
-                android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        if (mGameSettings.contains(GAME_PREFERENCES_GENDER)) {
-            spinner.setSelection(mGameSettings.getInt(GAME_PREFERENCES_GENDER, 0));
-        }
-        // Handle spinner selections
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View itemSelected, int selectedItemPosition,
-                    long selectedId) {
-                Editor editor = mGameSettings.edit();
-                editor.putInt(GAME_PREFERENCES_GENDER, selectedItemPosition);
-                editor.commit();
-            }
-
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-    }
+   
     
     @Override
     protected Dialog onCreateDialog(int id) 
