@@ -11,7 +11,7 @@
         android:layout_height="fill_parent"
         android:orientation="vertical"
         android:padding="10dip" >
-
+		<!-- title -->
         <TextView
             android:id="@+id/CustomFont"
             android:layout_width="wrap_content"
@@ -25,7 +25,7 @@
             android:textColor="@color/title_color"
             android:textSize="@dimen/screen_title_size" />
 
-        <!-- Email Label -->
+        <!-- Username Label -->
 
         <TextView
             android:id="@+id/TextView_Nickname"
@@ -37,7 +37,7 @@
             android:textSize="@dimen/help_text_size"
             android:textStyle="bold" />
 
-        <!-- Email TextField -->
+        <!-- Username TextField -->
 
         <EditText
             android:id="@+id/loginUsername"
@@ -55,6 +55,7 @@
             android:textColor="@color/title_color"
             android:textSize="@dimen/help_text_size"
             android:textStyle="bold" />
+        
         <!-- Password TextField -->
 
         <EditText

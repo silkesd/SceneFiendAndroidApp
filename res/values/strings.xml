@@ -58,7 +58,7 @@
     <string name="login_email">Email:</string>
     <string name="login_button_pwd">Set Password</string>
     <string name="login_password">Password:</string>
-    <string name="linkToReg">I don't have an account. Register Me!</string>
+    <string name="linkToReg">I don\'t have an account. Register Me!</string>
     
     
     <!-- Twitter Login and Registration Strings-->
