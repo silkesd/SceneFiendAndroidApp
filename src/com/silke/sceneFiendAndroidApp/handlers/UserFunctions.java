@@ -7,6 +7,10 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
+import android.content.Context;
+
+import com.example.androidhive.library.DatabaseHandler;
+
 
 public class UserFunctions 
 {
@@ -65,5 +69,29 @@ public class UserFunctions
 		JSONObject json = jsonParser.getJSONFromUrl(registerURL, params);
 		// return json
 		return json;
+	}
+	
+	/**
+	 * Function get Login status
+	 * */
+	public boolean isUserLoggedIn(Context context){
+		DBHandler db = new DBHandler(context);
+		int count = db.getRowCount();
+		if(count > 0){
+			// user is logged in
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * Function to logout user
+	 * Reset Database
+	 * */
+	public boolean logoutUser(Context context)
+	{
+		DBHandler db = new DBHandler(context);
+		db.resetTables();
+		return true;
 	}
 }
