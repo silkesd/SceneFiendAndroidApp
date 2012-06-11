@@ -92,7 +92,9 @@ public class RegisterActivity extends SceneFiendAndroidAppActivity
 							registerErrorMsg.setText("Error occured in registration");
 						}
 					}
-				} catch (JSONException e) {
+				} 
+				catch (JSONException e) 
+				{
 					e.printStackTrace();
 				}
 			}
@@ -111,4 +113,4 @@ public class RegisterActivity extends SceneFiendAndroidAppActivity
 			}
 		});
 	}
-}  
+} 
