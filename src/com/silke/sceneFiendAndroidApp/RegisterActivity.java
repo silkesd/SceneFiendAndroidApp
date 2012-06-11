@@ -71,39 +71,7 @@ public class RegisterActivity extends SceneFiendAndroidAppActivity
 				 * 
 				 */
 				
-				// check for register response			
-//				try 
-//				{
-//					if (json.getString(KEY_SUCCESS) != null) 
-//					{
-//						registerErrorMsg.setText("");
-//						String res = json.getString(KEY_SUCCESS); 
-//						if(Integer.parseInt(res) == 1)
-//						{
-//							// user successfully registered
-//							// Store user details in SQLite Database
-//							DBHandler db = new DBHandler(getApplicationContext());
-//							JSONObject json_user = json.getJSONObject("user");
-//							
-//							// Clear all previous data in database
-//							userFunction.logoutUser(getApplicationContext());
-//							// Launch Menu Screen
-//							Intent menu = new Intent(getApplicationContext(), MenuActivity.class);
-//							// Close all views before launching Menu
-//							menu.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//							startActivity(menu);
-//							// Close Registration Screen
-//							finish();
-//						}else{
-//							// Error in registration
-//							registerErrorMsg.setText("Error occured in registration");
-//						}
-//					}
-//				} 
-//				catch (JSONException e) 
-//				{
-//					e.printStackTrace();
-//				}
+
 			}
 		});
 
