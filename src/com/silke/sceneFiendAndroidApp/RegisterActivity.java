@@ -53,7 +53,7 @@ public class RegisterActivity extends SceneFiendAndroidAppActivity
  		btnLinkToLogin = (Button) findViewById(R.id.btnLinkToLoginScreen);
  		registerErrorMsg = (TextView) findViewById(R.id.register_error);
  		
- 	// Register Button Click event
+ 		// Register Button Click event
  		btnRegister.setOnClickListener(new View.OnClickListener() 
  		{			
 			public void onClick(View view) 
@@ -62,41 +62,48 @@ public class RegisterActivity extends SceneFiendAndroidAppActivity
 				String player_email = inputEmail.getText().toString();
 				String password = inputPassword.getText().toString();
 				UserFunctions userFunction = new UserFunctions();
-				JSONObject json = userFunction.registerUser(player_name, player_email, password);
+				userFunction.registerUser(player_name, player_email, password);
 				
-				// check for login response
-				try 
-				{
-					if (json.getString(KEY_SUCCESS) != null) 
-					{
-						registerErrorMsg.setText("");
-						String res = json.getString(KEY_SUCCESS); 
-						if(Integer.parseInt(res) == 1)
-						{
-							// user successfully registered
-							// Store user details in SQLite Database
-							DBHandler db = new DBHandler(getApplicationContext());
-							JSONObject json_user = json.getJSONObject("user");
-							
-							// Clear all previous data in database
-							userFunction.logoutUser(getApplicationContext());
-							// Launch Menu Screen
-							Intent menu = new Intent(getApplicationContext(), MenuActivity.class);
-							// Close all views before launching Menu
-							menu.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-							startActivity(menu);
-							// Close Registration Screen
-							finish();
-						}else{
-							// Error in registration
-							registerErrorMsg.setText("Error occured in registration");
-						}
-					}
-				} 
-				catch (JSONException e) 
-				{
-					e.printStackTrace();
-				}
+				/**
+				 * You need to get what the user has written in the text fields,
+				 * 
+				 * attach the data as a list value pair list, then call file downloader ...
+				 * 
+				 */
+				
+				// check for register response			
+//				try 
+//				{
+//					if (json.getString(KEY_SUCCESS) != null) 
+//					{
+//						registerErrorMsg.setText("");
+//						String res = json.getString(KEY_SUCCESS); 
+//						if(Integer.parseInt(res) == 1)
+//						{
+//							// user successfully registered
+//							// Store user details in SQLite Database
+//							DBHandler db = new DBHandler(getApplicationContext());
+//							JSONObject json_user = json.getJSONObject("user");
+//							
+//							// Clear all previous data in database
+//							userFunction.logoutUser(getApplicationContext());
+//							// Launch Menu Screen
+//							Intent menu = new Intent(getApplicationContext(), MenuActivity.class);
+//							// Close all views before launching Menu
+//							menu.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//							startActivity(menu);
+//							// Close Registration Screen
+//							finish();
+//						}else{
+//							// Error in registration
+//							registerErrorMsg.setText("Error occured in registration");
+//						}
+//					}
+//				} 
+//				catch (JSONException e) 
+//				{
+//					e.printStackTrace();
+//				}
 			}
 		});
 

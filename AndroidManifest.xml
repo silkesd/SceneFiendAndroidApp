@@ -48,6 +48,9 @@
         <activity android:name="SpalshActivity"></activity>
         <activity android:name="TwitterLoginActivity"></activity>
         <activity android:name="TwitterRegisterActivity"></activity>
+        <activity android:name="JSONParser"></activity>
+        <activity android:name="LoginJSON"></activity>
+        <activity android:name="RegisterJSON"></activity>
         
     </application>
   
