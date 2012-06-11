@@ -79,33 +79,34 @@ public class MenuActivity extends SceneFiendAndroidAppActivity
 			}
         });
         
-        userFunctions = new UserFunctions();
-        if(userFunctions.isUserLoggedIn(getApplicationContext()))
-        {        	
-        	btnLogout = (Button) findViewById(R.id.btnLogout);
-        	btnLogout.setOnClickListener(new View.OnClickListener() {
+        //userFunctions = new UserFunctions();
+        //if(userFunctions.isUserLoggedIn(getApplicationContext()))
+     //   {        	
+        //	btnLogout = (Button) findViewById(R.id.btnLogout);
+        //	btnLogout.setOnClickListener(new View.OnClickListener() 
+        //	{
     			
-    			public void onClick(View arg0) 
-    			{
+    	//		public void onClick(View arg0) 
+    	//		{
     				// TODO Auto-generated method stub
-    				userFunctions.logoutUser(getApplicationContext());
-    				Intent login = new Intent(getApplicationContext(), SceneFiendLoginActivity.class);
-    	        	login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-    	        	startActivity(login);
+    	//			userFunctions.logoutUser(getApplicationContext());
+    	//			Intent login = new Intent(getApplicationContext(), SceneFiendLoginActivity.class);
+    	//        	login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    	//        	startActivity(login);
     	        	// Closing menu screen
-    	        	finish();
-    			}
-    		});
+    	//        	finish();
+    	//		}
+    	//	});
         	
-        }
-        else
-        {
+        //}
+        //else
+        //{
         	// user is not logged in show login screen
-        	Intent login = new Intent(getApplicationContext(), SceneFiendLoginActivity.class);
-        	login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        	startActivity(login);
+        //	Intent login = new Intent(getApplicationContext(), SceneFiendLoginActivity.class);
+        //	login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        //	startActivity(login);
         	// Closing menu screen
-        	finish();
-        }  
+        //	finish();
+        //}  
     }     
 }

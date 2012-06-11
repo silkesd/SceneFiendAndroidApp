@@ -65,11 +65,14 @@ public class RegisterActivity extends SceneFiendAndroidAppActivity
 				JSONObject json = userFunction.registerUser(player_name, player_email, password);
 				
 				// check for login response
-				try {
-					if (json.getString(KEY_SUCCESS) != null) {
+				try 
+				{
+					if (json.getString(KEY_SUCCESS) != null) 
+					{
 						registerErrorMsg.setText("");
 						String res = json.getString(KEY_SUCCESS); 
-						if(Integer.parseInt(res) == 1){
+						if(Integer.parseInt(res) == 1)
+						{
 							// user successfully registered
 							// Store user details in SQLite Database
 							DBHandler db = new DBHandler(getApplicationContext());
@@ -96,9 +99,10 @@ public class RegisterActivity extends SceneFiendAndroidAppActivity
 		});
 
 		// Link to Login Screen
-		btnLinkToLogin.setOnClickListener(new View.OnClickListener() {
-
-			public void onClick(View view) {
+		btnLinkToLogin.setOnClickListener(new View.OnClickListener() 
+		{
+			public void onClick(View view) 
+			{
 				Intent i = new Intent(getApplicationContext(),
 						SceneFiendLoginActivity.class);
 				startActivity(i);

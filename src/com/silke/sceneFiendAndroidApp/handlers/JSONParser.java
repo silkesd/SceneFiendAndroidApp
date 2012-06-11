@@ -34,7 +34,8 @@ public class JSONParser
 	public JSONObject getJSONFromUrl(String url, List<NameValuePair> params) 
 	{
 		// HTTP request
-		try {
+		try 
+		{
 			// defaultHttpClient
 			DefaultHttpClient httpClient = new DefaultHttpClient();
 			HttpPost httpPost = new HttpPost(url);
@@ -65,7 +66,7 @@ public class JSONParser
 			String line = null;
 			while ((line = reader.readLine()) != null) 
 			{
-				sb.append(line + "\n");
+				sb.append(line + "n");
 			}
 			is.close();
 			json = sb.toString();

@@ -15,8 +15,8 @@ public class UserFunctions
 	private JSONParser jsonParser;
 	
 	//localhost strings to connect with php files for online db connectivity
-	private static String loginURL = "http://10.0.2.2/SceneFiendDatabasing/";
-	private static String registerURL = "http://10.0.2.2/SceneFiendDatabasing/";
+	private static String loginURL = "http://10.0.2.2:8888/SceneFiendDatabasing/";
+	private static String registerURL = "http://10.0.2.2:8888/SceneFiendDatabasing/";
 	
 	private static String login_tag = "login";
 	private static String register_tag = "register";
@@ -28,17 +28,17 @@ public class UserFunctions
 	}
 	
 	/**
-	 * function make Login Request with email and password
-	 * @param player_email
+	 * function make Login Request with username and password
+	 * @param player_name
 	 * @param player_password
 	 * */
-	public JSONObject loginUser(String player_email, String player_password)
+	public JSONObject loginUser(String player_name, String password)
 	{
 		// Building Parameters and returning json string
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("tag", login_tag));
-		params.add(new BasicNameValuePair("player_email", player_email));
-		params.add(new BasicNameValuePair("player_password", player_password));
+		params.add(new BasicNameValuePair("player_name", player_name));
+		params.add(new BasicNameValuePair("password", password));
 		//parse data from the login url stated above with params
 		JSONObject json = jsonParser.getJSONFromUrl(loginURL, params);
 		// return json
@@ -72,7 +72,8 @@ public class UserFunctions
 	/**
 	 * Function get Login status
 	 * */
-	public boolean isUserLoggedIn(Context context){
+	public boolean isUserLoggedIn(Context context)
+	{
 		DBHandler db = new DBHandler(context);
 		int count = db.getRowCount();
 		if(count > 0){

@@ -15,10 +15,10 @@ public class DBHandler extends SQLiteOpenHelper
 	private static final int DATABASE_VERSION = 1;
 
 	// Database Name
-	private static final String DATABASE_NAME = "SceneFiendDB";
+	private static final String DATABASE_NAME = "scenefiendlocaldb";
 
 	// Player Login table name
-	private static final String TABLE_PLAYER = "scene__player";
+	private static final String TABLE_LOGIN = "login";
 
 	// Player Login Table Columns names
 	private static final String KEY_ID = "player_id";
@@ -35,11 +35,11 @@ public class DBHandler extends SQLiteOpenHelper
 	@Override
 	public void onCreate(SQLiteDatabase db) 
 	{
-		String CREATE_PLAYER_TABLE = "CREATE TABLE " + TABLE_PLAYER + "("
+		String CREATE_LOGIN_TABLE = "CREATE TABLE " + TABLE_LOGIN + "("
 				+ KEY_ID + " INTEGER PRIMARY KEY," 
-				+ KEY_NAME + " VARCHAR,"
-				+ KEY_EMAIL + " VARCHAR,";
-		db.execSQL(CREATE_PLAYER_TABLE);
+				+ KEY_NAME + " TEXT,"
+				+ KEY_EMAIL + " TEXT," + ")";
+		db.execSQL(CREATE_LOGIN_TABLE);
 	}
 
 	// Upgrading database
@@ -47,7 +47,7 @@ public class DBHandler extends SQLiteOpenHelper
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) 
 	{
 		// Drop older table if exists
-		db.execSQL("DROP TABLE IF EXISTS " + TABLE_PLAYER);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_LOGIN);
 
 		// Create table again
 		onCreate(db);
@@ -61,11 +61,12 @@ public class DBHandler extends SQLiteOpenHelper
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
+		values.put(KEY_ID, player_id); // Email
 		values.put(KEY_NAME, player_name); // Name
 		values.put(KEY_EMAIL, player_email); // Email
 
 		// Inserting Row
-		db.insert(TABLE_PLAYER, null, values);
+		db.insert(TABLE_LOGIN, null, values);
 		db.close(); // Closing database connection
 	}
 
@@ -75,7 +76,7 @@ public class DBHandler extends SQLiteOpenHelper
 	public HashMap<String, String> getUserDetails()
 	{
 		HashMap<String,String> user = new HashMap<String,String>();
-		String selectQuery = "SELECT  * FROM " + TABLE_PLAYER;
+		String selectQuery = "SELECT  * FROM " + TABLE_LOGIN;
 		 
 	    SQLiteDatabase db = this.getReadableDatabase();
 	    Cursor cursor = db.rawQuery(selectQuery, null);
@@ -99,7 +100,7 @@ public class DBHandler extends SQLiteOpenHelper
 	 * */
 	public int getRowCount() 
 	{
-		String countQuery = "SELECT  * FROM " + TABLE_PLAYER;
+		String countQuery = "SELECT  * FROM " + TABLE_LOGIN;
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.rawQuery(countQuery, null);
 		int rowCount = cursor.getCount();
@@ -118,7 +119,7 @@ public class DBHandler extends SQLiteOpenHelper
 	{
 		SQLiteDatabase db = this.getWritableDatabase();
 		// Delete All Rows
-		db.delete(TABLE_PLAYER, null, null);
+		db.delete(TABLE_LOGIN, null, null);
 		db.close();
 	}
 

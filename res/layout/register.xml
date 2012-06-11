@@ -83,7 +83,7 @@
             		android:padding="10dip"
             		android:textStyle="bold"/>
 
-		<!--  Login Button -->        
+		<!--  Register Button -->        
         <Button
             android:id="@+id/btnRegister"
             android:layout_width="fill_parent"
