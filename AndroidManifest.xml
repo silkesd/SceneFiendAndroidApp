@@ -40,12 +40,13 @@
         <activity android:name="GameActivity"></activity>   
         <activity android:name="SettingsActivity"></activity>
         <activity android:name="ScoresActivity"></activity>
+        <activity android:name="ScoreDataActivity"></activity>
         <activity android:name="HelpActivity"></activity>
         <activity android:name="MenuActivity"></activity>
         <activity android:name="LoginActivity"></activity>
         <activity android:name="RegisterActivity"></activity>
         <activity android:name="SceneFiendLoginActivity"></activity>
-        <activity android:name="SpalshActivity"></activity>
+        <activity android:name="SplashActivity"></activity>
         <activity android:name="TwitterLoginActivity"></activity>
         <activity android:name="TwitterRegisterActivity"></activity>
         <activity android:name="JSONParser"></activity>
