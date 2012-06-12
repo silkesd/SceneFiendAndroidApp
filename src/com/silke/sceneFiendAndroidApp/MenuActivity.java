@@ -69,7 +69,7 @@ public class MenuActivity extends SceneFiendAndroidAppActivity
                 else if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_scores))) 
                 {
                     // Launch the Scores Activity
-                    startActivity(new Intent(MenuActivity.this, ScoresActivity.class));
+                    startActivity(new Intent(MenuActivity.this, ScoreMenuActivity.class));
                 }
                 else if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_login))) 
                 {
