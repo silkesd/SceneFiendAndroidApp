@@ -6,6 +6,9 @@ import android.content.res.XmlResourceParser;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TabHost;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -14,6 +17,18 @@ import android.widget.TabHost.TabSpec;
 
 public class ScoresActivity extends SceneFiendAndroidAppActivity 
 {
+	ScrollView ScrollViewMyScores;
+	ScrollView ScrollViewAllScores;
+	ScrollView ScrollViewHighScores;
+	
+	// JSON Response node names
+		private static String KEY_SUCCESS = "success";
+		private static String KEY_ERROR = "error";
+		private static String KEY_ERROR_MSG = "error_msg";
+		private static String KEY_ID = "player_id";
+		private static String KEY_NAME = "player_name";
+		private static String KEY_SCORE = "player_score";
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) 
@@ -26,6 +41,12 @@ public class ScoresActivity extends SceneFiendAndroidAppActivity
                 "fonts/lucindablack.ttf");
         TextView tv = (TextView) findViewById(R.id.CustomFont);
         tv.setTypeface(tf);
+        
+     // Importing all assets like buttons, text fields
+  		ScrollViewMyScores = (ScrollView) findViewById(R.id.ScrollViewMyScores);
+  		ScrollViewAllScores = (ScrollView) findViewById(R.id.ScrollViewAllScores);
+  		ScrollViewHighScores = (ScrollView) findViewById(R.id.ScrollViewHighScores);
+        
         
         // Setting up the tabs in the layout id field
         TabHost host = (TabHost) findViewById(R.id.TabHost1);
@@ -67,11 +88,14 @@ public class ScoresActivity extends SceneFiendAndroidAppActivity
         XmlResourceParser mockAllScores = getResources().getXml(R.xml.allscores);
         XmlResourceParser mockMyScores = getResources().getXml(R.xml.myscores);
         XmlResourceParser mockHighScores = getResources().getXml(R.xml.highscores);
-        try {
+        try 
+        {
             processScores(allScoresTable, mockAllScores);
             processScores(myScoresTable, mockMyScores);
             processScores(highScoresTable, mockHighScores);
-        } catch (Exception e) {
+        } 
+        catch (Exception e) 
+        {
             Log.e(DEBUG_TAG, "Failed to load scores", e);
         }
     }
@@ -81,7 +105,8 @@ public class ScoresActivity extends SceneFiendAndroidAppActivity
      * @param scoreTable
      *            the {@code TableLayout} that the header row will be added to
      */
-    private void initializeHeaderRow(TableLayout scoreTable) {
+    private void initializeHeaderRow(TableLayout scoreTable) 
+    {
         // Create the Table header row
         TableRow headerRow = new TableRow(this);
         int textColor = getResources().getColor(R.color.logo_color);
@@ -105,15 +130,19 @@ public class ScoresActivity extends SceneFiendAndroidAppActivity
      *             Thrown on IO errors reading the XML
      */
     private void processScores(final TableLayout scoreTable, XmlResourceParser scores) throws XmlPullParserException,
-            IOException {
+            IOException 
+    {
         int eventType = -1;
         boolean bFoundScores = false;
         // Find Score records from XML
-        while (eventType != XmlResourceParser.END_DOCUMENT) {
-            if (eventType == XmlResourceParser.START_TAG) {
+        while (eventType != XmlResourceParser.END_DOCUMENT) 
+        {
+            if (eventType == XmlResourceParser.START_TAG) 
+            {
                 // Get the name of the tag (eg scores or score)
                 String strName = scores.getName();
-                if (strName.equals("score")) {
+                if (strName.equals("score")) 
+                {
                     bFoundScores = true;
                     String scoreValue = scores.getAttributeValue(null, "score");
                     String scoreRank = scores.getAttributeValue(null, "rank");
@@ -124,7 +153,8 @@ public class ScoresActivity extends SceneFiendAndroidAppActivity
             eventType = scores.next();
         }
         // Handle if no scores are available - add a new no results row
-        if (bFoundScores == false) {
+        if (bFoundScores == false) 
+        {
             final TableRow newRow = new TableRow(this);
             TextView noResults = new TextView(this);
             noResults.setText(getResources().getString(R.string.no_scores));
@@ -146,7 +176,8 @@ public class ScoresActivity extends SceneFiendAndroidAppActivity
      * @param scoreUserName
      *            The user who made the score
      */
-    private void insertScoreRow(final TableLayout scoreTable, String scoreValue, String scoreRank, String scoreUserName) {
+    private void insertScoreRow(final TableLayout scoreTable, String scoreValue, String scoreRank, String scoreUserName) 
+    {
         final TableRow newRow = new TableRow(this);
         int textColor = getResources().getColor(R.color.title_color);
         float textSize = getResources().getDimension(R.dimen.score_text_size);
@@ -169,7 +200,8 @@ public class ScoresActivity extends SceneFiendAndroidAppActivity
      * @param textSize
      *            The size to make the text
      */
-    private void addTextToRowWithValues(final TableRow tableRow, String text, int textColor, float textSize) {
+    private void addTextToRowWithValues(final TableRow tableRow, String text, int textColor, float textSize) 
+    {
         TextView textView = new TextView(this);
         textView.setTextSize(textSize);
         textView.setTextColor(textColor);
