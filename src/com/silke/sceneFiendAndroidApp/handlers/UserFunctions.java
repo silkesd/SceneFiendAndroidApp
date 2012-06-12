@@ -7,6 +7,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 import com.silke.sceneFiendAndroidApp.asynctasks.FileDownloader;
 import android.content.Context;
+import android.util.Log;
 
 
 public class UserFunctions 
@@ -25,6 +26,7 @@ public class UserFunctions
 	// constructor
 	public UserFunctions() 
 	{
+		
 		fileDownloader = new FileDownloader(null, null);
 	}
 	
@@ -41,6 +43,7 @@ public class UserFunctions
 		params.add(new BasicNameValuePair("player_name", player_name));
 		params.add(new BasicNameValuePair("password", password));
 		
+		Log.d("UserFunctions", "sending login to file downloader");
 		fileDownloader = new FileDownloader(c, params);
 		fileDownloader.execute(loginURL);
 		
@@ -72,7 +75,7 @@ public class UserFunctions
 		//JSONObject json = jsonParser.getJSONFromUrl(registerURL, params);
 		// return json
 		//return json;
-		
+		Log.d("UserFunctions", "sending register to file downloader");
 		fileDownloader = new FileDownloader(c, params);
 		fileDownloader.execute(registerURL);
 		

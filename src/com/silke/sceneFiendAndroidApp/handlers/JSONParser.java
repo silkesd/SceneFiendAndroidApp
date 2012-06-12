@@ -36,52 +36,48 @@ public class JSONParser extends Activity
 	// constructor
 	public JSONParser(String data)
 	{
-		Log.d("JSONParser", data + "tisthoiajfo;iej");
 		//this.data = data;
-  	
+		//Log.d("JSONParser", data);
+		Log.d("JSONParser", data + "ABOUT TO SEND TO HANDLE");
 		handleData(data);
 	}
 	
 	//returning a json object
 	private JSONObject handleData(String data)
 	{
+		Log.d("JSONParser", "in HANDLE");
 		try 
 		{
-			JSONObject jObj = new JSONObject(data);
 			
-			Log.d("JSONPARSER", jObj.get("tag").toString());
-			String testing = jObj.get("tag").toString();
-			//
-			//upon logging in: email and password will be returned
-			if(testing == "login")
-			{
-				Intent i = new Intent(this, LoginJSON.class);
-				this.startActivity(i);
-			}
-			else
-			{
-				Intent i = new Intent(this, RegisterJSON.class);
-				this.startActivity(i);
-				//new Intent(this, RegisterJSON.class);
-			}
-			
+			jObj = new JSONObject().put("JSON", data);	
+//			JSONObject jObj = new JSONObject(data);
+//
+//			//upon logging in: email and password will be returned
+//			if((jObj.get("tag")).toString() == "login")
+//			{
+//				Intent i = new Intent(this, LoginJSON.class);
+//				this.startActivity(i);
+//			}
+//			else
+//			{
+//				Intent i = new Intent(this, RegisterJSON.class);
+//				this.startActivity(i);
+////				//new Intent(this, RegisterJSON.class);
+//			}			
 			//upon signing up: player id will be returned.
 			Log.d("JSONParser", data);
 		
 			
-			
-			
-			//jObj.getJSONObject("success");
-//				try {
-//					
+			jObj.getJSONObject("success");
+//			try {					
 //					
 //					//String jData = jObj.getString(i);
 //					
 //					//int player_id = Integer.parseInt(jObj.getString(i));
 //				}
-				
+//				
 				Log.d("JSONParser", jObj.get("success") + " : hello");
-				
+//				
 				//Toast.makeText(this.c, jObj + " we are connected to the API!", Toast.LENGTH_LONG).show();	
 		} 
 		catch(JSONException e)

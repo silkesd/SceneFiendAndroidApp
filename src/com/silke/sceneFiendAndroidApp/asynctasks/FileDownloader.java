@@ -44,8 +44,9 @@ public class FileDownloader extends AsyncTask<String, Integer, String>
 			DefaultHttpClient httpClient = new DefaultHttpClient();
 			apiResponse = addParams(httpClient, urlToLoad, params);
 			
-			
+			Log.d("FileDownloader", apiResponse.toString());
 		}
+		
 		return apiResponse;
 		
 	}
@@ -55,8 +56,9 @@ public class FileDownloader extends AsyncTask<String, Integer, String>
 		String apiResponse = "";
 		
 		HttpPost httpPost = new HttpPost(url);
-		
-		try {
+		Log.d("FileDownloader", "In add params");
+		try 
+		{
 			httpPost.setEntity(new UrlEncodedFormEntity(params));
 			HttpResponse httpResponse = httpClient.execute(httpPost);
 			//HttpEntity httpEntity = httpResponse.getEntity();
@@ -68,24 +70,23 @@ public class FileDownloader extends AsyncTask<String, Integer, String>
 			while((s = buffer.readLine()) != null)
 			{
 				apiResponse += s;
+				Log.d("ASYNCTASK", "worked in add params while loop");
 			}
-			
-		} catch (Exception e)
+		} 
+		catch (Exception e)
 		{
-			
+			Log.d("ASYNCTASK", "catch exception in add params");
 		}
-		
 		return apiResponse;
-		
 	}
 	
 	protected void onPostExecute(String apiResponse)
 	{
-		//System.out.println(apiResponse);
-		//Log.d("ASYNCTASK", apiResponse + ": is the response from the api");
+		
+		Log.d("ASYNCTASK", apiResponse + ": is the response from the api");
 		//Toast.makeText(this.c, apiResponse, Toast.LENGTH_SHORT).show();
 		//pass the data to the jsonparser here. 
-		
+		//Log.d("ASYNCTASK", apiResponse);
 		JSONParser jp = new JSONParser(apiResponse);
 		//apiResponse to json parser.
 	}

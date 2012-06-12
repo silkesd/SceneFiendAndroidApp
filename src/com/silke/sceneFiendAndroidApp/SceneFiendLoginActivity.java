@@ -59,10 +59,49 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity
  			{
  				String player_name = inputUsername.getText().toString();
  				String password = inputPassword.getText().toString();
+ 				Log.d("Button", "Login button clicked");
  				UserFunctions userFunction = new UserFunctions();
- 				Log.d("Button", "Login is here");
  				userFunction.loginUser(player_name, password);
 
+ 			// check for login response
+// 				try {
+// 					if (jObj.get(KEY_SUCCESS) != null) 
+// 					{
+// 						loginErrorMsg.setText("");
+// 						String res = jObj.getString(KEY_SUCCESS); 
+// 						if(Integer.parseInt(res) == 1)
+// 						{
+// 							// user successfully logged in
+// 							// Store user details in SQLite Database
+// 							DBHandler db = new DBHandler(getApplicationContext());
+// 							JSONObject json_user = jObj.getJSONObject("user");
+// 							
+// 							// Clear all previous data in database
+// 							UserFunctions userFunction = new UserFunctions();
+// 							userFunction.logoutUser(getApplicationContext());
+// 							db.addUser(jObj.getString(KEY_ID), json_user.getString(KEY_NAME), json_user.getString(KEY_EMAIL));						
+// 							
+// 							// Launch Menu Screen
+// 						Intent menu = new Intent(getApplicationContext(), MenuActivity.class);
+// 						
+// 						// Close all views before launching Menu
+// 						menu.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+// 						startActivity(menu);
+// 							
+// 							// Close Login Screen
+// 							finish();
+// 						}
+// 						else
+// 						{
+// 							// Error in login
+// 							loginErrorMsg.setText("Incorrect username/password");
+// 						}
+// 					}
+// 				} 
+// 				catch (JSONException e) 
+// 				{
+// 					e.printStackTrace();
+// 				}
  				
  			}
  		});
