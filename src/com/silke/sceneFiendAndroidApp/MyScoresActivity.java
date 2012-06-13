@@ -16,8 +16,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
-
-import com.silke.sceneFiendAndroidApp.AllScoresActivity.LoadAllScores;
 import com.silke.sceneFiendAndroidApp.handlers.JSONScoreParser;
 
 public class MyScoresActivity extends ListActivity
