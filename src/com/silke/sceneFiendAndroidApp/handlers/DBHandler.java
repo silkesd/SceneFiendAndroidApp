@@ -25,8 +25,7 @@ public class DBHandler extends SQLiteOpenHelper
 	private static final String TABLE_ANSWERS = "scene__answers";
 	private static final String TABLE_QUESTION_HAS_IMAGE = "question_has_image";
 	private static final String TABLE_QUESTION_HAS_CLIP = "question_has_clip";
-	
-	
+
 	// Player Table Columns names
 	private static final String KEY_PLAYER_ID = "player_id";
 	private static final String KEY_PLAYER_NAME = "player_name";

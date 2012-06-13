@@ -11,12 +11,14 @@ import org.json.JSONObject;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
@@ -32,6 +34,8 @@ public class HighScoresActivity extends ListActivity
 
 	ArrayList<HashMap<String, String>> scoresList;
 	
+	Button btnBack;
+	
 	// url to get all scores list
 	private static String url_high_scores = "http://10.0.2.2:8888/SceneFiendDatabasing/high_scores.php";
 
@@ -40,6 +44,8 @@ public class HighScoresActivity extends ListActivity
 	private static final String TAG_SCORES = "scores";
 	private static final String TAG_PLAYER_ID = "player_id";
 	private static final String TAG_PLAYER_NAME = "player_name";
+	private static final String TAG_PLAYER_SCORE = "player_score";
+	private static final String TAG_SCORE_DATE = "score_date";
 	
 	// scores JSONArray
 	JSONArray scores = null;
@@ -61,8 +67,7 @@ public class HighScoresActivity extends ListActivity
 		// Loading scores in Background Thread
 		new LoadAllScores().execute();
 		
-		// Get listview
-		ListView lv = getListView();
+		btnBack = (Button) findViewById(R.id.btnBack);
 	}
 	
 	/**
@@ -118,14 +123,18 @@ public class HighScoresActivity extends ListActivity
 						// Storing each json item in variable
 						String player_id = c.getString(TAG_PLAYER_ID);
 						String player_name = c.getString(TAG_PLAYER_NAME);
-
+						String score = c.getString(TAG_PLAYER_SCORE);
+						String date = c.getString(TAG_SCORE_DATE);
+						
 						// creating new HashMap
 						HashMap<String, String> map = new HashMap<String, String>();
 
 						// adding each child node to HashMap key => value
 						map.put(TAG_PLAYER_ID, player_id);
 						map.put(TAG_PLAYER_NAME, player_name);
-
+						map.put(TAG_PLAYER_SCORE, score);
+						map.put(TAG_SCORE_DATE, date);	
+						
 						// adding HashList to ArrayList
 						scoresList.add(map);
 					}
@@ -165,12 +174,25 @@ public class HighScoresActivity extends ListActivity
 					 * */
 					ListAdapter adapter = new SimpleAdapter(
 							HighScoresActivity.this, scoresList,
-							R.layout.score_list_item, new String[] { TAG_PLAYER_ID, TAG_PLAYER_NAME},
-							new int[] { R.id.player_id, R.id.player_name });
+							R.layout.score_list_item, new String[] { TAG_PLAYER_ID, 
+									TAG_PLAYER_NAME, TAG_PLAYER_SCORE, TAG_SCORE_DATE},
+							new int[] { R.id.player_id, R.id.player_name, R.id.player_score, R.id.score_date });
 					// updating listview
 					setListAdapter(adapter);
 				}
 			});
+			
+			// Link to Register Screen
+			btnBack.setOnClickListener(new View.OnClickListener() 
+	 		{
+	 			public void onClick(View view) 
+	 			{
+	 				Intent i = new Intent(getApplicationContext(),
+	 						ScoreMenuActivity.class);
+	 				startActivity(i);
+	 				finish();
+	 			}
+	 		});
 		}
 	}
 }
