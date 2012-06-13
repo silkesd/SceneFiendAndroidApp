@@ -16,7 +16,7 @@
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="10"
-        android:text="@string/all_scores"
+        android:text="@string/my_scores"
         android:textColor="@color/title_color"
         android:textSize="@dimen/screen_title_size" />
     <ListView

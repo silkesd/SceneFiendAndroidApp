@@ -11,11 +11,14 @@ import org.json.JSONObject;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.silke.sceneFiendAndroidApp.handlers.JSONScoreParser;
 
@@ -45,13 +48,21 @@ public class HighScoresActivity extends ListActivity
 	public void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.score_layout);
+		setContentView(R.layout.high_score_layout);
 		
+		Typeface tf = Typeface.createFromAsset(getAssets(),
+                "fonts/lucindablack.ttf");
+        TextView tv = (TextView) findViewById(R.id.CustomFont);
+        tv.setTypeface(tf);
+        
 		// Hashmap for ListView
 		scoresList = new ArrayList<HashMap<String, String>>();
 
 		// Loading scores in Background Thread
 		new LoadAllScores().execute();
+		
+		// Get listview
+		ListView lv = getListView();
 	}
 	
 	/**
@@ -71,7 +82,7 @@ public class HighScoresActivity extends ListActivity
 			pDialog.setMessage("Loading scores. Please wait...");
 			pDialog.setIndeterminate(false);
 			pDialog.setCancelable(false);
-			//pDialog.show();
+			pDialog.show();
 		}
 		
 		/**
@@ -88,31 +99,32 @@ public class HighScoresActivity extends ListActivity
 			// Check your log cat for JSON response
 			Log.d("High Scores: ", json.toString());
 
-			try {
+			try 
+			{
 				// Checking for SUCCESS TAG
 				int success = json.getInt(TAG_SUCCESS);
 
 				if (success == 1) 
 				{
 					// scores found
-					// Getting Array of Products
+					// Getting Array
 					scores = json.getJSONArray(TAG_SCORES);
 
-					// looping through All Products
+					// looping through scores
 					for (int i = 0; i < scores.length(); i++) 
 					{
 						JSONObject c = scores.getJSONObject(i);
 
 						// Storing each json item in variable
-						String id = c.getString(TAG_PLAYER_ID);
-						String name = c.getString(TAG_PLAYER_NAME);
+						String player_id = c.getString(TAG_PLAYER_ID);
+						String player_name = c.getString(TAG_PLAYER_NAME);
 
 						// creating new HashMap
 						HashMap<String, String> map = new HashMap<String, String>();
 
 						// adding each child node to HashMap key => value
-						map.put(TAG_PLAYER_ID, id);
-						map.put(TAG_PLAYER_NAME, name);
+						map.put(TAG_PLAYER_ID, player_id);
+						map.put(TAG_PLAYER_NAME, player_name);
 
 						// adding HashList to ArrayList
 						scoresList.add(map);
@@ -135,31 +147,30 @@ public class HighScoresActivity extends ListActivity
 			}
 			return null;
 		}
-	}
-	/**
-	 * After completing background task Dismiss the progress dialog
-	 * **/
-	protected void onPostExecute(String file_url) 
-	{
-		// dismiss the dialog after getting all products
-		pDialog.dismiss();
-		// updating UI from Background Thread
-		runOnUiThread(new Runnable() 
+	
+		/**
+		 * After completing background task Dismiss the progress dialog
+		 * **/
+		protected void onPostExecute(String file_url) 
 		{
-			public void run() 
+			// dismiss the dialog after getting all products
+			pDialog.dismiss();
+			// update UI from Background Thread
+			runOnUiThread(new Runnable() 
 			{
-				/**
-				 * Updating parsed JSON data into ListView
-				 * */
-				ListAdapter adapter = new SimpleAdapter(
-						HighScoresActivity.this, scoresList,
-						R.layout.score_list_item, new String[] { TAG_PLAYER_ID,
-								TAG_PLAYER_NAME},
-						new int[] { R.id.player_id, R.id.player_name });
-				// updating listview
-				setListAdapter(adapter);
-			}
-		});
-
+				public void run() 
+				{
+					/**
+					 * Updating parsed JSON data into ListView
+					 * */
+					ListAdapter adapter = new SimpleAdapter(
+							HighScoresActivity.this, scoresList,
+							R.layout.score_list_item, new String[] { TAG_PLAYER_ID, TAG_PLAYER_NAME},
+							new int[] { R.id.player_id, R.id.player_name });
+					// updating listview
+					setListAdapter(adapter);
+				}
+			});
+		}
 	}
 }

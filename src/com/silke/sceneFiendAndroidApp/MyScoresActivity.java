@@ -11,11 +11,14 @@ import org.json.JSONObject;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
+
 import com.silke.sceneFiendAndroidApp.handlers.JSONScoreParser;
 
 public class MyScoresActivity extends ListActivity
@@ -44,8 +47,13 @@ public class MyScoresActivity extends ListActivity
 	public void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.score_layout);
+		setContentView(R.layout.my_score_layout);
 		
+		Typeface tf = Typeface.createFromAsset(getAssets(),
+                "fonts/lucindablack.ttf");
+        TextView tv = (TextView) findViewById(R.id.CustomFont);
+        tv.setTypeface(tf);
+        
 		// Hashmap for ListView
 		scoresList = new ArrayList<HashMap<String, String>>();
 
@@ -71,7 +79,7 @@ public class MyScoresActivity extends ListActivity
 			pDialog.setMessage("Loading scoress. Please wait...");
 			pDialog.setIndeterminate(false);
 			pDialog.setCancelable(false);
-			//pDialog.show();
+			pDialog.show();
 		}
 		
 		/**
@@ -136,6 +144,7 @@ public class MyScoresActivity extends ListActivity
 			}
 			return null;
 		}
+		
 		/**
 		 * After completing background task Dismiss the progress dialog
 		 * **/
