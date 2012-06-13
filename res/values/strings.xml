@@ -27,7 +27,7 @@
     <!--  Scores Screen Strings-->
     <string name="all_scores">"All Scores"</string>
     <string name="my_scores">"My Scores"</string>
-    <string name="high_scores">"Top Ten"</string>
+    <string name="high_scores">"High Scores"</string>
     <string name="no_scores">"No Scores Can Be Shown Here"</string>
     <string name="username">"Username"</string>
     <string name="fiend">"Fiend of the Day"</string>

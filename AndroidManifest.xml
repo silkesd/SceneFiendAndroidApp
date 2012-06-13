@@ -39,7 +39,6 @@
 		
         <activity android:name="GameActivity"></activity>   
         <activity android:name="SettingsActivity"></activity>
-        <activity android:name="ScoresActivity"></activity>
         <activity android:name="ScoreMenuActivity"></activity>
         <activity android:name="AllScoresActivity"></activity>
         <activity android:name="MyScoresActivity"></activity>
