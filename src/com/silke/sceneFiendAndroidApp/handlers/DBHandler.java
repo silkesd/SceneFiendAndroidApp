@@ -206,6 +206,13 @@ public class DBHandler extends SQLiteOpenHelper
 		SQLiteDatabase db = this.getWritableDatabase();
 		// Delete All Rows
 		db.delete(TABLE_PLAYER, null, null);
+		db.delete(TABLE_SCORES, null, null);
+		db.delete(TABLE_QUESTIONS, null, null);
+		db.delete(TABLE_QUIZ, null, null);
+		db.delete(TABLE_ANSWERS, null, null);
+		db.delete(TABLE_QUESTION_HAS_IMAGE, null, null);
+		db.delete(TABLE_QUESTION_HAS_CLIP, null, null);
+		
 		db.close();
 	}
 
