@@ -78,7 +78,7 @@ public class DBHandler extends SQLiteOpenHelper
 				+ KEY_SCORES_ID + " CHAR(10) NOT NULL PRIMARY KEY," 
 				+ KEY_PLAYER_ID + " CHAR(10)," 
 				+ KEY_PLAYER_SCORE + " INTEGER,"
-				+ KEY_SCORE_DATE + " DATETIME," 
+				+ KEY_SCORE_DATE + " DATE," 
 				+ "FOREIGN KEY" + "(" + KEY_PLAYER_ID + "REFERENCES" + TABLE_PLAYER + "(" + KEY_PLAYER_ID + ")" + ")";
 		db.execSQL(CREATE_SCORES_TABLE);
 		

@@ -1,42 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical" >
-
-    <!-- Player id (player_id) - will be HIDDEN - used to pass to other activity -->
-    <TextView
-        android:id="@+id/player_id"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
-
-    <!-- Name Label -->
-    <TextView
-        android:id="@+id/player_name"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="6dip"
-        android:paddingLeft="6dip"
-        android:textSize="17dip"
-        android:textStyle="bold" />
-    
-     <TextView
-        android:id="@+id/player_score"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="6dip"
-        android:paddingLeft="6dip"
-        android:textSize="17dip"
-        android:textStyle="bold" />
-     
-      <TextView
-        android:id="@+id/score_date"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="6dip"
-        android:paddingLeft="6dip"
-        android:textSize="17dip"
-        android:textStyle="bold" />
-
-</LinearLayout>
+<TableLayout 
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_height="fill_parent" 
+android:layout_width="fill_parent">
+	
+	<TableRow>
+	    <TextView android:text="@string/playerHeader"
+	        android:layout_width="20dp"        
+	        android:layout_column="0"
+	        android:layout_weight="1"/>
+	    <TextView android:text="@string/scoreHeader"
+	        android:layout_width="30dp"
+	        android:layout_column="1"
+	        android:layout_weight="1">
+	    </TextView>
+	    <TextView android:text="@string/dateHeader"
+	        android:layout_width="40dp"
+	        android:layout_column="2"
+	        android:layout_weight="1">
+	    </TextView>
+  </TableRow>
+	
+	<ScrollView>	
+		<TableRow>
+				  <!-- Player id (player_id) - will be HIDDEN - used to pass to other activity -->
+				  <TextView
+				      android:id="@+id/player_id"
+				      android:layout_weight="1"
+				      android:visibility="gone" />
+				
+				  <!-- Name Label -->
+				  <TextView
+				        android:id="@+id/player_name"
+				        android:layout_width="20dp" 
+				        android:textSize="17dip"
+				        android:layout_weight="1"
+				        android:textStyle="bold" />
+				    
+				  <TextView
+				        android:id="@+id/player_score"
+				        android:layout_width="30dp"
+				        android:layout_weight="1"
+				        android:textSize="17dip"
+				        android:textStyle="bold" />
+				     
+				   <TextView
+				        android:id="@+id/score_date"
+				        android:layout_width="40dp"
+				        android:textSize="17dip"
+				        android:layout_weight="1"
+				        android:textStyle="bold" />
+			</TableRow>
+	</ScrollView>
+</TableLayout>

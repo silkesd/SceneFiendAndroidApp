@@ -36,6 +36,9 @@
     <string name="wait_msg">"Retrieving Scores&#8230;"</string>
     <string name="wait_title">"Loading&#8230;"</string>
     <string name="goBack">Go Back</string>
+    <string name="playerHeader">Player</string>
+    <string name="scoreHeader">Score</string>
+    <string name="dateHeader">Date</string>
     
     <!-- Login Menu Strings -->
     <string name="login_item_scenefiendlogin">Scene Fiend Login</string>
