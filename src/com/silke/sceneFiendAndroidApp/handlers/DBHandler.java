@@ -74,9 +74,7 @@ public class DBHandler extends SQLiteOpenHelper
 				+ KEY_PLAYER_EMAIL + " VARCHAR(100)," + ")";
 		db.execSQL(CREATE_PLAYER_TABLE);
 		
-		//NO PRIMARY KEY IS IN THE SCORES TABLE!!!!!!
 		//Scores table
-		//LINKS TO TABLE PLAYER TO PASS PLAYER_ID VALUE TO SCORES TABLE
 		String CREATE_SCORES_TABLE = "CREATE TABLE " + TABLE_SCORES + "("
 				+ KEY_SCORES_ID + " CHAR(10) NOT NULL PRIMARY KEY," 
 				+ KEY_PLAYER_ID + " CHAR(10)," 
@@ -86,15 +84,42 @@ public class DBHandler extends SQLiteOpenHelper
 		db.execSQL(CREATE_SCORES_TABLE);
 		
 		//Scene Questions Table
+		String CREATE_QUESTIONS_TABLE = "CREATE TABLE " + TABLE_QUESTIONS + "("
+				+ KEY_QUESTION_ID + " CHAR(10) NOT NULL PRIMARY KEY," 
+				+ KEY_QUESTION_TEXT + " VARCHAR(255)," + ")";
+		db.execSQL(CREATE_QUESTIONS_TABLE);
 		
 		//Scene Quiz Table
+		String CREATE_QUIZ_TABLE = "CREATE TABLE " + TABLE_QUIZ + "("
+				+ KEY_QUESTION_ID + " CHAR(10)," 
+				+ KEY_ANSWER_ID + " CHAR(10)," 
+				+ KEY_CORRECT_ANSWER + " TINYINT(1)," 
+				+ "FOREIGN KEY" + "(" + KEY_QUESTION_ID + "REFERENCES" + TABLE_QUESTIONS + "(" + KEY_QUESTION_ID + ")" 
+				+ "FOREIGN KEY" + "(" + KEY_ANSWER_ID + "REFERENCES" + TABLE_ANSWERS + "(" + KEY_ANSWER_ID + ")"+ ")";
+		db.execSQL(CREATE_QUIZ_TABLE);
 		
 		//Scene Answers Table
-		
+		String CREATE_ANSWERS_TABLE = "CREATE TABLE " + TABLE_ANSWERS + "("
+				+ KEY_ANSWER_ID + " CHAR(10) NOT NULL PRIMARY KEY," 
+				+ KEY_ANSWER_TEXT + " VARCHAR(255)," + ")";
+		db.execSQL(CREATE_ANSWERS_TABLE);
+				
 		//Question_has_image table
+		String CREATE_QUESTION_HAS_IMAGE_TABLE = "CREATE TABLE " + TABLE_QUESTION_HAS_IMAGE + "("
+				+ KEY_QUESTION_HAS_IMAGE_ID + " CHAR(10) NOT NULL PRIMARY KEY," 
+				+ KEY_QUESTION_ID + " CHAR(10),"
+				+ KEY_IMAGE + " VARCHAR(200)," 
+				+ "FOREIGN KEY" + "(" + KEY_QUESTION_ID + "REFERENCES" + TABLE_QUESTIONS + "(" + KEY_QUESTION_ID + ")" + ")";
+		db.execSQL(CREATE_QUESTION_HAS_IMAGE_TABLE);
 		
 		//question had clip table
-		
+		String CREATE_QUESTION_HAS_CLIP_TABLE = "CREATE TABLE " + TABLE_QUESTION_HAS_CLIP + "("
+				+ KEY_QUESTION_HAS_CLIP_ID + " CHAR(10) NOT NULL PRIMARY KEY," 
+				+ KEY_QUESTION_ID + " CHAR(10),"
+				+ KEY_PRE_CLIP + " VARCHAR(200),"
+				+ KEY_POST_CLIP + " VARCHAR(200),"
+				+ "FOREIGN KEY" + "(" + KEY_QUESTION_ID + "REFERENCES" + TABLE_QUESTIONS + "(" + KEY_QUESTION_ID + ")" + ")";
+		db.execSQL(CREATE_QUESTION_HAS_CLIP_TABLE);
 	}
 	
 	// Updating database
@@ -104,6 +129,11 @@ public class DBHandler extends SQLiteOpenHelper
 		// Drop older tables if they exist
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_PLAYER);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_SCORES);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_QUESTIONS);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_QUIZ);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_ANSWERS);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_QUESTION_HAS_IMAGE);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_QUESTION_HAS_CLIP);
 
 		// Create tables again
 		onCreate(db);
