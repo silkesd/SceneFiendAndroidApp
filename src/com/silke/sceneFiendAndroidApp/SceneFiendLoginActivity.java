@@ -14,13 +14,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity
 {
 	Button btnLogin;
 	Button btnLinkToRegister;
-	Button btnBack;
+	ImageButton btnBack;
 	
 	EditText inputUsername;
 	EditText inputPassword;
@@ -53,7 +54,7 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity
      	btnLogin = (Button) findViewById(R.id.btnLogin);
      	btnLinkToRegister = (Button) findViewById(R.id.btnLinkToRegisterScreen);
      	loginErrorMsg = (TextView) findViewById(R.id.login_error);
-     	btnBack = (Button) findViewById(R.id.btnBack);
+     	btnBack = (ImageButton) findViewById(R.id.btnBack);
    
      	// Login button Click Event
  		btnLogin.setOnClickListener(new View.OnClickListener() 

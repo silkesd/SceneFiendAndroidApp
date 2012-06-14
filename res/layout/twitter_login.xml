@@ -17,17 +17,35 @@
   		    android:paddingBottom="5dip"
   		    android:paddingTop="5dip" >
 
-  		    <!-- Logo Start -->
+  		    
+	<RelativeLayout
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:gravity="center_horizontal" >
 
-  		    <ImageView
-  		        android:layout_width="wrap_content"
-  		        android:layout_height="match_parent"
-  		        android:layout_gravity="center_horizontal"
-  		        android:layout_marginLeft="10dip"
-  		        android:layout_weight="0.30"
-  		        android:src="@drawable/twitter_logo" />
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_weight="0.37"
+        android:src="@drawable/back_btn"
+        android:textStyle="bold" />
+
+	</RelativeLayout>
+		<!-- Logo Start -->
+		    <ImageView
+		        android:layout_width="wrap_content"
+		        android:layout_height="match_parent"
+		        android:layout_gravity="left"
+		        android:layout_marginLeft="10dip"
+		        android:layout_weight="0.30"
+		        android:src="@drawable/twitter_logo" />
 
   		    <!-- Logo Ends -->
+  		    
+
   		</LinearLayout>
 
   		<!--  Header Ends -->  
@@ -39,7 +57,7 @@
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
 		    android:layout_alignParentBottom="true"
-		    android:layout_below="@id/header"
+		    android:layout_below="@+id/header"
 		    android:background="@drawable/bkgrnd_clear"
 		    android:orientation="vertical"
 		    android:padding="10dip" >
@@ -82,18 +100,7 @@
 		      android:text="@string/twitter_register_link"
 		      android:textColor="#fff"
 		      android:textSize="20dip" />
-		  
-		  <Button
-            android:id="@+id/btnBack"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dip"
-            android:layout_weight="0.37"
-            android:background="@null"
-            android:text="@string/goBack"
-            android:textColor="#fff"
-            android:textStyle="bold" />
-		    
+
 		</LinearLayout>
   		<!-- Login Form Ends --> 		
   		

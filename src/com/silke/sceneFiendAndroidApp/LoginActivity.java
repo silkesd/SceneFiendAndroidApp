@@ -7,11 +7,13 @@ import android.graphics.Typeface;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
 public class LoginActivity extends SceneFiendAndroidAppActivity
 {
+	ImageButton btnBack;
 	
 	/** Called when the activity is first created. */
     @Override
@@ -19,6 +21,8 @@ public class LoginActivity extends SceneFiendAndroidAppActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_menu);
+        
+        btnBack = (ImageButton) findViewById(R.id.btnBack);
         
         //the custom title font
         Typeface tf = Typeface.createFromAsset(getAssets(),
@@ -63,5 +67,17 @@ public class LoginActivity extends SceneFiendAndroidAppActivity
                 } 
 			}
         });
+        
+        // Link to Menu Screen
+       	btnBack.setOnClickListener(new View.OnClickListener() 
+       	{
+       		public void onClick(View view) 
+       		{
+       			Intent i = new Intent(getApplicationContext(),
+       					MenuActivity.class);
+       			startActivity(i);
+       			finish();
+       		}
+       	});
     }   
 }

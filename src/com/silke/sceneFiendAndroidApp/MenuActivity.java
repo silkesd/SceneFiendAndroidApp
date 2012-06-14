@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -16,7 +17,7 @@ public class MenuActivity extends SceneFiendAndroidAppActivity
 {
 	UserFunctions userFunctions;
 	Button btnLogout;
-	Button btnBack;
+	ImageButton btnBack;
     
 	/** Called when the activity is first created. */
     @Override
@@ -39,7 +40,7 @@ public class MenuActivity extends SceneFiendAndroidAppActivity
                 getResources().getString(R.string.menu_item_help),
                 getResources().getString(R.string.menu_item_login)};
         
-        btnBack = (Button) findViewById(R.id.btnBack);
+        btnBack = (ImageButton) findViewById(R.id.btnBack);
         
         //data adapter maps data to the layout templates specified via the array that stores the menu items
         ArrayAdapter<String> adapt = new ArrayAdapter<String>(this, R.layout.menu_item, items);

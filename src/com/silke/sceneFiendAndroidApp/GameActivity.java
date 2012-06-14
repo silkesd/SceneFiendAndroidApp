@@ -4,10 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class GameActivity extends SceneFiendAndroidAppActivity 
 {
-	Button btnBack;
+	ImageButton btnBack;
 	
     /** Called when the activity is first created. */
     @Override
@@ -15,7 +16,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game);
-        btnBack = (Button) findViewById(R.id.btnBack);
+        btnBack = (ImageButton) findViewById(R.id.btnBack);
         // Link to Score Menu Screen
        	btnBack.setOnClickListener(new View.OnClickListener() 
        	{

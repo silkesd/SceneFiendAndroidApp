@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -33,7 +34,7 @@ public class AllScoresActivity extends ListActivity
 
 	ArrayList<HashMap<String, String>> scoresList;
 	
-	Button btnBack;
+	ImageButton btnBack;
 	
 	// url to get all scores list
 	private static String url_all_scores = "http://10.0.2.2:8888/SceneFiendDatabasing/all_scores.php";
@@ -66,7 +67,7 @@ public class AllScoresActivity extends ListActivity
 		// Loading scores in Background Thread
 		new LoadAllScores().execute();
 		
-		btnBack = (Button) findViewById(R.id.btnBack);
+		btnBack = (ImageButton) findViewById(R.id.btnBack);
 	}
 	
 	/**

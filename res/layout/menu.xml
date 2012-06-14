@@ -24,11 +24,21 @@
         android:textSize="@dimen/screen_title_size" />
 
     <RelativeLayout
-        android:id="@+id/RelativeLayout01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-  
-    </RelativeLayout>
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:gravity="center_horizontal" >
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_weight="0.37"
+        android:src="@drawable/back_btn"
+        android:textStyle="bold" />
+
+	</RelativeLayout>
 	
 	<!-- THE CONTENT AREA - menu items -->   
     <RelativeLayout

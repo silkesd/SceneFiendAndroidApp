@@ -5,13 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
 
 public class ScoreMenuActivity extends SceneFiendAndroidAppActivity
 {
-
+	ImageButton btnBack;
 	@Override
 	public void onCreate(Bundle savedInstanceState) 
 	{
@@ -23,6 +24,8 @@ public class ScoreMenuActivity extends SceneFiendAndroidAppActivity
                 "fonts/lucindablack.ttf");
         TextView tv = (TextView) findViewById(R.id.CustomFont);
         tv.setTypeface(tf);
+        
+        btnBack = (ImageButton) findViewById(R.id.btnBack);
         
       //the menu items 
         ListView scoreMenuList = (ListView) findViewById(R.id.ListView_Menu);
@@ -60,5 +63,17 @@ public class ScoreMenuActivity extends SceneFiendAndroidAppActivity
                 } 
         	}
         });	
+        
+     // Link to Score Menu Screen
+       	btnBack.setOnClickListener(new View.OnClickListener() 
+       	{
+       		public void onClick(View view) 
+       		{
+       			Intent i = new Intent(getApplicationContext(),
+       					MenuActivity.class);
+       			startActivity(i);
+       			finish();
+       		}
+       	});
     }	
 }

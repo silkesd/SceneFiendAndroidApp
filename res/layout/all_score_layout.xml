@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:background="@drawable/bkgrnd">
+    android:orientation="vertical">
 	<!-- Main ListView -->
 	<!-- title -->
+
     <TextView
         android:id="@+id/CustomFont"
         android:layout_width="wrap_content"
-        android:layout_height="78dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:shadowColor="@android:color/white"
         android:shadowDx="0"
@@ -18,19 +18,26 @@
         android:text="@string/all_scores"
         android:textColor="@color/title_color"
         android:textSize="@dimen/screen_title_size" />
-    
+
+    <RelativeLayout
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:gravity="center_horizontal" >
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_weight="0.37"
+        android:src="@drawable/back_btn"
+        android:textStyle="bold" />
+
+	</RelativeLayout>
     <ListView
         android:id="@android:id/list"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"/>
-	<Button
-            android:id="@+id/btnBack"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dip"
-            android:layout_weight="0.37"
-            android:background="@null"
-            android:text="@string/goBack"
-            android:textColor="#fff"
-            android:textStyle="bold" />
+
 </LinearLayout>

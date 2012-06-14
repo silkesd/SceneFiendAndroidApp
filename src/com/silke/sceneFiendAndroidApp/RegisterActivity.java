@@ -13,13 +13,14 @@ import android.graphics.Typeface;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class RegisterActivity extends SceneFiendAndroidAppActivity
 {
 	Button btnRegister;
 	Button btnLinkToLogin;
-	Button btnBack;
+	ImageButton btnBack;
 	EditText inputFullName;
 	EditText inputEmail;
 	EditText inputPassword;
@@ -53,7 +54,7 @@ public class RegisterActivity extends SceneFiendAndroidAppActivity
  		btnRegister = (Button) findViewById(R.id.btnRegister);
  		btnLinkToLogin = (Button) findViewById(R.id.btnLinkToLoginScreen);
  		registerErrorMsg = (TextView) findViewById(R.id.register_error);
- 		btnBack = (Button) findViewById(R.id.btnBack);
+ 		btnBack = (ImageButton) findViewById(R.id.btnBack);
  		
  		// Register Button Click event
  		btnRegister.setOnClickListener(new View.OnClickListener() 
