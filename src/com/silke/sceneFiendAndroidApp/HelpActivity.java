@@ -10,12 +10,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import com.silke.sceneFiendAndroidApp.R;
 
 public class HelpActivity extends SceneFiendAndroidAppActivity 
 {
-	Button btnBack;
+	ImageButton btnBack;
 
 	/** Called when the activity is first created. */
     @Override
@@ -29,7 +30,7 @@ public class HelpActivity extends SceneFiendAndroidAppActivity
         TextView tv = (TextView) findViewById(R.id.CustomFont);
         tv.setTypeface(tf);
         
-        btnBack = (Button) findViewById(R.id.btnBack);
+        btnBack = (ImageButton) findViewById(R.id.btnBack);
         
         //reading string data from the text help file - if it does not work, send to debug list, if it does work should convert the raw
         //data input stream to a sting and output in the layout id field
@@ -49,7 +50,7 @@ public class HelpActivity extends SceneFiendAndroidAppActivity
        		public void onClick(View view) 
        		{
        			Intent i = new Intent(getApplicationContext(),
-       					ScoreMenuActivity.class);
+       					MenuActivity.class);
        			startActivity(i);
        			finish();
        		}

@@ -48,25 +48,26 @@ public final class R {
     }
     public static final class drawable {
         public static final int avatar=0x7f020000;
-        public static final int bkgrnd=0x7f020001;
-        public static final int bkgrnd_clear=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int icon=0x7f020004;
-        public static final int splash=0x7f020005;
-        public static final int textured=0x7f020006;
-        public static final int twitter_bg=0x7f020007;
-        public static final int twitter_logo=0x7f020008;
+        public static final int back_btn=0x7f020001;
+        public static final int bkgrnd=0x7f020002;
+        public static final int bkgrnd_clear=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int icon=0x7f020005;
+        public static final int splash=0x7f020006;
+        public static final int textured=0x7f020007;
+        public static final int twitter_bg=0x7f020008;
+        public static final int twitter_logo=0x7f020009;
     }
     public static final class id {
         public static final int CustomFont=0x7f0a0000;
         public static final int ListView_Login=0x7f0a000c;
         public static final int ListView_Menu=0x7f0a000d;
-        public static final int RelativeLayout01=0x7f0a0002;
+        public static final int RelativeLayout01=0x7f0a0003;
         public static final int RelativeLayout02=0x7f0a000b;
         public static final int TextViewBottomVersion=0x7f0a001d;
         public static final int TextViewTopTitleDesc=0x7f0a001a;
         public static final int TextView_Email=0x7f0a0010;
-        public static final int TextView_HelpText=0x7f0a0003;
+        public static final int TextView_HelpText=0x7f0a0002;
         public static final int TextView_Nickname=0x7f0a0004;
         public static final int TextView_Password=0x7f0a0006;
         public static final int btnBack=0x7f0a0001;
