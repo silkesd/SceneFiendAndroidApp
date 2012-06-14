@@ -91,6 +91,17 @@
 		      android:text="@string/twitter_login_link"
 		      android:textColor="#fff"
 		      android:textSize="18dip" />
+		  
+		  <Button
+            android:id="@+id/btnBack"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dip"
+            android:layout_weight="0.37"
+            android:background="@null"
+            android:text="@string/goBack"
+            android:textColor="#fff"
+            android:textStyle="bold" />
 		    
 		</LinearLayout>
   		<!-- Registration Form Ends -->

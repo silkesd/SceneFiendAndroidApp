@@ -20,6 +20,8 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity
 {
 	Button btnLogin;
 	Button btnLinkToRegister;
+	Button btnBack;
+	
 	EditText inputUsername;
 	EditText inputPassword;
 	TextView loginErrorMsg;
@@ -44,12 +46,14 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity
         TextView tv = (TextView) findViewById(R.id.CustomFont);
         tv.setTypeface(tf);
        
+       
         // Importing all assets like buttons, text fields
      	inputUsername = (EditText) findViewById(R.id.loginUsername);
      	inputPassword = (EditText) findViewById(R.id.loginPassword);
      	btnLogin = (Button) findViewById(R.id.btnLogin);
      	btnLinkToRegister = (Button) findViewById(R.id.btnLinkToRegisterScreen);
      	loginErrorMsg = (TextView) findViewById(R.id.login_error);
+     	btnBack = (Button) findViewById(R.id.btnBack);
    
      	// Login button Click Event
  		btnLogin.setOnClickListener(new View.OnClickListener() 
@@ -117,5 +121,17 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity
  				finish();
  			}
  		});
+ 		
+ 			// Link to Login Menu Screen
+ 			btnBack.setOnClickListener(new View.OnClickListener() 
+ 	 		{
+ 	 			public void onClick(View view) 
+ 	 			{
+ 	 				Intent i = new Intent(getApplicationContext(),
+ 	 						LoginActivity.class);
+ 	 				startActivity(i);
+ 	 				finish();
+ 	 			}
+ 	 		});
  	}
  }

@@ -16,6 +16,7 @@ public class MenuActivity extends SceneFiendAndroidAppActivity
 {
 	UserFunctions userFunctions;
 	Button btnLogout;
+	Button btnBack;
     
 	/** Called when the activity is first created. */
     @Override
@@ -37,6 +38,8 @@ public class MenuActivity extends SceneFiendAndroidAppActivity
                 getResources().getString(R.string.menu_item_settings),
                 getResources().getString(R.string.menu_item_help),
                 getResources().getString(R.string.menu_item_login)};
+        
+        btnBack = (Button) findViewById(R.id.btnBack);
         
         //data adapter maps data to the layout templates specified via the array that stores the menu items
         ArrayAdapter<String> adapt = new ArrayAdapter<String>(this, R.layout.menu_item, items);
@@ -78,6 +81,19 @@ public class MenuActivity extends SceneFiendAndroidAppActivity
                 }
 			}
         });
+        
+     // Link to Login Menu Screen
+		btnBack.setOnClickListener(new View.OnClickListener() 
+ 		{
+ 			public void onClick(View view) 
+ 			{
+ 				Intent i = new Intent(getApplicationContext(),
+ 						LoginActivity.class);
+ 				startActivity(i);
+ 				finish();
+ 			}
+ 		});
+        
         
         //userFunctions = new UserFunctions();
         //if(userFunctions.isUserLoggedIn(getApplicationContext()))
