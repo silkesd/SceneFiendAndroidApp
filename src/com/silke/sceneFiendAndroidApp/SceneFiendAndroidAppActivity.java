@@ -6,7 +6,7 @@ public class SceneFiendAndroidAppActivity extends Activity
 {
 	// Game preference values
 	public static final String GAME_PREFERENCES = "GamePrefs";
-	public static final String GAME_PREFERENCES_NICKNAME = "Nickname"; // String
+	public static final String GAME_PREFERENCES_NICKNAME = "Name"; // String
 	public static final String GAME_PREFERENCES_EMAIL = "Email"; // String
 	public static final String GAME_PREFERENCES_PASSWORD = "Password"; // String
 	public static final String GAME_PREFERENCES_SCORE = "Score"; // Integer
@@ -25,4 +25,7 @@ public class SceneFiendAndroidAppActivity extends Activity
     public static final int QUESTION_BATCH_SIZE = 5; // 15;
 	
 	protected static final String DEBUG_TAG = "Scene Fiend Log";
+
+	//save user id in a preference
 }
+

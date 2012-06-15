@@ -9,6 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.ActionBar;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -16,9 +17,7 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
+import android.view.MenuItem;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -34,8 +33,7 @@ public class MyScoresActivity extends ListActivity
 	JSONScoreParser jParser = new JSONScoreParser();
 
 	ArrayList<HashMap<String, String>> scoresList;
-	
-	ImageButton btnBack;
+
 	
 	// url to get all scores list
 	private static String url_my_scores = "http://10.0.2.2:8888/SceneFiendDatabasing/my_scores.php";
@@ -47,7 +45,7 @@ public class MyScoresActivity extends ListActivity
 	private static final String TAG_PLAYER_NAME = "player_name";
 	private static final String TAG_PLAYER_SCORE = "player_score";
 	private static final String TAG_SCORE_DATE = "score_date";
-
+	
 	// scores JSONArray
 	JSONArray scores = null;
 	
@@ -68,9 +66,28 @@ public class MyScoresActivity extends ListActivity
 		// Loading scores in Background Thread
 		new LoadMyScores().execute();
 		
-		btnBack = (ImageButton) findViewById(R.id.btnBack);
+		//actionbar
+		ActionBar ab = getActionBar();
+		ab.setDisplayHomeAsUpEnabled(true);
+		
+
 	}
 	
+	public boolean onOptionsItemSelected(MenuItem item) 
+	{
+		switch (item.getItemId())
+		{
+			case android.R.id.home:
+				Intent i = new Intent(getApplicationContext(),
+ 						ScoreMenuActivity.class);
+				i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+ 				startActivity(i);
+ 				Log.d("MyScoresAct", "activity started");
+ 				return true;
+ 			default:
+ 				return super.onOptionsItemSelected(item);
+		}
+	}
 
 	/**
 	 * Background Async Task to Load all product by making HTTP Request
@@ -183,18 +200,6 @@ public class MyScoresActivity extends ListActivity
 					setListAdapter(adapter);
 				}
 			});
-			
-			// Link to Score Menu Screen
-			btnBack.setOnClickListener(new View.OnClickListener() 
-	 		{
-	 			public void onClick(View view) 
-	 			{
-	 				Intent i = new Intent(getApplicationContext(),
-	 						ScoreMenuActivity.class);
-	 				startActivity(i);
-	 				finish();
-	 			}
-	 		});
 
 		}
 	}

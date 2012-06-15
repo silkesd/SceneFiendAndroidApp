@@ -3,8 +3,8 @@ package com.silke.sceneFiendAndroidApp.handlers;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.http.NameValuePair;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONObject;
 import com.silke.sceneFiendAndroidApp.asynctasks.FileDownloader;
 import android.content.Context;
 import android.util.Log;
@@ -15,8 +15,8 @@ public class UserFunctions
 	private FileDownloader fileDownloader;
 	
 	//localhost strings to connect with php files for online db connectivity
-	private static String loginURL = "http://10.0.2.2:8889/SceneFiendDatabasing/";
-	private static String registerURL = "http://10.0.2.2:8889/SceneFiendDatabasing/";
+	private static String loginURL = "http://10.0.2.2:8889/SceneFiendDatabasing/index.php";
+	private static String registerURL = "http://10.0.2.2:8889/SceneFiendDatabasing/index.php";
 	
 	private static String login_tag = "login";
 	private static String register_tag = "register";

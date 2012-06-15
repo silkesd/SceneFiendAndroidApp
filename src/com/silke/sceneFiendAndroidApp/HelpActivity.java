@@ -4,19 +4,17 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
+import android.view.MenuItem;
 import android.widget.TextView;
 import com.silke.sceneFiendAndroidApp.R;
 
 public class HelpActivity extends SceneFiendAndroidAppActivity 
 {
-	ImageButton btnBack;
 
 	/** Called when the activity is first created. */
     @Override
@@ -30,7 +28,9 @@ public class HelpActivity extends SceneFiendAndroidAppActivity
         TextView tv = (TextView) findViewById(R.id.CustomFont);
         tv.setTypeface(tf);
         
-        btnBack = (ImageButton) findViewById(R.id.btnBack);
+		//actionbar
+		ActionBar ab = getActionBar();
+		ab.setDisplayHomeAsUpEnabled(true);
         
         //reading string data from the text help file - if it does not work, send to debug list, if it does work should convert the raw
         //data input stream to a sting and output in the layout id field
@@ -44,18 +44,23 @@ public class HelpActivity extends SceneFiendAndroidAppActivity
             Log.e(DEBUG_TAG, "InputStreamToString failure", e);
         }
         
-        // Link to Score Menu Screen
-       	btnBack.setOnClickListener(new View.OnClickListener() 
-       	{
-       		public void onClick(View view) 
-       		{
-       			Intent i = new Intent(getApplicationContext(),
-       					MenuActivity.class);
-       			startActivity(i);
-       			finish();
-       		}
-       	});
     }
+    
+    public boolean onOptionsItemSelected(MenuItem item) 
+	{
+		switch (item.getItemId())
+		{
+			case android.R.id.home:
+				Intent i = new Intent(getApplicationContext(),
+ 						MenuActivity.class);
+				i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+ 				startActivity(i);
+ 				Log.d("HelpAct", "activity started");
+ 				return true;
+ 			default:
+ 				return super.onOptionsItemSelected(item);
+		}
+	}
     
     @SuppressWarnings("deprecation")
 	public String inputStreamToString(InputStream is) throws IOException 

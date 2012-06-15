@@ -1,14 +1,13 @@
 package com.silke.sceneFiendAndroidApp;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
+import android.util.Log;
+import android.view.MenuItem;
 
 public class SettingsActivity extends SceneFiendAndroidAppActivity 
 {
-	ImageButton btnBack;
 	
     /** Called when the activity is first created. */
     @Override
@@ -16,17 +15,25 @@ public class SettingsActivity extends SceneFiendAndroidAppActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
-        btnBack = (ImageButton) findViewById(R.id.btnBack);
-        // Link to Score Menu Screen
-       	btnBack.setOnClickListener(new View.OnClickListener() 
-       	{
-       		public void onClick(View view) 
-       		{
-       			Intent i = new Intent(getApplicationContext(),
-       					ScoreMenuActivity.class);
-       			startActivity(i);
-       			finish();
-       		}
-       	});
-    }
+        
+        //actionbar
+		ActionBar ab = getActionBar();
+		ab.setDisplayHomeAsUpEnabled(true);
+	}
+    
+    public boolean onOptionsItemSelected(MenuItem item) 
+	{
+		switch (item.getItemId())
+		{
+			case android.R.id.home:
+				Intent i = new Intent(getApplicationContext(),
+ 						MenuActivity.class);
+				i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+ 				startActivity(i);
+ 				Log.d("SettingsAct", "activity started");
+ 				return true;
+ 			default:
+ 				return super.onOptionsItemSelected(item);
+		}
+	}
 }

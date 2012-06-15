@@ -2,14 +2,16 @@ package com.silke.sceneFiendAndroidApp;
 import com.silke.sceneFiendAndroidApp.handlers.UserFunctions;
 
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -17,7 +19,7 @@ public class MenuActivity extends SceneFiendAndroidAppActivity
 {
 	UserFunctions userFunctions;
 	Button btnLogout;
-	ImageButton btnBack;
+	
     
 	/** Called when the activity is first created. */
     @Override
@@ -40,7 +42,9 @@ public class MenuActivity extends SceneFiendAndroidAppActivity
                 getResources().getString(R.string.menu_item_help),
                 getResources().getString(R.string.menu_item_login)};
         
-        btnBack = (ImageButton) findViewById(R.id.btnBack);
+    	//actionbar
+		ActionBar ab = getActionBar();
+		ab.setDisplayHomeAsUpEnabled(true);
         
         //data adapter maps data to the layout templates specified via the array that stores the menu items
         ArrayAdapter<String> adapt = new ArrayAdapter<String>(this, R.layout.menu_item, items);
@@ -83,17 +87,6 @@ public class MenuActivity extends SceneFiendAndroidAppActivity
 			}
         });
         
-     // Link to Login Menu Screen
-		btnBack.setOnClickListener(new View.OnClickListener() 
- 		{
- 			public void onClick(View view) 
- 			{
- 				Intent i = new Intent(getApplicationContext(),
- 						LoginActivity.class);
- 				startActivity(i);
- 				finish();
- 			}
- 		});
         
         
         //userFunctions = new UserFunctions();
@@ -125,5 +118,20 @@ public class MenuActivity extends SceneFiendAndroidAppActivity
         	// Closing menu screen
         //	finish();
         //}  
-    }     
+    }  
+    public boolean onOptionsItemSelected(MenuItem item) 
+	{
+		switch (item.getItemId())
+		{
+			case android.R.id.home:
+				Intent i = new Intent(getApplicationContext(),
+ 						LoginActivity.class);
+				i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+ 				startActivity(i);
+ 				Log.d("MenuAct", "activity started");
+ 				return true;
+ 			default:
+ 				return super.onOptionsItemSelected(item);
+		}
+	}
 }

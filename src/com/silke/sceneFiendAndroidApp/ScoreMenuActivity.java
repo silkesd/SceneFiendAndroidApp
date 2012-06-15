@@ -1,18 +1,20 @@
 package com.silke.sceneFiendAndroidApp;
+import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
 
 public class ScoreMenuActivity extends SceneFiendAndroidAppActivity
 {
-	ImageButton btnBack;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) 
 	{
@@ -25,9 +27,11 @@ public class ScoreMenuActivity extends SceneFiendAndroidAppActivity
         TextView tv = (TextView) findViewById(R.id.CustomFont);
         tv.setTypeface(tf);
         
-        btnBack = (ImageButton) findViewById(R.id.btnBack);
-        
-      //the menu items 
+        //actionbar
+  		ActionBar ab = getActionBar();
+  		ab.setDisplayHomeAsUpEnabled(true);
+    
+  		//the menu items 
         ListView scoreMenuList = (ListView) findViewById(R.id.ListView_Menu);
         String[] items = { getResources().getString(R.string.high_scores),
                 getResources().getString(R.string.all_scores),
@@ -64,16 +68,22 @@ public class ScoreMenuActivity extends SceneFiendAndroidAppActivity
         	}
         });	
         
-     // Link to Score Menu Screen
-       	btnBack.setOnClickListener(new View.OnClickListener() 
-       	{
-       		public void onClick(View view) 
-       		{
-       			Intent i = new Intent(getApplicationContext(),
-       					MenuActivity.class);
-       			startActivity(i);
-       			finish();
-       		}
-       	});
-    }	
+
+    }
+	
+	public boolean onOptionsItemSelected(MenuItem item) 
+	{
+		switch (item.getItemId())
+		{
+			case android.R.id.home:
+				Intent i = new Intent(getApplicationContext(),
+ 						MenuActivity.class);
+				i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+ 				startActivity(i);
+ 				Log.d("ScoresMenuAct", "activity started");
+ 				return true;
+ 			default:
+ 				return super.onOptionsItemSelected(item);
+		}
+	}
 }

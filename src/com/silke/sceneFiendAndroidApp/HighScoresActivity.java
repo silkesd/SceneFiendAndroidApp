@@ -9,6 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.ActionBar;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -16,9 +17,7 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
+import android.view.MenuItem;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -34,8 +33,6 @@ public class HighScoresActivity extends ListActivity
 	JSONScoreParser jParser = new JSONScoreParser();
 
 	ArrayList<HashMap<String, String>> scoresList;
-	
-	ImageButton btnBack;
 	
 	// url to get all scores list
 	private static String url_high_scores = "http://10.0.2.2:8888/SceneFiendDatabasing/high_scores.php";
@@ -68,7 +65,26 @@ public class HighScoresActivity extends ListActivity
 		// Loading scores in Background Thread
 		new LoadAllScores().execute();
 		
-		btnBack = (ImageButton) findViewById(R.id.btnBack);
+		//actionbar
+		ActionBar ab = getActionBar();
+		ab.setDisplayHomeAsUpEnabled(true);
+	}
+	
+
+	public boolean onOptionsItemSelected(MenuItem item) 
+	{
+		switch (item.getItemId())
+		{
+			case android.R.id.home:
+				Intent i = new Intent(getApplicationContext(),
+ 						ScoreMenuActivity.class);
+				i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+ 				startActivity(i);
+ 				Log.d("HighScoresAct", "activity started");
+ 				return true;
+ 			default:
+ 				return super.onOptionsItemSelected(item);
+		}
 	}
 	
 	/**
@@ -85,7 +101,7 @@ public class HighScoresActivity extends ListActivity
 		{
 			super.onPreExecute();
 			pDialog = new ProgressDialog(HighScoresActivity.this);
-			pDialog.setMessage("Loading scores. Please wait...");
+			pDialog.setMessage("Loading high scores. Please wait...");
 			pDialog.setIndeterminate(false);
 			pDialog.setCancelable(false);
 			pDialog.show();
@@ -182,18 +198,19 @@ public class HighScoresActivity extends ListActivity
 					setListAdapter(adapter);
 				}
 			});
+//			
+//			// Link to Register Screen
+//			btnBack.setOnClickListener(new View.OnClickListener() 
+//	 		{
+//	 			public void onClick(View view) 
+//	 			{
+//	 				Intent i = new Intent(getApplicationContext(),
+//	 						ScoreMenuActivity.class);
+//	 				startActivity(i);
+//	 				finish();
+//	 			}
+//	 		});
 			
-			// Link to Register Screen
-			btnBack.setOnClickListener(new View.OnClickListener() 
-	 		{
-	 			public void onClick(View view) 
-	 			{
-	 				Intent i = new Intent(getApplicationContext(),
-	 						ScoreMenuActivity.class);
-	 				startActivity(i);
-	 				finish();
-	 			}
-	 		});
 		}
 	}
 }

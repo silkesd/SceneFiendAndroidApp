@@ -1,24 +1,28 @@
 package com.silke.sceneFiendAndroidApp;
 import com.silke.sceneFiendAndroidApp.R;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class TwitterLoginActivity extends SceneFiendAndroidAppActivity
 {
-	ImageButton btnBack;
+
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) 
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.twitter_login);
-        btnBack = (ImageButton) findViewById(R.id.btnBack);
         TextView registerScreen = (TextView) findViewById(R.id.link_to_register);
+        
+		//actionbar
+		ActionBar ab = getActionBar();
+		ab.setDisplayHomeAsUpEnabled(true);
         
         // Listening to register new account link
         registerScreen.setOnClickListener(new View.OnClickListener() {
@@ -29,17 +33,21 @@ public class TwitterLoginActivity extends SceneFiendAndroidAppActivity
 				startActivity(i);
 			}
 		});
-        
-     // Link to Login Menu Screen
-		btnBack.setOnClickListener(new View.OnClickListener() 
- 		{
- 			public void onClick(View view) 
- 			{
- 				Intent i = new Intent(getApplicationContext(),
- 						LoginActivity.class);
- 				startActivity(i);
- 				finish();
- 			}
- 		});
     }
+	public boolean onOptionsItemSelected(MenuItem item) 
+	{
+		switch (item.getItemId())
+		{
+			case android.R.id.home:
+				Intent i = new Intent(getApplicationContext(),
+ 						LoginActivity.class);
+				i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+ 				startActivity(i);
+ 				Log.d("TwitterLoginAct", "activity started");
+ 				return true;
+ 			default:
+ 				return super.onOptionsItemSelected(item);
+		}
+	}
+	
 }

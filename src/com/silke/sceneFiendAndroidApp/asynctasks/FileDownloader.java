@@ -3,9 +3,10 @@ package com.silke.sceneFiendAndroidApp.asynctasks;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URL;
+
 import java.util.List;
 
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -18,7 +19,6 @@ import com.silke.sceneFiendAndroidApp.handlers.JSONParser;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
 public class FileDownloader extends AsyncTask<String, Integer, String>
 {
@@ -40,9 +40,7 @@ public class FileDownloader extends AsyncTask<String, Integer, String>
 		
 		for(String urlToLoad : url)
 		{
-			// defaultHttpClient
-			DefaultHttpClient httpClient = new DefaultHttpClient();
-			apiResponse = addParams(httpClient, urlToLoad, params);
+			apiResponse = addParams(urlToLoad, params);
 			
 			Log.d("FileDownloader", apiResponse.toString());
 		}
@@ -50,21 +48,36 @@ public class FileDownloader extends AsyncTask<String, Integer, String>
 		return apiResponse;
 		
 	}
-
-	protected String addParams(DefaultHttpClient httpClient, String url, List<NameValuePair> params)
+	
+	protected String addParams(
+			String urlToLoad, List<NameValuePair> params)
 	{
 		String apiResponse = "";
 		
-		HttpPost httpPost = new HttpPost(url);
-		Log.d("FileDownloader", "In add params");
+		
+		Log.d("FileDownloader", urlToLoad);
 		try 
 		{
+			Log.d("FileDownloader", "in try");
+			
+			DefaultHttpClient httpClient = new DefaultHttpClient();
+			HttpPost httpPost = new HttpPost(urlToLoad);
 			httpPost.setEntity(new UrlEncodedFormEntity(params));
+			
+			Log.d("FileDownloader", params.toString() + ": are the params");
+			
+			//PROBLEM IS HERE!!
 			HttpResponse httpResponse = httpClient.execute(httpPost);
-			//HttpEntity httpEntity = httpResponse.getEntity();
-			//is = httpEntity.getContent();
-			InputStream content = httpResponse.getEntity().getContent();
-			BufferedReader buffer = new BufferedReader(new InputStreamReader(content));
+			
+			Log.d("FileDownloader", httpResponse.toString() + ": is the httpResponse");
+			
+			HttpEntity httpEntity = httpResponse.getEntity();
+			is = httpEntity.getContent();
+			
+			Log.d("FileDownloader", is.toString() + ": is inputstream for http entity");
+			//InputStream content = httpResponse.getEntity().getContent();
+			
+			BufferedReader buffer = new BufferedReader(new InputStreamReader(is));
 			String s = "";
 			
 			while((s = buffer.readLine()) != null)
@@ -75,7 +88,7 @@ public class FileDownloader extends AsyncTask<String, Integer, String>
 		} 
 		catch (Exception e)
 		{
-			Log.d("ASYNCTASK", "catch exception in add params");
+			Log.d("FILEDOWNLOADER", "catch exception in add params");
 		}
 		return apiResponse;
 	}

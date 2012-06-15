@@ -1,40 +1,36 @@
 package com.silke.sceneFiendAndroidApp;
 
 import com.silke.sceneFiendAndroidApp.R;
-import com.silke.sceneFiendAndroidApp.handlers.DBHandler;
 import com.silke.sceneFiendAndroidApp.handlers.UserFunctions;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 import android.os.Bundle;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity
 {
 	Button btnLogin;
 	Button btnLinkToRegister;
-	ImageButton btnBack;
 	
 	EditText inputUsername;
 	EditText inputPassword;
 	TextView loginErrorMsg;
 	
 	// JSON Response node names
-	private static String KEY_SUCCESS = "success";
-	private static String KEY_ERROR = "error";
-	private static String KEY_ERROR_MSG = "error_msg";
-	private static String KEY_ID = "player_id";
-	private static String KEY_NAME = "player_name";
-	private static String KEY_EMAIL = "player_email";
-   
+//	private static String KEY_SUCCESS = "success";
+//	private static String KEY_ERROR = "error";
+//	private static String KEY_ERROR_MSG = "error_msg";
+//	private static String KEY_ID = "player_id";
+//	private static String KEY_NAME = "player_name";
+//	private static String KEY_EMAIL = "player_email";
+//   
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) 
@@ -54,7 +50,10 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity
      	btnLogin = (Button) findViewById(R.id.btnLogin);
      	btnLinkToRegister = (Button) findViewById(R.id.btnLinkToRegisterScreen);
      	loginErrorMsg = (TextView) findViewById(R.id.login_error);
-     	btnBack = (ImageButton) findViewById(R.id.btnBack);
+     	
+     	//actionbar
+		ActionBar ab = getActionBar();
+		ab.setDisplayHomeAsUpEnabled(true);
    
      	// Login button Click Event
  		btnLogin.setOnClickListener(new View.OnClickListener() 
@@ -122,17 +121,20 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity
  				finish();
  			}
  		});
- 		
- 			// Link to Login Menu Screen
- 			btnBack.setOnClickListener(new View.OnClickListener() 
- 	 		{
- 	 			public void onClick(View view) 
- 	 			{
- 	 				Intent i = new Intent(getApplicationContext(),
- 	 						LoginActivity.class);
- 	 				startActivity(i);
- 	 				finish();
- 	 			}
- 	 		});
  	}
+    public boolean onOptionsItemSelected(MenuItem item) 
+	{
+		switch (item.getItemId())
+		{
+			case android.R.id.home:
+				Intent i = new Intent(getApplicationContext(),
+ 						LoginActivity.class);
+				i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+ 				startActivity(i);
+ 				Log.d("SFLoginAct", "activity started");
+ 				return true;
+ 			default:
+ 				return super.onOptionsItemSelected(item);
+		}
+	}
  }
