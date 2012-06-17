@@ -1,11 +1,12 @@
 package com.silke.sceneFiendAndroidApp.handlers;
 
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
+
+import com.silke.sceneFiendAndroidApp.SceneFiendAndroidAppActivity;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -13,10 +14,12 @@ import android.util.Log;
 
 public class DBHandler extends SQLiteOpenHelper
 {
+	SharedPreferences mGameSettings;
 	// All Static variables
 	// Database Version
 	private static final int DATABASE_VERSION = 1;
 
+	
 	// Database Name
 	private static final String DATABASE_NAME = "scenefiendlocaldb";
 
@@ -401,13 +404,17 @@ public class DBHandler extends SQLiteOpenHelper
 	    cursor.moveToFirst();
 	    if(cursor.getCount() > 0)
 	    {
+	    	 // Retrieve the shared preferences
+	       
     		questionanswers.put("answer_text", cursor.getString(1));
     		questionanswers.put("answer_id", cursor.getString(5));
     		questionanswers.put("question_text", cursor.getString(3));
     		questionanswers.put("question_id", cursor.getString(4));
+    		
     		questionanswers.put("correct_answer", cursor.getString(6));
     		
-	    	Log.d("DBHandler", questionanswers.toString());
+	    	Log.d("Getting qu_id", cursor.getString(4));
+	    	
 	    }
 	    for (int i = 0; i < 10 && !cursor.isAfterLast(); i++) 
     	{
