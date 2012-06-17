@@ -82,6 +82,7 @@
     
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="next">Next</string>
     <string name="no_questions">No more questions available. Try back later.</string>
     <string name="exit">Exit</string>
 </resources>

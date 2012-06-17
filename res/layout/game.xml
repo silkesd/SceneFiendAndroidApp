@@ -2,20 +2,58 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/bkgrnd"
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/CustomFont"
-        android:layout_width="wrap_content"
+        android:id="@+id/textviewQu"
+        android:layout_width="fill_parent"
+        android:layout_height="47dp"
+        android:textSize="@dimen/game_qu_text_size"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/buttonviewAns1"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:shadowColor="@android:color/white"
-        android:shadowDx="0"
-        android:shadowDy="0"
-        android:shadowRadius="10"
-        android:text="@string/game"
-        android:textColor="@color/title_color"
-        android:textSize="@dimen/screen_title_size" />
+        android:layout_margin="7dip" 
+        android:textSize="@dimen/desc_size"
+        />
     
+
+    <Button
+        android:id="@+id/buttonviewAns2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="7dip"
+        android:textSize="@dimen/desc_size"  />
+
+    <Button
+        android:id="@+id/buttonviewAns3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="7dip"
+        android:textSize="@dimen/desc_size"   />
+
+    <Button
+        android:id="@+id/buttonviewAns4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="7dip" 
+        android:textSize="@dimen/desc_size"   />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" >
+
+	    <Button
+	        android:id="@+id/next"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentBottom="true"
+	        android:layout_alignParentLeft="true"
+	        android:text="@string/next"
+	        android:textStyle="bold"
+	        android:layout_margin="7dip"  />
+
+	</RelativeLayout>
 </LinearLayout>

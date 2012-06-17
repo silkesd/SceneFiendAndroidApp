@@ -69,8 +69,6 @@ public class MyScoresActivity extends ListActivity
 		//actionbar
 		ActionBar ab = getActionBar();
 		ab.setDisplayHomeAsUpEnabled(true);
-		
-
 	}
 	
 	public boolean onOptionsItemSelected(MenuItem item) 

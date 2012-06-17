@@ -3,7 +3,7 @@
     <dimen
         name="title_size">12pt</dimen>
     <dimen
-        name="desc_size">6pt</dimen>
+        name="desc_size">7pt</dimen>
     <dimen
         name="version_size">5pt</dimen>
     <dimen
@@ -26,6 +26,9 @@
         name="help_text_padding_top">10px</dimen>
     <dimen
         name="help_text_padding">15px</dimen>
+    
+    <dimen
+        name="game_qu_text_size">7pt</dimen>
 	
     <!-- set the heading size for username, rank and points in the score screen -->
      <dimen
