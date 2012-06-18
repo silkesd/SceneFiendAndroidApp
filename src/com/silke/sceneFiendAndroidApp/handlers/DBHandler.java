@@ -359,32 +359,53 @@ public class DBHandler extends SQLiteOpenHelper
 	
 	
 	/*
-	 * Get all the game questions
+	 * Get all the game answers
 	 */
-	public HashMap<String, String>getAllAnswers()
+	public HashMap<String, String>getFourAnswers(int qu_id)
 	{
 		HashMap<String,String> answers = new HashMap<String,String>();
-		String selectQuery = "SELECT  * FROM " + TABLE_ANSWERS;
+		String selectQuery = "SELECT  " + TABLE_ANSWERS + "." + KEY_ANSWER_ID + ", " 
+				+ TABLE_ANSWERS + "." + KEY_ANSWER_TEXT +  " FROM " + TABLE_ANSWERS + ", " 
+				+ TABLE_QUESTIONS + ", " + TABLE_QUIZ 
+				+ " WHERE " + TABLE_QUESTIONS + "." + KEY_QUESTION_ID + "= " + TABLE_QUIZ 
+				+ "." + KEY_QUESTION_ID + " AND " + TABLE_ANSWERS + "." 
+				+ KEY_ANSWER_ID  + "= " + TABLE_QUIZ + "." + KEY_ANSWER_ID
+				+ " AND " + TABLE_QUESTIONS + "." + KEY_QUESTION_ID + "=" + qu_id;
+		
+		Log.d("TESTING QUERY: ", selectQuery);
 		
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);
 		
-	    // Move to first row
-	    if(cursor.moveToFirst())
+//		String arr[]=new String[4];
+//	    int i = 0;
+//	    cursor.moveToFirst();
+//	    while (cursor.isAfterLast() == false) 
+//	    {
+//	        arr[i]  = cursor.getString(0);
+//	        i++;
+//	        cursor.moveToNext();
+//	    }
+	    
+		Log.d("sdl;kfj", cursor.getCount() + "");
+		
+		int i = 0;
+	    while(cursor.moveToNext())
 	    {
-	    	do
-	    	{
-		    	answers.put("answer_id", cursor.getString(1));
-		    	answers.put("answer_text", cursor.getString(1));
-		    	Log.d("DBHandler", answers.toString());
-	    	} while (cursor.moveToNext());
+		    	i++;
+		    	answers.put("answer_id"+i, cursor.getString(0));
+		    	answers.put("answer_text"+i, cursor.getString(1));
+		    	Log.d("answer_id"+i, cursor.getString(0));
+		    	Log.d("answer_text"+i, cursor.getString(1));
 	    }
 	    cursor.close();
-	    
 	    db.close();
-		// return answers
 	    return answers;
 	}
+	
+	/*
+	 * getcorrect answer - get answer id for question id where correct answer...
+	 */
 	
 	/*
 	 * Get game questions with their four answers
@@ -406,14 +427,12 @@ public class DBHandler extends SQLiteOpenHelper
 	    {
 	    	 // Retrieve the shared preferences
 	       
-    		questionanswers.put("answer_text", cursor.getString(1));
-    		questionanswers.put("answer_id", cursor.getString(5));
     		questionanswers.put("question_text", cursor.getString(3));
     		questionanswers.put("question_id", cursor.getString(4));
     		
-    		questionanswers.put("correct_answer", cursor.getString(6));
-    		
-	    	Log.d("Getting qu_id", cursor.getString(4));
+//    		questionanswers.put("correct_answer", cursor.getString(6));
+//    		
+//	    	Log.d("Getting qu_id", cursor.getString(4));
 	    	
 	    }
 	    for (int i = 0; i < 10 && !cursor.isAfterLast(); i++) 
@@ -522,5 +541,4 @@ public class DBHandler extends SQLiteOpenHelper
 		
 		db.close();
 	}
-
 }

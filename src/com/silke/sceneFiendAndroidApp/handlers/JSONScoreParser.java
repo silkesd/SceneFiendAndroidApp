@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -18,7 +17,6 @@ import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.util.Log;
 
 public class JSONScoreParser 
@@ -30,7 +28,7 @@ public class JSONScoreParser
 	// constructor
 		public JSONScoreParser() 
 		{
-
+			//create set method 
 		}
 
 		// function get json from url
@@ -38,10 +36,8 @@ public class JSONScoreParser
 		public JSONObject makeHttpRequest(String url, String method,
 				List<NameValuePair> params) 
 		{
-
 			// Making HTTP request
-			try {
-				
+			try {		
 				// check for request method
 				if(method == "POST"){
 					// request method is POST
@@ -49,11 +45,9 @@ public class JSONScoreParser
 					DefaultHttpClient httpClient = new DefaultHttpClient();
 					HttpPost httpPost = new HttpPost(url);
 					httpPost.setEntity(new UrlEncodedFormEntity(params));
-
 					HttpResponse httpResponse = httpClient.execute(httpPost);
 					HttpEntity httpEntity = httpResponse.getEntity();
 					is = httpEntity.getContent();
-					
 				}
 				else if(method == "GET")
 				{
@@ -67,8 +61,6 @@ public class JSONScoreParser
 					HttpEntity httpEntity = httpResponse.getEntity();
 					is = httpEntity.getContent();
 				}			
-				
-
 			} 
 			catch (UnsupportedEncodingException e) 
 			{
@@ -82,13 +74,14 @@ public class JSONScoreParser
 			{
 				e.printStackTrace();
 			}
-
-			try {
+			try 
+			{
 				BufferedReader reader = new BufferedReader(new InputStreamReader(
 						is, "iso-8859-1"), 8);
 				StringBuilder sb = new StringBuilder();
 				String line = null;
-				while ((line = reader.readLine()) != null) {
+				while ((line = reader.readLine()) != null) 
+				{
 					sb.append(line + "\n");
 				}
 				is.close();
@@ -109,9 +102,7 @@ public class JSONScoreParser
 			{
 				Log.e("JSON Parser", "Error parsing data " + e.toString());
 			}
-
 			// return JSON String
 			return jObj;
-
 		}
 }

@@ -63,7 +63,7 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity
  			{
  				String player_name = inputUsername.getText().toString();
  				String password = inputPassword.getText().toString();
- 				Log.d("Button", "Login button clicked");
+ 				Log.d("Button", player_name);
  				UserFunctions userFunction = new UserFunctions();
  				userFunction.loginUser(player_name, password);
 

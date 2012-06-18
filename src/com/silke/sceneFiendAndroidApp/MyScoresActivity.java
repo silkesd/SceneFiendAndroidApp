@@ -33,11 +33,7 @@ public class MyScoresActivity extends ListActivity
 	JSONScoreParser jParser = new JSONScoreParser();
 
 	ArrayList<HashMap<String, String>> scoresList;
-
 	
-	// url to get all scores list
-	private static String url_my_scores = "http://10.0.2.2:8888/SceneFiendDatabasing/my_scores.php";
-
 	// JSON Node names
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_SCORES = "scores";
@@ -46,6 +42,11 @@ public class MyScoresActivity extends ListActivity
 	private static final String TAG_PLAYER_SCORE = "player_score";
 	private static final String TAG_SCORE_DATE = "score_date";
 	
+	//CREATE PREFS CLASS!!
+	
+	// url to get all scores list
+	private static String url_my_scores = "http://10.0.2.2:8888/SceneFiendDatabasing/my_scores.php?id=2";
+
 	// scores JSONArray
 	JSONArray scores = null;
 	
@@ -104,7 +105,7 @@ public class MyScoresActivity extends ListActivity
 			pDialog.setMessage("Loading your scores. Please wait...");
 			pDialog.setIndeterminate(false);
 			pDialog.setCancelable(false);
-			pDialog.show();
+			//pDialog.show();
 		}
 		
 		/**
@@ -116,10 +117,10 @@ public class MyScoresActivity extends ListActivity
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
 			
 			// getting JSON string from URL
-			JSONObject json = jParser.makeHttpRequest(url_my_scores, "GET", params);
+			JSONObject json = jParser.makeHttpRequest(url_my_scores, "POST", params);
 			
 			// Check your log cat for JSON response
-			Log.d("My Scores: ", json.toString());
+//			Log.d("My Scores: ", json.toString());
 
 			try 
 			{

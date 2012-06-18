@@ -24,11 +24,8 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 	Button buttonviewAns2;
 	Button buttonviewAns3;
 	Button buttonviewAns4;
-	
-	
-	Button[] answers;
-	Button[] questions;
-	
+//	Button[] answers;
+//	Button[] questions;
 	Button next;
 	
     /** Called when the activity is first created. */
@@ -44,62 +41,67 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		
 		DBHandler db = new DBHandler(this);
 		
-		// Retrieve the shared preferences
-        mGameSettings = getSharedPreferences(GAME_PREFERENCES, Context.MODE_PRIVATE);
-
-        // Get our progress through the questions
-        int startingQuestionNumber = mGameSettings.getInt(GAME_PREFERENCES_CURRENT_QUESTION, 0);
-
-        // If we're at the beginning of the quiz, initialize the Shared preferences
-        if (startingQuestionNumber == 0) 
-        {
-            startingQuestionNumber = 1;
-            android.content.SharedPreferences.Editor editor = mGameSettings.edit();
-            editor.putInt(GAME_PREFERENCES_CURRENT_QUESTION, startingQuestionNumber);
-            editor.commit();
-        }
+//		// Retrieve the shared preferences
+//        mGameSettings = getSharedPreferences(GAME_PREFERENCES, Context.MODE_PRIVATE);
+//
+//        // Get our progress through the questions
+//        int startingQuestionNumber = mGameSettings.getInt(GAME_PREFERENCES_CURRENT_QUESTION, 0);
+//
+//        // If we're at the beginning of the quiz, initialize the Shared preferences
+//        if (startingQuestionNumber == 0) 
+//        {
+//            startingQuestionNumber = 1;
+//            android.content.SharedPreferences.Editor editor = mGameSettings.edit();
+//            editor.putInt(GAME_PREFERENCES_CURRENT_QUESTION, startingQuestionNumber);
+//            editor.commit();
+//        }
         
-       Log.d("GameActivity: " + startingQuestionNumber, "starting qu number");
+//       Log.d("GameActivity: " + startingQuestionNumber, "starting qu number");
         
         textviewQu = (TextView) findViewById(R.id.textviewQu);
 			HashMap<String,String> gameList = db.getQuestionAnswers();
-				//String question_id = gameList.get("question_id");
+				String question_id = gameList.get("question_id");
 				String question = gameList.get("question_text");
 				
 				textviewQu.setText(question);
-			
+		
 				
-		buttonviewAns1 = (Button) findViewById(R.id.buttonviewAns1);
-			HashMap<String,String> gameAns1List = db.getQuestionAnswers();
-				String answers1 = gameAns1List.get("answer_text");
+				
+				
+		HashMap<String,String> gameAns1List = db.getFourAnswers(Integer.parseInt(question_id));	
+		Log.d("shit", gameAns1List.toString());
+		
+		buttonviewAns1 = (Button) findViewById(R.id.buttonviewAns1);	
+				String answers1 = gameAns1List.get("answer_text1");
 				buttonviewAns1.setText(answers1);
 				Log.d("Game", answers1);
 				
 		buttonviewAns2 = (Button) findViewById(R.id.buttonviewAns2);
-			HashMap<String,String> gameAnsList2 = db.getQuestionAnswers();
-				String answers2 = gameAnsList2.get("answer_text");
+				
+				//DO HIDDEN STRINGS FOR THE ID HERE :)
+				String answers2 = gameAns1List.get("answer_text2");
 				buttonviewAns2.setText(answers2);	
 				Log.d("Game", answers2);
 					
 		buttonviewAns3 = (Button) findViewById(R.id.buttonviewAns3);
-			HashMap<String,String> gameAnsList3 = db.getQuestionAnswers();
-				String answers3 = gameAnsList3.get("answer_text");
+			
+				String answers3 = gameAns1List.get("answer_text3");
 				buttonviewAns3.setText(answers3);
 				Log.d("Game", answers3);
 				
 		buttonviewAns4 = (Button) findViewById(R.id.buttonviewAns4);
-			HashMap<String,String> gameAnsList4 = db.getQuestionAnswers();
-				String answers4 = gameAnsList4.get("answer_text");
+			
+				String answers4 = gameAns1List.get("answer_text4");
 				buttonviewAns4.setText(answers4);
 		
-		Log.d("Game", answers1.toString());
-		Log.d("Game", answers2.toString());
-		Log.d("Game", answers3.toString());		
-		Log.d("Game", answers4.toString());
+//		Log.d("Game", answers1.toString());
+//		Log.d("Game", answers2.toString());
+//		Log.d("Game", answers3.toString());		
+//		Log.d("Game", answers4.toString());
 		
-		next = (Button) findViewById(R.id.next);
+		//next = (Button) findViewById(R.id.next);
 		
-		next.setOnClickListener((OnClickListener) this);
+		//next.setOnClickListener((OnClickListener) this);
 		buttonviewAns4.setOnClickListener((OnClickListener) this);
 		buttonviewAns3.setOnClickListener((OnClickListener) this);
 		buttonviewAns2.setOnClickListener((OnClickListener) this);
@@ -110,6 +112,9 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
     {
     	if(buttonviewAns4 != null)
     	{
+    		//find correct answer here on click - get correct answer id
+    		// EXTEND BUTTON CLASS TO ACTIVITY - can get id this way :)
+    		//make button mybutton to read id
     		Log.d("Game", buttonviewAns4.toString());
     	}
     	else if(buttonviewAns3 != null)
