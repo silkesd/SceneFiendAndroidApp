@@ -3,7 +3,6 @@ package com.silke.sceneFiendAndroidApp;
 import com.silke.sceneFiendAndroidApp.R;
 import com.silke.sceneFiendAndroidApp.handlers.UserFunctions;
 import android.os.Bundle;
-
 import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Typeface;

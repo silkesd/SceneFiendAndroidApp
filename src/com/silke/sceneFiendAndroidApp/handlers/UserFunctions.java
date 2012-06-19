@@ -34,8 +34,9 @@ public class UserFunctions
 	 * function make Login Request with username and password
 	 * @param player_name
 	 * @param player_password
+	 * @return 
 	 * */
-	public void loginUser(String player_name, String password)
+	public FileDownloader loginUser(String player_name, String password)
 	{
 		// Building Parameters and returning json string
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -46,6 +47,7 @@ public class UserFunctions
 		Log.d("UserFunctions", "sending login to file downloader");
 		fileDownloader = new FileDownloader(c, params);
 		fileDownloader.execute(loginURL);
+		return fileDownloader;
 		
 		//parse data from the login url stated above with params
 		//JSONObject json = jsonParser.getJSONFromUrl(loginURL, params);

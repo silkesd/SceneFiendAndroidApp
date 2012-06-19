@@ -24,6 +24,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 	Button buttonviewAns3;
 	Button buttonviewAns4;
 	Button next;
+	//MyButtons myButtons = new MyButtons();
 	
     /** Called when the activity is first created. */
     @Override
@@ -48,25 +49,26 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		HashMap<String,String> gameAns1List = db.getFourAnswers(Integer.parseInt(question_id));	
 		Log.d("shit", gameAns1List.toString());
 		
-		buttonviewAns1 = (Button) findViewById(R.id.buttonviewAns1);	
+		Buttons buttonviewAns1 = (Buttons) findViewById(R.id.buttonviewAns1);	
 				String answers1 = gameAns1List.get("answer_text1");
+				//String answers1id = gameAns1List.get("answer_id");
 				buttonviewAns1.setText(answers1);
 				Log.d("Game", answers1);
 				
-		buttonviewAns2 = (Button) findViewById(R.id.buttonviewAns2);
+		Buttons buttonviewAns2 = (Buttons) findViewById(R.id.buttonviewAns2);
 				
 				//DO HIDDEN STRINGS FOR THE ID HERE :)
 				String answers2 = gameAns1List.get("answer_text2");
 				buttonviewAns2.setText(answers2);	
 				Log.d("Game", answers2);
 					
-		buttonviewAns3 = (Button) findViewById(R.id.buttonviewAns3);
+		Buttons buttonviewAns3 = (Buttons) findViewById(R.id.buttonviewAns3);
 			
 				String answers3 = gameAns1List.get("answer_text3");
 				buttonviewAns3.setText(answers3);
 				Log.d("Game", answers3);
 				
-		buttonviewAns4 = (Button) findViewById(R.id.buttonviewAns4);
+		Buttons buttonviewAns4 = (Buttons) findViewById(R.id.buttonviewAns4);
 			
 				String answers4 = gameAns1List.get("answer_text4");
 				buttonviewAns4.setText(answers4);

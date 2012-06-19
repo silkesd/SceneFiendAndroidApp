@@ -68,7 +68,7 @@ public class RegisterActivity extends SceneFiendAndroidAppActivity
 				String player_email = inputEmail.getText().toString();
 				String password = inputPassword.getText().toString();
 				UserFunctions userFunction = new UserFunctions();
-				userFunction.registerUser(player_name, player_email, password);
+				//userFunction.registerUser(player_name, player_email, password);
 				
 				/**
 				 * You need to get what the user has written in the text fields,
