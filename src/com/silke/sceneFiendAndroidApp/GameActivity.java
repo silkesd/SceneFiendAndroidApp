@@ -2,10 +2,9 @@ package com.silke.sceneFiendAndroidApp;
 
 import java.util.HashMap;
 
-import com.silke.sceneFiendAndroidApp.handlers.DBHandler;
+import com.silke.sceneFiendAndroidApp.handlers.DBQuizHandler;
 
 import android.app.ActionBar;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -24,8 +23,6 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 	Button buttonviewAns2;
 	Button buttonviewAns3;
 	Button buttonviewAns4;
-//	Button[] answers;
-//	Button[] questions;
 	Button next;
 	
     /** Called when the activity is first created. */
@@ -39,35 +36,15 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		ActionBar ab = getActionBar();
 		ab.setDisplayHomeAsUpEnabled(true);
 		
-		DBHandler db = new DBHandler(this);
+		DBQuizHandler db = new DBQuizHandler(this);
 		
-//		// Retrieve the shared preferences
-//        mGameSettings = getSharedPreferences(GAME_PREFERENCES, Context.MODE_PRIVATE);
-//
-//        // Get our progress through the questions
-//        int startingQuestionNumber = mGameSettings.getInt(GAME_PREFERENCES_CURRENT_QUESTION, 0);
-//
-//        // If we're at the beginning of the quiz, initialize the Shared preferences
-//        if (startingQuestionNumber == 0) 
-//        {
-//            startingQuestionNumber = 1;
-//            android.content.SharedPreferences.Editor editor = mGameSettings.edit();
-//            editor.putInt(GAME_PREFERENCES_CURRENT_QUESTION, startingQuestionNumber);
-//            editor.commit();
-//        }
-        
-//       Log.d("GameActivity: " + startingQuestionNumber, "starting qu number");
-        
         textviewQu = (TextView) findViewById(R.id.textviewQu);
 			HashMap<String,String> gameList = db.getQuestionAnswers();
 				String question_id = gameList.get("question_id");
 				String question = gameList.get("question_text");
 				
 				textviewQu.setText(question);
-		
-				
-				
-				
+			
 		HashMap<String,String> gameAns1List = db.getFourAnswers(Integer.parseInt(question_id));	
 		Log.d("shit", gameAns1List.toString());
 		
@@ -93,19 +70,14 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 			
 				String answers4 = gameAns1List.get("answer_text4");
 				buttonviewAns4.setText(answers4);
+
+		next = (Button) findViewById(R.id.next);
 		
-//		Log.d("Game", answers1.toString());
-//		Log.d("Game", answers2.toString());
-//		Log.d("Game", answers3.toString());		
-//		Log.d("Game", answers4.toString());
-		
-		//next = (Button) findViewById(R.id.next);
-		
-		//next.setOnClickListener((OnClickListener) this);
 		buttonviewAns4.setOnClickListener((OnClickListener) this);
 		buttonviewAns3.setOnClickListener((OnClickListener) this);
 		buttonviewAns2.setOnClickListener((OnClickListener) this);
 		buttonviewAns1.setOnClickListener((OnClickListener) this);
+		next.setOnClickListener((OnClickListener) this);
     }
     
     public void onClick(View view)
@@ -115,19 +87,25 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
     		//find correct answer here on click - get correct answer id
     		// EXTEND BUTTON CLASS TO ACTIVITY - can get id this way :)
     		//make button mybutton to read id
-    		Log.d("Game", buttonviewAns4.toString());
+    		Log.d("button4", buttonviewAns4.toString());
     	}
     	else if(buttonviewAns3 != null)
     	{
-    		Log.d("Game", buttonviewAns3.toString());
+    		Log.d("button3", buttonviewAns3.toString());
     	}
     	else if(buttonviewAns2 != null)
     	{
-    		Log.d("Game", buttonviewAns2.toString());
+    		Log.d("button2", buttonviewAns2.toString());
     	}
     	else if(buttonviewAns1 != null)
     	{
-    		Log.d("Game", buttonviewAns1.toString());
+    		Log.d("button1", buttonviewAns1.toString());
+    	}
+    	else if(next != null)
+    	{
+    		Log.d("Next", next.toString());
+    		DBQuizHandler db = new DBQuizHandler(this);
+    		//HashMap<String,String> gameList = db.getFourAnswers(Integer.parseInt(question_id++));
     	}
     	Log.d("game", "clicked");
     	//currentQuestion++;

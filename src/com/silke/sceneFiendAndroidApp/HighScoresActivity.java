@@ -63,7 +63,7 @@ public class HighScoresActivity extends ListActivity
 		scoresList = new ArrayList<HashMap<String, String>>();
 
 		// Loading scores in Background Thread
-		new LoadAllScores().execute();
+		new LoadHighScores().execute();
 		
 		//actionbar
 		ActionBar ab = getActionBar();
@@ -90,7 +90,7 @@ public class HighScoresActivity extends ListActivity
 	/**
 	 * Background Async Task to Load all product by making HTTP Request
 	 * */
-	class LoadAllScores extends AsyncTask<String, String, String> 
+	class LoadHighScores extends AsyncTask<String, String, String> 
 	{
 
 		/**
