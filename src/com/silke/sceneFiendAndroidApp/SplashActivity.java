@@ -1,7 +1,6 @@
 package com.silke.sceneFiendAndroidApp;
 import com.silke.sceneFiendAndroidApp.R;
 import com.silke.sceneFiendAndroidApp.SplashActivity;
-import com.silke.sceneFiendAndroidApp.MenuActivity;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -47,7 +46,7 @@ public class SplashActivity extends SceneFiendAndroidAppActivity {
             public void onAnimationEnd(Animation animation) 
             {
             	// The animation has ended, transition to the Login screen
-            	startActivity(new Intent(SplashActivity.this, MenuActivity.class));
+            	startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                 SplashActivity.this.finish();
             }
 
