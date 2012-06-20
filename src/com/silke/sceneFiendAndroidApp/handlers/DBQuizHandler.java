@@ -295,7 +295,7 @@ public class DBQuizHandler extends SQLiteOpenHelper
 	
 	
 	/*
-	 * Get all the game answers
+	 * Get four game answers
 	 */
 	public HashMap<String, String>getFourAnswers(int qu_id)
 	{
@@ -330,6 +330,71 @@ public class DBQuizHandler extends SQLiteOpenHelper
 	/*
 	 * getcorrect answer - get answer id for question id where correct answer...
 	 */
+	public HashMap<String, String>getCorrectAnswers()
+	{
+		HashMap<String,String> correct_answers = new HashMap<String,String>();
+		String selectQuery = "SELECT  " + TABLE_ANSWERS + "." + KEY_ANSWER_ID + ", " 
+				+ TABLE_QUIZ + "." + KEY_ANSWER_ID + ", " 
+				+ TABLE_QUIZ + "." + KEY_CORRECT_ANSWER 
+				+  " FROM " + TABLE_ANSWERS + ", " + TABLE_QUIZ 
+				+ " WHERE " + TABLE_ANSWERS + "." + KEY_ANSWER_ID + 
+				"= " + TABLE_QUIZ + "." + KEY_ANSWER_ID;
+		
+		Log.d("TESTING QUERY: ", selectQuery);
+		
+		SQLiteDatabase db = this.getWritableDatabase();
+		Cursor cursor = db.rawQuery(selectQuery, null);
+		
+		int i = 0;
+	    while(cursor.moveToNext())
+	    {
+		    	i++;
+		    	correct_answers.put("answer_id"+i, cursor.getString(1));
+		    	correct_answers.put("correct_answer"+i, cursor.getString(2));
+		    	//correctanswer.put("answer_text"+i, cursor.getString(1));
+		    	Log.d("correct_answer"+i, cursor.getString(2));
+		    	Log.d("answer_id"+i, cursor.getString(1));
+	    }
+	    cursor.close();
+	    db.close();
+	    return correct_answers;
+	}
+	
+	/*
+	 * getcorrect answer - get answer id for question id where correct answer...
+	 */
+	public HashMap<String, String>getCorrectAnswer(int ans_id)
+	{
+		HashMap<String,String> correct_answer = new HashMap<String,String>();
+		String selectQuery = "SELECT  " + TABLE_ANSWERS + "." + KEY_ANSWER_ID + ", " 
+				+ TABLE_QUIZ + "." + KEY_ANSWER_ID + ", " 
+				+ TABLE_QUIZ + "." + KEY_CORRECT_ANSWER 
+				+  " FROM " + TABLE_ANSWERS + ", " + TABLE_QUIZ 
+				+ " WHERE " + TABLE_ANSWERS + "." + KEY_ANSWER_ID + 
+				"= " + TABLE_QUIZ + "." + KEY_ANSWER_ID 
+				+ " AND " + TABLE_QUIZ + "." + KEY_ANSWER_ID + "=" + ans_id;
+		
+		Log.d("TESTING QUERY: ", selectQuery);
+		
+		SQLiteDatabase db = this.getWritableDatabase();
+		Cursor cursor = db.rawQuery(selectQuery, null);
+		
+		cursor.moveToFirst();
+		if(cursor.getCount() > -1)
+		{
+		    	correct_answer.put("correct_answer", cursor.getString(2));
+		    	//correctanswer.put("answer_text"+i, cursor.getString(1));
+		    	Log.d("correct_answer", cursor.getString(2));
+		    	//Log.d("answer_text"+i, cursor.getString(1));
+		}
+	    Log.d("GET CORRECT ANSWER: ", correct_answer.toString());
+	    cursor.close();
+	    db.close();
+	    return correct_answer;
+	}
+	
+	
+	
 	
 	/*
 	 * Get game questions with their four answers
