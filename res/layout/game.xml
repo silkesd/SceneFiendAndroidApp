@@ -11,35 +11,35 @@
         android:textSize="@dimen/game_qu_text_size"
         android:textStyle="bold" />
 
-    <Button
+    <com.silke.sceneFiendAndroidApp.Buttons
         android:id="@+id/buttonviewAns1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_margin="7dip" 
-        android:textSize="@dimen/desc_size"
-        />
+        android:textSize="@dimen/desc_size"></com.silke.sceneFiendAndroidApp.Buttons>
+        
     
 
-    <Button
+    <com.silke.sceneFiendAndroidApp.Buttons
         android:id="@+id/buttonviewAns2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_margin="7dip"
-        android:textSize="@dimen/desc_size"  />
+        android:textSize="@dimen/desc_size"></com.silke.sceneFiendAndroidApp.Buttons>
 
-    <Button
+    <com.silke.sceneFiendAndroidApp.Buttons
         android:id="@+id/buttonviewAns3"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_margin="7dip"
-        android:textSize="@dimen/desc_size"   />
+        android:textSize="@dimen/desc_size"></com.silke.sceneFiendAndroidApp.Buttons>
 
-    <Button
+    <com.silke.sceneFiendAndroidApp.Buttons
         android:id="@+id/buttonviewAns4"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_margin="7dip" 
-        android:textSize="@dimen/desc_size"   />
+        android:textSize="@dimen/desc_size"></com.silke.sceneFiendAndroidApp.Buttons>
 
     <RelativeLayout
         android:layout_width="wrap_content"
