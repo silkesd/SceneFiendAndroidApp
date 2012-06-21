@@ -1,6 +1,11 @@
 package com.silke.sceneFiendAndroidApp;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.silke.sceneFiendAndroidApp.R;
+import com.silke.sceneFiendAndroidApp.asynctasks.FileDownloader;
+import com.silke.sceneFiendAndroidApp.asynctasks.IJsonDownloaded;
 import com.silke.sceneFiendAndroidApp.handlers.UserFunctions;
 import android.os.Bundle;
 import android.app.ActionBar;
@@ -13,14 +18,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity
+public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity implements IJsonDownloaded
 {
 	Button btnLogin;
 	Button btnLinkToRegister;
-	
+	static JSONObject jObj = null;
 	EditText inputUsername;
 	EditText inputPassword;
 	TextView loginErrorMsg;
+	private SceneFiendLoginActivity context;
 	
 	// JSON Response node names
 //	private static String KEY_SUCCESS = "success";
@@ -36,6 +42,7 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        context = this;
         
         Typeface tf = Typeface.createFromAsset(getAssets(),
                 "fonts/lucindablack.ttf");
@@ -64,14 +71,29 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity
  				String password = inputPassword.getText().toString();
  				Log.d("Button", player_name);
  				UserFunctions userFunction = new UserFunctions();
- 				userFunction.loginUser(player_name, password);
+ 				FileDownloader fd = userFunction.loginUser(context, player_name, password);
+ 				String json_str = fd.getApiResponse();
+ 				Log.d("Testing JSON string for Login", fd.getApiResponse());
 
+ 				//parse string to json object
+ 				try 
+ 				{
+					jObj = new JSONObject(json_str);
+				} 
+ 				catch (JSONException e) 
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+ 				//FIND OUT HOW TO CHECK IF FILEDOWNLOADER HEAS FINISHED DOWNLOADING BEFORE
+ 				//CAN CALL THIS...
+ 				
  			// check for login response
 // 				try {
-// 					if (jObj.get(KEY_SUCCESS) != null) 
+// 					if (jObj.getString("success") != null) 
 // 					{
 // 						loginErrorMsg.setText("");
-// 						String res = jObj.getString(KEY_SUCCESS); 
+// 						String res = jObj.getString("success"); 
 // 						if(Integer.parseInt(res) == 1)
 // 						{
 // 							// user successfully logged in
@@ -121,6 +143,7 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity
  			}
  		});
  	}
+    
     public boolean onOptionsItemSelected(MenuItem item) 
 	{
 		switch (item.getItemId())
@@ -134,6 +157,17 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity
  				return true;
  			default:
  				return super.onOptionsItemSelected(item);
+		}
+	}
+
+
+	public void onJsonDownloaded(JSONObject jObj) 
+	{
+		try {
+			Log.d("LoginActivity", "Success value: " + jObj.getString("success"));
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
  }

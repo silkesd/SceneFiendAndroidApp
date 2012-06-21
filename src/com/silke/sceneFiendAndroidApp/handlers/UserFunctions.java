@@ -5,7 +5,11 @@ import java.util.List;
 import org.apache.http.NameValuePair;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+
+import com.silke.sceneFiendAndroidApp.SceneFiendLoginActivity;
 import com.silke.sceneFiendAndroidApp.asynctasks.FileDownloader;
+import com.silke.sceneFiendAndroidApp.asynctasks.IJsonDownloaded;
+
 import android.content.Context;
 import android.util.Log;
 
@@ -21,13 +25,11 @@ public class UserFunctions
 	private static String login_tag = "login";
 	private static String register_tag = "register";
 	
-	private Context c;
-	
 	// constructor
 	public UserFunctions() 
 	{
 		
-		fileDownloader = new FileDownloader(null, null);
+		//fileDownloader = new FileDownloader(null, null, null);
 	}
 	
 	/**
@@ -36,7 +38,7 @@ public class UserFunctions
 	 * @param player_password
 	 * @return 
 	 * */
-	public FileDownloader loginUser(String player_name, String password)
+	public FileDownloader loginUser(IJsonDownloaded context, String player_name, String password)
 	{
 		// Building Parameters and returning json string
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -45,7 +47,7 @@ public class UserFunctions
 		params.add(new BasicNameValuePair("password", password));
 		
 		Log.d("UserFunctions", "sending login to file downloader");
-		fileDownloader = new FileDownloader(c, params);
+		fileDownloader = new FileDownloader(context, params);
 		fileDownloader.execute(loginURL);
 		return fileDownloader;
 		
@@ -56,6 +58,7 @@ public class UserFunctions
 		//return json;
 	}
 	
+	
 	/**
 	 * function make Login Request
 	 * @param player_name
@@ -63,7 +66,7 @@ public class UserFunctions
 	 * @param password
 	 * @param player_avatar
 	 * */
-	public void registerUser(String player_name, String player_email, String password)
+	public void registerUser(IJsonDownloaded context, String player_name, String player_email, String password)
 	{
 		// Building Parameters
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -78,7 +81,7 @@ public class UserFunctions
 		// return json
 		//return json;
 		Log.d("UserFunctions", "sending register to file downloader");
-		fileDownloader = new FileDownloader(c, params);
+		fileDownloader = new FileDownloader(context, params);
 		fileDownloader.execute(registerURL);
 		
 	}

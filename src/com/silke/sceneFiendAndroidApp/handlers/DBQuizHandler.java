@@ -399,7 +399,7 @@ public class DBQuizHandler extends SQLiteOpenHelper
 	/*
 	 * Get game questions with their four answers
 	 */
-	public HashMap<String, String>getQuestionAnswers()
+	public HashMap<String, String>getQuestion(int qu_id)
 	{
 		HashMap<String,String> questionanswers = new HashMap<String,String>();
 		String selectQuery = "SELECT  * FROM " + TABLE_ANSWERS + ", " 
@@ -424,7 +424,7 @@ public class DBQuizHandler extends SQLiteOpenHelper
 //	    	Log.d("Getting qu_id", cursor.getString(4));
 	    	
 	    }
-	    for (int i = 0; i < 10 && !cursor.isAfterLast(); i++) 
+	    for (int i = 0; i < 15 && !cursor.isAfterLast(); i++) 
     	{
     		cursor.moveToNext();
     	}
