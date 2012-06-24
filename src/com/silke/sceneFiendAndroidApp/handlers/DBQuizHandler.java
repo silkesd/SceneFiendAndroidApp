@@ -2,9 +2,7 @@ package com.silke.sceneFiendAndroidApp.handlers;
 
 import java.util.HashMap;
 
-import com.silke.sceneFiendAndroidApp.SceneFiendAndroidAppActivity;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -30,11 +28,6 @@ public class DBQuizHandler extends SQLiteOpenHelper
 	private static final String TABLE_QUESTION_HAS_IMAGE = "question_has_image";
 	private static final String TABLE_QUESTION_HAS_CLIP = "question_has_clip";
 
-	// Player Table Columns names
-	private static final String KEY_PLAYER_ID = "player_id";
-	private static final String KEY_PLAYER_NAME = "player_name";
-	private static final String KEY_PLAYER_EMAIL = "player_email";
-	
 	//Scene Questions Table
 	private static final String KEY_QUESTION_ID = "question_id";
 	private static final String KEY_QUESTION_TEXT = "question_text";
@@ -374,7 +367,7 @@ public class DBQuizHandler extends SQLiteOpenHelper
 				"= " + TABLE_QUIZ + "." + KEY_ANSWER_ID 
 				+ " AND " + TABLE_QUIZ + "." + KEY_ANSWER_ID + "=" + ans_id;
 		
-		Log.d("TESTING QUERY: ", selectQuery);
+		//Log.d("TESTING QUERY: ", selectQuery);
 		
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);
@@ -382,12 +375,9 @@ public class DBQuizHandler extends SQLiteOpenHelper
 		cursor.moveToFirst();
 		if(cursor.getCount() > -1)
 		{
-		    	correct_answer.put("correct_answer", cursor.getString(2));
-		    	//correctanswer.put("answer_text"+i, cursor.getString(1));
-		    	Log.d("correct_answer", cursor.getString(2));
-		    	//Log.d("answer_text"+i, cursor.getString(1));
+		    	correct_answer.put("correct_answer", cursor.getString(2));    	
 		}
-	    Log.d("GET CORRECT ANSWER: ", correct_answer.toString());
+	    //Log.d("GET CORRECT ANSWER: ", correct_answer.toString());
 	    cursor.close();
 	    db.close();
 	    return correct_answer;
@@ -399,13 +389,16 @@ public class DBQuizHandler extends SQLiteOpenHelper
 	/*
 	 * Get game questions with their four answers
 	 */
-	public HashMap<String, String>getQuestion(int qu_id)
+	public HashMap<String, String>getQuestion(int current_qu)
 	{
 		HashMap<String,String> questionanswers = new HashMap<String,String>();
 		String selectQuery = "SELECT  * FROM " + TABLE_ANSWERS + ", " 
-							+ TABLE_QUESTIONS + ", " + TABLE_QUIZ + ", " + TABLE_QUESTION_HAS_CLIP
-				+ " WHERE " + TABLE_QUESTIONS + "." + KEY_QUESTION_ID + "= " + TABLE_QUIZ 
-				+ "." + KEY_QUESTION_ID + " AND " + TABLE_ANSWERS + "." + KEY_ANSWER_ID  + "= " + TABLE_QUIZ + "." + KEY_ANSWER_ID;
+							+ TABLE_QUESTIONS + ", " + TABLE_QUIZ + ", " 
+				+ TABLE_QUESTION_HAS_CLIP
+				+ " WHERE " + TABLE_QUESTIONS + "." + KEY_QUESTION_ID 
+				+ "= " + TABLE_QUIZ + "." + KEY_QUESTION_ID 
+				+ " AND " + TABLE_ANSWERS + "." + KEY_ANSWER_ID  
+				+ "= " + TABLE_QUIZ + "." + KEY_ANSWER_ID;
 		
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);
@@ -417,12 +410,7 @@ public class DBQuizHandler extends SQLiteOpenHelper
 	    	 // Retrieve the shared preferences
 	       
     		questionanswers.put("question_text", cursor.getString(3));
-    		questionanswers.put("question_id", cursor.getString(4));
-    		
-//    		questionanswers.put("correct_answer", cursor.getString(6));
-//    		
-//	    	Log.d("Getting qu_id", cursor.getString(4));
-	    	
+    		questionanswers.put("question_id", cursor.getString(4));	    	
 	    }
 	    for (int i = 0; i < 15 && !cursor.isAfterLast(); i++) 
     	{
@@ -436,7 +424,47 @@ public class DBQuizHandler extends SQLiteOpenHelper
 		return questionanswers;
 	}
 	
+	/*
+	 * Get following game questions with their four answers
+	 */
+	public HashMap<String, String>getNextQuestion(int current_qu)
+	{
+		int current_question = current_qu;
+		
+		HashMap<String,String> questionanswers = new HashMap<String,String>();
+		String selectQuery = "SELECT  * FROM " + TABLE_ANSWERS + ", " 
+							+ TABLE_QUESTIONS + ", " + TABLE_QUIZ + ", " 
+				+ TABLE_QUESTION_HAS_CLIP
+				+ " WHERE " + TABLE_QUESTIONS + "." + KEY_QUESTION_ID 
+				+ "= " + TABLE_QUIZ + "." + KEY_QUESTION_ID 
+				+ " AND " + TABLE_ANSWERS + "." + KEY_ANSWER_ID  
+				+ "= " + TABLE_QUIZ + "." + KEY_ANSWER_ID
+				+ " AND " + TABLE_QUESTIONS + "." + KEY_QUESTION_ID  
+				+ "= " + current_question;
+		
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery(selectQuery, null);
+	    
+	    if(cursor.moveToLast())
+	    {
+	    	 // Retrieve the shared preferences
+    		questionanswers.put("question_text", cursor.getString(3));
+    		questionanswers.put("question_id", cursor.getString(4));	    	
+	    }
+	   
+	    cursor.close();
+	    getClips();
+	    db.close();
+	  
+		return questionanswers;
+	}
 	
+	
+	
+	
+	
+	
+		
 	
 	/*
 	 * Get all the game clips
