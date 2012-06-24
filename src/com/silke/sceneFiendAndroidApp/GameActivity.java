@@ -6,7 +6,6 @@ import com.silke.sceneFiendAndroidApp.handlers.DBQuizHandler;
 
 import android.app.ActionBar;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -17,7 +16,7 @@ import android.widget.TextView;
 
 public class GameActivity extends SceneFiendAndroidAppActivity implements View.OnClickListener
 {
-	SharedPreferences mGameSettings;
+	//
 	TextView textviewQu;
 	Button buttonviewAns1;
 	Button buttonviewAns2;
@@ -29,10 +28,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 	HashMap<String,String>  gameCorrectAns2List;
 	HashMap<String,String>  gameCorrectAns3List;
 	HashMap<String,String>  gameCorrectAns4List;
-	//MyButtons myButtons = new MyButtons();
-	
-	//MAKE SHARED PREFERENCE!!!!!!!! 
-	int qu_id = 0;
+
 	
     /** Called when the activity is first created. */
     @Override
@@ -45,21 +41,28 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		ActionBar ab = getActionBar();
 		ab.setDisplayHomeAsUpEnabled(true);
 		
-		final DBQuizHandler db = new DBQuizHandler(this);
 		
         textviewQu = (TextView) findViewById(R.id.textviewQu);
-		final HashMap<String,String> gameList = db.getQuestion(qu_id);
+		
+        callQuestionInfo();
+    }
+    
+    public void callQuestionInfo()
+    {
+    	final DBQuizHandler db = new DBQuizHandler(this);
+    	
+    	Log.d("GAME ACTIVITY", "question_id BEFORE CALL TO DB: " + GAME_PREFERENCES_CURRENT_QUESTION);	
+    	
+        final HashMap<String,String> gameList = db.getNextQuestion(GAME_PREFERENCES_CURRENT_QUESTION);
 				String question_id = gameList.get("question_id");
 				String question = gameList.get("question_text");
 				textviewQu.setText(question);
-				
 		
-		HashMap<String,String> gameCorrectAnsList = db.getCorrectAnswers();		
-				String answer_id = gameCorrectAnsList.get("answer_id");	
-				String correct_answer = gameCorrectAnsList.get("correct_answer");	
-								
+		GAME_PREFERENCES_CURRENT_QUESTION = Integer.parseInt(gameList.get("question_id"));		
+		
+		Log.d("GAME ACTIVITY", "question_id AFTER CALL TO DB: " + GAME_PREFERENCES_CURRENT_QUESTION);		
+		
 		HashMap<String,String> gameAns1List = db.getFourAnswers(Integer.parseInt(question_id));	
-		
 		
 		buttonviewAns1 = (Buttons) findViewById(R.id.buttonviewAns1);	
 				String answers1 = gameAns1List.get("answer_text1");	
@@ -80,14 +83,12 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 				String answers4 = gameAns1List.get("answer_text4");	
 				buttonviewAns4.setText(answers4);
 				buttonviewAns4.setId(Integer.parseInt(gameAns1List.get("answer_id4")));
-
 				
 		next = (Button) findViewById(R.id.next);
 		
 		//Getting the id attached to each button
 		buttonviewAns1.setOnClickListener(new OnClickListener()
 		{
-
 			public void onClick(View v) 
 			{
 				// TODO Auto-generated method stub
@@ -96,6 +97,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 				HashMap<String,String> gameCorrectAns1List = db.getCorrectAnswer(buttonviewAns1.getId());
 				String correct_answers1 = gameCorrectAns1List.get("correct_answer");
 	
+				//if the answer attached to this button is correct (1) log correct, else log incorrect
 				if(Integer.parseInt(gameCorrectAns1List.get("correct_answer"))==1)
 				{
 					Log.d("Game 1 IS THE CORRECT ANSWER", correct_answers1);
@@ -105,20 +107,22 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 					Log.d("Game 1 IS THE WRONG ANSWER", correct_answers1);
 					//go to next qu / show negative response
 				}
-			}
-			
+			}			
 		});
 		buttonviewAns2.setOnClickListener(new OnClickListener()
 		{
-
 			public void onClick(View v) 
 			{
 				// TODO Auto-generated method stub
 				System.out.println(buttonviewAns2.getId());
 				
+				/*setting a hashmap that contains the returned values from getCorrectAnswer and
+				* and passing the id returned from the button
+				*/
 				HashMap<String,String> gameCorrectAns2List = db.getCorrectAnswer(buttonviewAns2.getId());
 				String correct_answers2 = gameCorrectAns2List.get("correct_answer");
-	
+				
+				//if the answer attached to this button is correct (1) log correct, else log incorrect
 				if(Integer.parseInt(gameCorrectAns2List.get("correct_answer"))==1)
 				{
 					Log.d("Game 2 IS THE CORRECT ANSWER", correct_answers2);
@@ -129,11 +133,9 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 					//go to next qu / show negative response
 				}
 			}
-			
 		});
 		buttonviewAns3.setOnClickListener(new OnClickListener()
 		{
-
 			public void onClick(View v) 
 			{
 				// TODO Auto-generated method stub
@@ -142,6 +144,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 				HashMap<String,String> gameCorrectAns3List = db.getCorrectAnswer(buttonviewAns3.getId());
 				String correct_answers3 = gameCorrectAns3List.get("correct_answer");
 	
+				//if the answer attached to this button is correct (1) log correct, else log incorrect
 				if(Integer.parseInt(gameCorrectAns3List.get("correct_answer"))==1)
 				{
 					Log.d("Game 3 IS THE CORRECT ANSWER", correct_answers3);
@@ -151,12 +154,10 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 					Log.d("Game 3 IS THE WRONG ANSWER", correct_answers3);
 					//go to next qu / show negative response
 				}
-			}
-			
+			}			
 		});
 		buttonviewAns4.setOnClickListener(new OnClickListener()
 		{
-
 			public void onClick(View v) 
 			{
 				// TODO Auto-generated method stub
@@ -164,6 +165,8 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 				
 				HashMap<String,String> gameCorrectAns4List = db.getCorrectAnswer(buttonviewAns4.getId());
 				String correct_answers4 = gameCorrectAns4List.get("correct_answer");
+				
+				//if the answer attached to this button is correct (1) log correct, else log incorrect
 				if(Integer.parseInt(gameCorrectAns4List.get("correct_answer"))==1)
 				{
 					Log.d("Game 4 IS THE CORRECT ANSWER", correct_answers4);
@@ -172,27 +175,30 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 				{
 					//go to next qu / show negative response
 				}
-			}
-			
+			}			
 		});
 		
 		next.setOnClickListener( new OnClickListener()
 		{
-
 			public void onClick(View v) 
-			{
-				// TODO Auto-generated method stub
-				System.out.println("next clicked");
-				Log.d("GET QUESTION PRE INC: ", gameList.get("question_id"));
-				
+			{				
 				//increment shared preference instead and call here and pass to sqlite
-				qu_id++;
-				//call activity again
+				GAME_PREFERENCES_CURRENT_QUESTION++;
 				
-				Log.d("GET QUESTION POST INC: ", gameList.get("question_id"));
+				Log.d("GAME ACTIVITY", "NEXT BUTTON CLICKED: " + GAME_PREFERENCES_CURRENT_QUESTION);			
+				
+				//call activity again
+				Intent i = new Intent(getApplicationContext(),
+ 						GameActivity.class);
+				i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			
+				startActivity(i);
+				finish();
+ 				Log.d("GameAct", "activity started again");
 			}
+			
 		});
-		
+	
 //		//if next is clicked - qu_id++
 //		final Timer task = new Timer();
 //		final long seconds = 5;
@@ -206,8 +212,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 //		      task = new Timer();
 //		      timer.schedule(task,seconds*1000L);
 //		   }
-//		});
-		
+//		});		
     }
 
 	public boolean onOptionsItemSelected(MenuItem item) 
@@ -226,10 +231,8 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		}
 	}
 
-	public void onClick(View v) {
+	public void onClick(View v) 
+	{
 		// TODO Auto-generated method stub
-		
 	}
-	
-	
 }
