@@ -29,7 +29,6 @@ public class UserFunctions
 	public UserFunctions() 
 	{
 		
-		//fileDownloader = new FileDownloader(null, null, null);
 	}
 	
 	/**
@@ -50,12 +49,7 @@ public class UserFunctions
 		fileDownloader = new FileDownloader(context, params);
 		fileDownloader.execute(loginURL);
 		return fileDownloader;
-		
-		//parse data from the login url stated above with params
-		//JSONObject json = jsonParser.getJSONFromUrl(loginURL, params);
-		// return json
-		// Log.e("JSON", json.toString());
-		//return json;
+	
 	}
 	
 	
@@ -75,15 +69,9 @@ public class UserFunctions
 		params.add(new BasicNameValuePair("player_email", player_email));
 		params.add(new BasicNameValuePair("password", password));
 		
-		// getting JSON Object from register url with params
-		//password is prior to encryption in php files
-		//JSONObject json = jsonParser.getJSONFromUrl(registerURL, params);
-		// return json
-		//return json;
 		Log.d("UserFunctions", "sending register to file downloader");
 		fileDownloader = new FileDownloader(context, params);
 		fileDownloader.execute(registerURL);
-		
 	}
 	
 	/**
@@ -93,7 +81,8 @@ public class UserFunctions
 	{
 		DBHandler db = new DBHandler(context);
 		int count = db.getRowCount();
-		if(count > 0){
+		if(count > 0)
+		{
 			// user is logged in
 			return true;
 		}

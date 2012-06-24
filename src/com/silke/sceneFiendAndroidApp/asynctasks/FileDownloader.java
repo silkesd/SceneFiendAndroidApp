@@ -91,10 +91,13 @@ public class FileDownloader extends AsyncTask<String, Integer, String>
 	
 	protected void onPostExecute(String apiResponse)
 	{
-		try {
+		try 
+		{
 			jObj = new JSONObject(apiResponse);
 			context.onJsonDownloaded(jObj);
-		} catch (JSONException e) {
+		} 
+		catch (JSONException e) 
+		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
