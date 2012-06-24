@@ -10,10 +10,10 @@ public class SceneFiendAndroidAppActivity extends Activity
 	public static final String GAME_PREFERENCES_PLAYER_EMAIL = "Email"; // String
 	public static final String GAME_PREFERENCES_PLAYER_PASSWORD = "Password"; // String
 	public static final String GAME_PREFERENCES_PLAYER_SCORE = "Score"; // Integer
-	public static final String GAME_PREFERENCES_CURRENT_QUESTION = "CurrentQuestion"; // Integer
+	public static Integer GAME_PREFERENCES_CURRENT_QUESTION = 1; // Integer
 	public static final String GAME_PREFERENCES_PLAYER_AVATAR = "Avatar"; // String URL to image
 	
-	public static final String GAME_PREFERENCES_PLAYER_ID = "ServerId"; // Integer
+	public static String GAME_PREFERENCES_PLAYER_ID = "ServerId"; // Integer
 	
 	// XML tags for questions in the game
     public static final String XML_TAG_QUESTION_BLOCK = "questions";

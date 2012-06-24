@@ -85,10 +85,9 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity implem
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
- 				//FIND OUT HOW TO CHECK IF FILEDOWNLOADER HEAS FINISHED DOWNLOADING BEFORE
- 				//CAN CALL THIS...
+ 			
  				
- 			// check for login response
+ 				// check for login response
 // 				try {
 // 					if (jObj.getString("success") != null) 
 // 					{
@@ -106,7 +105,7 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity implem
 // 							userFunction.logoutUser(getApplicationContext());
 // 							db.addUser(jObj.getString(KEY_ID), json_user.getString(KEY_NAME), json_user.getString(KEY_EMAIL));						
 // 							
-// 							// Launch Menu Screen
+// 						// Launch Menu Screen
 // 						Intent menu = new Intent(getApplicationContext(), MenuActivity.class);
 // 						
 // 						// Close all views before launching Menu
@@ -163,9 +162,13 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity implem
 
 	public void onJsonDownloaded(JSONObject jObj) 
 	{
-		try {
-			Log.d("LoginActivity", "Success value: " + jObj.getString("success"));
-		} catch (JSONException e) {
+		try 
+		{
+			GAME_PREFERENCES_PLAYER_ID = jObj.getString("player_id");
+			Log.d("LOGIN ACTIVITY", "Logged in player_id: " + GAME_PREFERENCES_PLAYER_ID);
+		} 
+		catch (JSONException e) 
+		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
