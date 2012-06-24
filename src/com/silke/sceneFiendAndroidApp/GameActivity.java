@@ -100,11 +100,17 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 				//if the answer attached to this button is correct (1) log correct, else log incorrect
 				if(Integer.parseInt(gameCorrectAns1List.get("correct_answer"))==1)
 				{
+					
+					GAME_PREFERENCES_PLAYER_SCORE++;
 					Log.d("Game 1 IS THE CORRECT ANSWER", correct_answers1);
+					Log.d("RIGHT", GAME_PREFERENCES_PLAYER_SCORE.toString());
 				}
 				else
 				{
+					
+					GAME_PREFERENCES_PLAYER_SCORE--;
 					Log.d("Game 1 IS THE WRONG ANSWER", correct_answers1);
+					Log.d("WRONG", GAME_PREFERENCES_PLAYER_SCORE.toString());
 					//go to next qu / show negative response
 				}
 			}			
@@ -125,11 +131,17 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 				//if the answer attached to this button is correct (1) log correct, else log incorrect
 				if(Integer.parseInt(gameCorrectAns2List.get("correct_answer"))==1)
 				{
+					
+					GAME_PREFERENCES_PLAYER_SCORE++;
 					Log.d("Game 2 IS THE CORRECT ANSWER", correct_answers2);
+					Log.d("RIGHT", GAME_PREFERENCES_PLAYER_SCORE.toString());
 				}
 				else
 				{
+					
+					GAME_PREFERENCES_PLAYER_SCORE--;
 					Log.d("Game 2 IS THE WRONG ANSWER", correct_answers2);
+					Log.d("WRONG", GAME_PREFERENCES_PLAYER_SCORE.toString());
 					//go to next qu / show negative response
 				}
 			}
@@ -147,11 +159,16 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 				//if the answer attached to this button is correct (1) log correct, else log incorrect
 				if(Integer.parseInt(gameCorrectAns3List.get("correct_answer"))==1)
 				{
+					GAME_PREFERENCES_PLAYER_SCORE++;
 					Log.d("Game 3 IS THE CORRECT ANSWER", correct_answers3);
+					Log.d("RIGHT", GAME_PREFERENCES_PLAYER_SCORE.toString());
 				}
 				else
 				{
+					
+					GAME_PREFERENCES_PLAYER_SCORE--;
 					Log.d("Game 3 IS THE WRONG ANSWER", correct_answers3);
+					Log.d("WRONG", GAME_PREFERENCES_PLAYER_SCORE.toString());
 					//go to next qu / show negative response
 				}
 			}			
@@ -169,10 +186,15 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 				//if the answer attached to this button is correct (1) log correct, else log incorrect
 				if(Integer.parseInt(gameCorrectAns4List.get("correct_answer"))==1)
 				{
+					GAME_PREFERENCES_PLAYER_SCORE++;
 					Log.d("Game 4 IS THE CORRECT ANSWER", correct_answers4);
+					Log.d("RIGHT", GAME_PREFERENCES_PLAYER_SCORE.toString());
 				}
 				else
 				{
+					GAME_PREFERENCES_PLAYER_SCORE--;
+					Log.d("Game 4 IS THE WRONG ANSWER", correct_answers4);
+					Log.d("WRONG", GAME_PREFERENCES_PLAYER_SCORE.toString());
 					//go to next qu / show negative response
 				}
 			}			
