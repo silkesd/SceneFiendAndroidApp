@@ -82,6 +82,6 @@
     <string name="twitter_register_email">Email</string>
     <string name="twitter_register_full_name">Full Name</string>
 
-    <string name="next">Next</string>
+    <string name="next">I don\'t know! Move to next question</string>
    
 </resources>

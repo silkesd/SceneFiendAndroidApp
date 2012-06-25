@@ -11,10 +11,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +27,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 	// Progress Dialog
 	private ProgressDialog pDialog;
 	TextView textviewQu;
+	TextView textviewScore;
 	Button buttonviewAns1;
 	Button buttonviewAns2;
 	Button buttonviewAns3;
@@ -47,7 +52,10 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		ab.setDisplayHomeAsUpEnabled(true);
 		
         textviewQu = (TextView) findViewById(R.id.textviewQu);
+        textviewScore = (TextView) findViewById(R.id.textviewScore);
 		
+        textviewScore.setText("Your score is: " + GAME_PREFERENCES_PLAYER_SCORE.toString());
+        
         callQuestionInfo();
     }
     
@@ -246,7 +254,22 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
     
 	private void right() 
 	{
-		Toast.makeText(GameActivity.this, "That's right :)", Toast.LENGTH_SHORT).show();
+		LayoutInflater inflater = getLayoutInflater();
+		View layout = inflater.inflate(R.layout.toast_layout,
+		                               (ViewGroup) findViewById(R.id.toast_layout_root));
+
+		ImageView image = (ImageView) layout.findViewById(R.id.icon);
+		image.setImageResource(R.drawable.happy);
+		TextView text = (TextView) layout.findViewById(R.id.text);
+		text.setText("That's right!");
+
+		Toast toast = new Toast(getApplicationContext());
+		toast.setGravity(Gravity.CENTER_VERTICAL, 0, 147);
+		toast.setDuration(Toast.LENGTH_SHORT);
+		toast.setView(layout);
+		toast.show();
+		
+		//Toast.makeText(GameActivity.this, "That's right :)", Toast.LENGTH_SHORT).show();
 		
 		final Handler handler = new Handler();
 		handler.postDelayed(new Runnable() 
@@ -255,14 +278,28 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		  {
 			  moveOn();
 		  }
-		}, 2100);
+		}, 2000);
 		
 			
 	}
 	
 	private void wrong() 
 	{
-		Toast.makeText(GameActivity.this, "Nope, that's not right :(", Toast.LENGTH_SHORT).show();
+		LayoutInflater inflater = getLayoutInflater();
+		View layout = inflater.inflate(R.layout.toast_layout,
+		                               (ViewGroup) findViewById(R.id.toast_layout_root));
+
+		ImageView image = (ImageView) layout.findViewById(R.id.icon);
+		image.setImageResource(R.drawable.sad);
+		TextView text = (TextView) layout.findViewById(R.id.text);
+		text.setText("Nope, that's not right!");
+
+		Toast toast = new Toast(getApplicationContext());
+		toast.setGravity(Gravity.CENTER_VERTICAL, 0, 147);
+		toast.setDuration(Toast.LENGTH_SHORT);
+		toast.setView(layout);
+		toast.show();
+		
 		final Handler handler = new Handler();
 		handler.postDelayed(new Runnable() 
 		{
@@ -270,7 +307,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		  {
 			  moveOn();
 		  }
-		}, 2100);
+		}, 2000);
 	}
     
     public void moveOn()

@@ -10,4 +10,6 @@
     <color name="menu_glow">#F11</color>
     <color name="help_text">#FFFF99</color>
     <color name="error_color">#F00</color>
+    <color name="score_color">#FFF</color>
+    
 </resources>
