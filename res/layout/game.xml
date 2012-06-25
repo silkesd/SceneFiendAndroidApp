@@ -10,7 +10,7 @@
         android:layout_height="77dp"
         android:textSize="@dimen/game_qu_text_size"
         android:textStyle="bold" />
-
+    
     <com.silke.sceneFiendAndroidApp.Buttons
         android:id="@+id/buttonviewAns1"
         android:layout_width="fill_parent"

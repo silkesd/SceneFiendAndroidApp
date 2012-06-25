@@ -72,8 +72,10 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity implem
  				Log.d("Button", player_name);
  				UserFunctions userFunction = new UserFunctions();
  				FileDownloader fd = userFunction.loginUser(context, player_name, password);
+ 				GAME_PREFERENCES_PLAYER_NAME = player_name;
  				String json_str = fd.getApiResponse();
  				Log.d("Testing JSON string for Login", fd.getApiResponse());
+ 				Log.d("LOGGED IN USER PREFERENCE", GAME_PREFERENCES_PLAYER_NAME);
 
  				//parse string to json object
  				try 
@@ -164,8 +166,12 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity implem
 	{
 		try 
 		{
+			
 			GAME_PREFERENCES_PLAYER_ID = jObj.getString("player_id");
+			Log.d("LOGIN ACTIVITY", "Logged in player_name: " + jObj.getString("user"));
+			//GAME_PREFERENCES_PLAYER_NAME = jObj.getString("player_name");
 			Log.d("LOGIN ACTIVITY", "Logged in player_id: " + GAME_PREFERENCES_PLAYER_ID);
+			//Log.d("LOGIN ACTIVITY", "Logged in player_name: " + GAME_PREFERENCES_PLAYER_NAME);
 		} 
 		catch (JSONException e) 
 		{

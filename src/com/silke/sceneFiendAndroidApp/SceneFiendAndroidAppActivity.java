@@ -6,7 +6,7 @@ public class SceneFiendAndroidAppActivity extends Activity
 {
 	// Game preference values
 	public static final String GAME_PREFERENCES = "GamePrefs";
-	public static final String GAME_PREFERENCES_PLAYER_NAME = "Name"; // String
+	public static String GAME_PREFERENCES_PLAYER_NAME = "Name"; // String
 	public static final String GAME_PREFERENCES_PLAYER_EMAIL = "Email"; // String
 	public static final String GAME_PREFERENCES_PLAYER_PASSWORD = "Password"; // String
 	public static Integer GAME_PREFERENCES_PLAYER_SCORE = 0; // Integer

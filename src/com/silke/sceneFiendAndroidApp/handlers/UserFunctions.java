@@ -3,10 +3,9 @@ package com.silke.sceneFiendAndroidApp.handlers;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.http.NameValuePair;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
-import com.silke.sceneFiendAndroidApp.SceneFiendLoginActivity;
+import com.silke.sceneFiendAndroidApp.SceneFiendAndroidAppActivity;
 import com.silke.sceneFiendAndroidApp.asynctasks.FileDownloader;
 import com.silke.sceneFiendAndroidApp.asynctasks.IJsonDownloaded;
 
@@ -14,7 +13,7 @@ import android.content.Context;
 import android.util.Log;
 
 
-public class UserFunctions 
+public class UserFunctions extends SceneFiendAndroidAppActivity
 {
 	private FileDownloader fileDownloader;
 	
@@ -49,7 +48,7 @@ public class UserFunctions
 		fileDownloader = new FileDownloader(context, params);
 		fileDownloader.execute(loginURL);
 		return fileDownloader;
-	
+		
 	}
 	
 	

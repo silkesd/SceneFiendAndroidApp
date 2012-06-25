@@ -2,8 +2,13 @@ package com.silke.sceneFiendAndroidApp.handlers;
 
 import java.util.HashMap;
 
+import com.silke.sceneFiendAndroidApp.GameActivity;
+import com.silke.sceneFiendAndroidApp.GameFinishActivity;
+import com.silke.sceneFiendAndroidApp.MenuActivity;
+
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -235,10 +240,10 @@ public class DBQuizHandler extends SQLiteOpenHelper
 		
 		final String InsertClipTable="INSERT INTO " + TABLE_QUESTION_HAS_CLIP + " SELECT " + "'1'" + " AS " + KEY_QUESTION_HAS_CLIP_ID  
 				+ ", " + "'1'" + " AS " + KEY_QUESTION_ID
-				+ ", " + "'HappyGilmore_Pre.mp4'" + " AS " + KEY_PRE_CLIP
-				+ ", " + "'HappyGilmore_Post.mp4'" + " AS " + KEY_POST_CLIP	
-				+ " UNION SELECT " + "2" + ", " + "3" + ", " + "'SpinalTap_Pre.mp4'" + ", " + "'SpinalTap_Post.mp4'"
-				+ " UNION SELECT " + "3" + ", " + "11" + ", " + "'DespicableMe_Pre.mp4'" + ", " + "'DespicableMe_Post.mp4'";
+				+ ", " + "'happy_gilmore_pre.mp4'" + " AS " + KEY_PRE_CLIP
+				+ ", " + "'happy_gilmore_post.mp4'" + " AS " + KEY_POST_CLIP	
+				+ " UNION SELECT " + "2" + ", " + "3" + ", " + "'spinal_tap_pre.mp4'" + ", " + "'spinal_tap_post.mp4'"
+				+ " UNION SELECT " + "3" + ", " + "11" + ", " + "'despicable_me_pre.mp4'" + ", " + "'despicable_me_post.mp4'";
 		db.execSQL(InsertClipTable);		
 	}
 	
@@ -257,35 +262,6 @@ public class DBQuizHandler extends SQLiteOpenHelper
 		onCreate(db);
 	}
 
-	
-	/*
-	 * Get all the game questions
-	 */
-	public HashMap<String, String>getAllQuestions()
-	{
-		HashMap<String,String> questions = new HashMap<String,String>();
-		String selectQuery = "SELECT  * FROM " + TABLE_QUESTIONS;
-		
-		SQLiteDatabase db = this.getWritableDatabase();
-		Cursor cursor = db.rawQuery(selectQuery, null);
-		
-	    // Move to first row
-	    if(cursor.moveToFirst())
-	    {
-	    	do
-	    	{
-		    	questions.put("question_id", cursor.getString(1));
-		    	questions.put("question_text", cursor.getString(1));
-		    	Log.d("DBHandler", questions.toString());
-	    	} while (cursor.moveToNext());
-	    }
-	    cursor.close();
-	    
-	    db.close();
-		// return user
-	    return questions;
-	}
-	
 	
 	/*
 	 * Get four game answers
@@ -323,39 +299,6 @@ public class DBQuizHandler extends SQLiteOpenHelper
 	/*
 	 * getcorrect answer - get answer id for question id where correct answer...
 	 */
-	public HashMap<String, String>getCorrectAnswers()
-	{
-		HashMap<String,String> correct_answers = new HashMap<String,String>();
-		String selectQuery = "SELECT  " + TABLE_ANSWERS + "." + KEY_ANSWER_ID + ", " 
-				+ TABLE_QUIZ + "." + KEY_ANSWER_ID + ", " 
-				+ TABLE_QUIZ + "." + KEY_CORRECT_ANSWER 
-				+  " FROM " + TABLE_ANSWERS + ", " + TABLE_QUIZ 
-				+ " WHERE " + TABLE_ANSWERS + "." + KEY_ANSWER_ID + 
-				"= " + TABLE_QUIZ + "." + KEY_ANSWER_ID;
-		
-		Log.d("TESTING QUERY: ", selectQuery);
-		
-		SQLiteDatabase db = this.getWritableDatabase();
-		Cursor cursor = db.rawQuery(selectQuery, null);
-		
-		int i = 0;
-	    while(cursor.moveToNext())
-	    {
-		    	i++;
-		    	correct_answers.put("answer_id"+i, cursor.getString(1));
-		    	correct_answers.put("correct_answer"+i, cursor.getString(2));
-		    	//correctanswer.put("answer_text"+i, cursor.getString(1));
-		    	Log.d("correct_answer"+i, cursor.getString(2));
-		    	Log.d("answer_id"+i, cursor.getString(1));
-	    }
-	    cursor.close();
-	    db.close();
-	    return correct_answers;
-	}
-	
-	/*
-	 * getcorrect answer - get answer id for question id where correct answer...
-	 */
 	public HashMap<String, String>getCorrectAnswer(int ans_id)
 	{
 		HashMap<String,String> correct_answer = new HashMap<String,String>();
@@ -381,47 +324,6 @@ public class DBQuizHandler extends SQLiteOpenHelper
 	    cursor.close();
 	    db.close();
 	    return correct_answer;
-	}
-	
-	
-	
-	
-	/*
-	 * Get game questions with their four answers
-	 */
-	public HashMap<String, String>getQuestion(int current_qu)
-	{
-		HashMap<String,String> questionanswers = new HashMap<String,String>();
-		String selectQuery = "SELECT  * FROM " + TABLE_ANSWERS + ", " 
-							+ TABLE_QUESTIONS + ", " + TABLE_QUIZ + ", " 
-				+ TABLE_QUESTION_HAS_CLIP
-				+ " WHERE " + TABLE_QUESTIONS + "." + KEY_QUESTION_ID 
-				+ "= " + TABLE_QUIZ + "." + KEY_QUESTION_ID 
-				+ " AND " + TABLE_ANSWERS + "." + KEY_ANSWER_ID  
-				+ "= " + TABLE_QUIZ + "." + KEY_ANSWER_ID;
-		
-		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.rawQuery(selectQuery, null);
-		
-	    // Move to first row
-	    cursor.moveToFirst();
-	    if(cursor.getCount() > 0)
-	    {
-	    	 // Retrieve the shared preferences
-	       
-    		questionanswers.put("question_text", cursor.getString(3));
-    		questionanswers.put("question_id", cursor.getString(4));	    	
-	    }
-	    for (int i = 0; i < 15 && !cursor.isAfterLast(); i++) 
-    	{
-    		cursor.moveToNext();
-    	}
-	    
-	    cursor.close();
-	    getClips();
-	    db.close();
-	  
-		return questionanswers;
 	}
 	
 	/*
@@ -451,20 +353,13 @@ public class DBQuizHandler extends SQLiteOpenHelper
     		questionanswers.put("question_text", cursor.getString(3));
     		questionanswers.put("question_id", cursor.getString(4));	    	
 	    }
-	   
+	    
 	    cursor.close();
-	    getClips();
+	    //getClips();
 	    db.close();
 	  
 		return questionanswers;
-	}
-	
-	
-	
-	
-	
-	
-		
+	}	
 	
 	/*
 	 * Get all the game clips

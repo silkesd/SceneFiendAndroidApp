@@ -5,7 +5,9 @@ import java.util.HashMap;
 import com.silke.sceneFiendAndroidApp.handlers.DBQuizHandler;
 
 import android.app.ActionBar;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -16,7 +18,8 @@ import android.widget.TextView;
 
 public class GameActivity extends SceneFiendAndroidAppActivity implements View.OnClickListener
 {
-	//
+	// Progress Dialog
+	private ProgressDialog pDialog;
 	TextView textviewQu;
 	Button buttonviewAns1;
 	Button buttonviewAns2;
@@ -40,7 +43,6 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		//actionbar
 		ActionBar ab = getActionBar();
 		ab.setDisplayHomeAsUpEnabled(true);
-		
 		
         textviewQu = (TextView) findViewById(R.id.textviewQu);
 		
@@ -106,8 +108,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 					Log.d("RIGHT", GAME_PREFERENCES_PLAYER_SCORE.toString());
 				}
 				else
-				{
-					
+				{	
 					GAME_PREFERENCES_PLAYER_SCORE--;
 					Log.d("Game 1 IS THE WRONG ANSWER", correct_answers1);
 					Log.d("WRONG", GAME_PREFERENCES_PLAYER_SCORE.toString());
@@ -209,14 +210,16 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 				
 				Log.d("GAME ACTIVITY", "NEXT BUTTON CLICKED: " + GAME_PREFERENCES_CURRENT_QUESTION);			
 				
-				//call activity again
-				Intent i = new Intent(getApplicationContext(),
- 						GameActivity.class);
-				i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			
-				startActivity(i);
-				finish();
- 				Log.d("GameAct", "activity started again");
+				
+				if(GAME_PREFERENCES_CURRENT_QUESTION < 15)
+				{
+					new LoadNextQuestion().execute();
+				}
+				else if (GAME_PREFERENCES_CURRENT_QUESTION == 15)
+			    {
+					Log.d("GAME ACTIVITY", "About to load end screen intent ");			
+					new LoadEndQuiz().execute();
+			    }
 			}
 			
 		});
@@ -236,7 +239,85 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 //		   }
 //		});		
     }
+    
+    class LoadNextQuestion extends AsyncTask<String, String, String>
+    {
+    	/**
+		 * Before starting background thread Show Progress Dialog
+		 * */
+		@Override
+		protected void onPreExecute() 
+		{
+			super.onPreExecute();
+			pDialog = new ProgressDialog(GameActivity.this);
+			pDialog.setMessage("Loading next question. Please wait...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(false);
+			pDialog.show();
+		}
+		
+		@Override
+		protected String doInBackground(String... arg0) 
+		{
+			return null;
+		}
+    	
+		protected void onPostExecute(String file_url) 
+		{
+			// dismiss the dialog after getting all products
+			pDialog.dismiss();
+			//call activity again
+			Intent i = new Intent(getApplicationContext(),
+						GameActivity.class);
+			i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		
+			startActivity(i);
+			finish();
+				Log.d("GameAct", "activity started again");
+			
+				
+		}
+    }
+    
+    class LoadEndQuiz extends AsyncTask<String, String, String>
+    {
+    	/**
+		 * Before starting background thread Show Progress Dialog
+		 * */
+		@Override
+		protected void onPreExecute() 
+		{
+			super.onPreExecute();
+			pDialog = new ProgressDialog(GameActivity.this);
+			pDialog.setMessage("Loading Score Screen. Please wait...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(false);
+			pDialog.show();
+		}
+		
+		@Override
+		protected String doInBackground(String... arg0) 
+		{
+			return null;
+		}
+    	
+		protected void onPostExecute(String file_url) 
+		{
+			Log.d("GameEndAct", "Game Over activity about to be called");
+			// dismiss the dialog after getting all products
+			pDialog.dismiss();
+			//call activity again
+			Intent i = new Intent(GameActivity.this,
+						GameFinishActivity.class);
+			i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		
+			startActivity(i);
+			finish();
+					
+		}
+    }
 
+    
 	public boolean onOptionsItemSelected(MenuItem item) 
 	{
 		switch (item.getItemId())
@@ -252,6 +333,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
  				return super.onOptionsItemSelected(item);
 		}
 	}
+		
 
 	public void onClick(View v) 
 	{

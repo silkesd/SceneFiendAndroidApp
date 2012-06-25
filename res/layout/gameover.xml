@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bkgrnd"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/CustomFont"
+        android:layout_width="228dp"
+        android:layout_height="64dp"
+        android:layout_gravity="right"
+        android:shadowColor="@android:color/white"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="10"
+        android:text="@string/gameover"
+        android:textColor="@color/title_color"
+        android:textSize="@dimen/screen_title_size" />
+    
+    <TextView
+        android:id="@+id/finish"
+        android:layout_width="wrap_content"
+        android:layout_height="61dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/gamestringover"
+        android:textColor="@color/title_color"
+        android:textSize="@dimen/screen_title_size"
+        android:textStyle="bold" >
+        
+    </TextView>
+
+    <TextView
+        android:id="@+id/textviewScore"
+        android:layout_width="wrap_content"
+        android:layout_height="77dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/title_color"
+        android:textSize="@dimen/screen_title_size"
+        android:textStyle="bold" />
+    
+    <TextView
+        android:id="@+id/finishName"
+        android:layout_width="wrap_content"
+        android:layout_height="61dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/title_color"
+        android:textSize="@dimen/screen_title_size"
+        android:textStyle="bold" >
+        
+    </TextView>
+
+</LinearLayout>

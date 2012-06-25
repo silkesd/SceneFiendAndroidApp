@@ -17,6 +17,8 @@
     <string name="register">Join Us</string>
     <string name="login">Login</string>
     <string name="logout">Logout</string>
+    <string name="gameover">Game Over</string>
+    <string name="gamestringover">You Just Scored</string>
     
     <!-- Menu Strings -->
     <string name="menu_item_settings">Settings</string>
@@ -79,10 +81,7 @@
     <string name="twitter_register_password">Password</string>
     <string name="twitter_register_email">Email</string>
     <string name="twitter_register_full_name">Full Name</string>
-    
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
+
     <string name="next">Next</string>
-    <string name="no_questions">No more questions available. Try back later.</string>
-    <string name="exit">Exit</string>
+   
 </resources>
