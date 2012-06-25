@@ -35,7 +35,7 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity implem
 //	private static String KEY_ID = "player_id";
 //	private static String KEY_NAME = "player_name";
 //	private static String KEY_EMAIL = "player_email";
-//   
+   
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) 
@@ -69,25 +69,29 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity implem
  			{
  				String player_name = inputUsername.getText().toString();
  				String password = inputPassword.getText().toString();
- 				Log.d("Button", player_name);
+ 				
+ 				//Log.d("Button", player_name);
+ 				
  				UserFunctions userFunction = new UserFunctions();
+ 				
  				FileDownloader fd = userFunction.loginUser(context, player_name, password);
+ 				
+ 				String apiResponse = fd.getApiResponse();
+ 				Log.d("Testing JSON string for Login", apiResponse);
+ 				//Log.d("LOGGED IN USER PREFERENCE", GAME_PREFERENCES_PLAYER_NAME);
  				GAME_PREFERENCES_PLAYER_NAME = player_name;
- 				String json_str = fd.getApiResponse();
- 				Log.d("Testing JSON string for Login", fd.getApiResponse());
- 				Log.d("LOGGED IN USER PREFERENCE", GAME_PREFERENCES_PLAYER_NAME);
 
  				//parse string to json object
  				try 
  				{
-					jObj = new JSONObject(json_str);
+					jObj = new JSONObject(apiResponse);
 				} 
  				catch (JSONException e) 
 				{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
- 			
+ 				
  				
  				// check for login response
 // 				try {
@@ -103,7 +107,7 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity implem
 // 							JSONObject json_user = jObj.getJSONObject("user");
 // 							
 // 							// Clear all previous data in database
-// 							UserFunctions userFunction = new UserFunctions();
+// 							UserFunctions userFunctions = new UserFunctions();
 // 							userFunction.logoutUser(getApplicationContext());
 // 							db.addUser(jObj.getString(KEY_ID), json_user.getString(KEY_NAME), json_user.getString(KEY_EMAIL));						
 // 							
