@@ -11,5 +11,5 @@
     <color name="help_text">#FFFF99</color>
     <color name="error_color">#F00</color>
     <color name="score_color">#FFF</color>
-    
+    <color name="game_color">#47DDFE</color>
 </resources>

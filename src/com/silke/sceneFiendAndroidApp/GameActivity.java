@@ -9,6 +9,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.Gravity;
@@ -24,15 +25,17 @@ import android.widget.Toast;
 
 public class GameActivity extends SceneFiendAndroidAppActivity implements View.OnClickListener
 {
-	// Progress Dialog
 	private ProgressDialog pDialog;
 	TextView textviewQu;
 	TextView textviewScore;
+	TextView tv;
+	
 	Button buttonviewAns1;
 	Button buttonviewAns2;
 	Button buttonviewAns3;
 	Button buttonviewAns4;
 	Button next;
+	
 	HashMap<String,String>  gameAns1List;
 	HashMap<String,String>  gameCorrectAns1List;
 	HashMap<String,String>  gameCorrectAns2List;
@@ -57,6 +60,10 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
         textviewScore.setText("Your score is: " + GAME_PREFERENCES_PLAYER_SCORE.toString());
         
         callQuestionInfo();
+        
+        //set a text view to show response from count down timer
+        tv = (TextView) findViewById(R.id.tv);
+  		
     }
     
     public void callQuestionInfo()
@@ -97,6 +104,10 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 				buttonviewAns4.setId(Integer.parseInt(gameAns1List.get("answer_id4")));
 				
 		next = (Button) findViewById(R.id.next);
+		
+		//initialise a counter
+  		MyCount counter = new MyCount(8000,1000);
+  		counter.start();
 		
 		//Getting the id attached to each button
 		buttonviewAns1.setOnClickListener(new OnClickListener()
@@ -224,7 +235,6 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 				
 			}			
 		});
-		
 		next.setOnClickListener( new OnClickListener()
 		{
 			public void onClick(View v) 
@@ -232,25 +242,32 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 				moveOn();
 			}
 			
-		});
-		
-		
-	
-//		//if next is clicked - qu_id++
-//		final Timer task = new Timer();
-//		final long seconds = 5;
-//		timer.schedule(task,seconds*1000L);
-//		clicker.setOnClickListener(new View.OnClickListener() 
-//		{
-//		   public void onClick(View v) 
-//		   {                                                                   
-//		      counter++;
-//		      task.cancel();
-//		      task = new Timer();
-//		      timer.schedule(task,seconds*1000L);
-//		   }
-//		});		
+		});	
     }
+    
+	public class MyCount extends CountDownTimer
+	{
+
+		//the timer countdown info
+		public MyCount(long millisInFuture, long countDownInterval) 
+		{
+			super(millisInFuture, countDownInterval);
+		}
+
+		@Override
+		public void onFinish() 
+		{
+			tv.setText("Time\'s Up!");
+			moveOn();
+		}
+
+		@Override
+		public void onTick(long millisUntilFinished) 
+		{
+			tv.setText("Time Left: " + millisUntilFinished/1000);
+		}
+		
+	}  
     
 	private void right() 
 	{
@@ -278,7 +295,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		  {
 			  moveOn();
 		  }
-		}, 2000);
+		}, 100);
 		
 			
 	}
@@ -307,7 +324,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		  {
 			  moveOn();
 		  }
-		}, 2000);
+		}, 100);
 	}
     
     public void moveOn()
@@ -405,8 +422,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 			finish();
 					
 		}
-    }
-
+    }   
     
 	public boolean onOptionsItemSelected(MenuItem item) 
 	{
@@ -424,7 +440,6 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		}
 	}
 		
-
 	public void onClick(View v) 
 	{
 		// TODO Auto-generated method stub
