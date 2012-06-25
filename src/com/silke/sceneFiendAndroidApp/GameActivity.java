@@ -9,12 +9,14 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class GameActivity extends SceneFiendAndroidAppActivity implements View.OnClickListener
 {
@@ -102,10 +104,10 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 				//if the answer attached to this button is correct (1) log correct, else log incorrect
 				if(Integer.parseInt(gameCorrectAns1List.get("correct_answer"))==1)
 				{
-					
 					GAME_PREFERENCES_PLAYER_SCORE++;
 					Log.d("Game 1 IS THE CORRECT ANSWER", correct_answers1);
 					Log.d("RIGHT", GAME_PREFERENCES_PLAYER_SCORE.toString());
+					right();
 				}
 				else
 				{	
@@ -113,8 +115,13 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 					Log.d("Game 1 IS THE WRONG ANSWER", correct_answers1);
 					Log.d("WRONG", GAME_PREFERENCES_PLAYER_SCORE.toString());
 					//go to next qu / show negative response
+					wrong();
 				}
-			}			
+				
+			}
+
+		
+			
 		});
 		buttonviewAns2.setOnClickListener(new OnClickListener()
 		{
@@ -136,6 +143,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 					GAME_PREFERENCES_PLAYER_SCORE++;
 					Log.d("Game 2 IS THE CORRECT ANSWER", correct_answers2);
 					Log.d("RIGHT", GAME_PREFERENCES_PLAYER_SCORE.toString());
+					right();
 				}
 				else
 				{
@@ -144,7 +152,9 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 					Log.d("Game 2 IS THE WRONG ANSWER", correct_answers2);
 					Log.d("WRONG", GAME_PREFERENCES_PLAYER_SCORE.toString());
 					//go to next qu / show negative response
+					wrong();
 				}
+				
 			}
 		});
 		buttonviewAns3.setOnClickListener(new OnClickListener()
@@ -163,6 +173,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 					GAME_PREFERENCES_PLAYER_SCORE++;
 					Log.d("Game 3 IS THE CORRECT ANSWER", correct_answers3);
 					Log.d("RIGHT", GAME_PREFERENCES_PLAYER_SCORE.toString());
+					right();
 				}
 				else
 				{
@@ -171,7 +182,9 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 					Log.d("Game 3 IS THE WRONG ANSWER", correct_answers3);
 					Log.d("WRONG", GAME_PREFERENCES_PLAYER_SCORE.toString());
 					//go to next qu / show negative response
+					wrong();
 				}
+				
 			}			
 		});
 		buttonviewAns4.setOnClickListener(new OnClickListener()
@@ -190,6 +203,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 					GAME_PREFERENCES_PLAYER_SCORE++;
 					Log.d("Game 4 IS THE CORRECT ANSWER", correct_answers4);
 					Log.d("RIGHT", GAME_PREFERENCES_PLAYER_SCORE.toString());
+					right();
 				}
 				else
 				{
@@ -197,32 +211,22 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 					Log.d("Game 4 IS THE WRONG ANSWER", correct_answers4);
 					Log.d("WRONG", GAME_PREFERENCES_PLAYER_SCORE.toString());
 					//go to next qu / show negative response
+					wrong();
 				}
+				
 			}			
 		});
 		
 		next.setOnClickListener( new OnClickListener()
 		{
 			public void onClick(View v) 
-			{				
-				//increment shared preference instead and call here and pass to sqlite
-				GAME_PREFERENCES_CURRENT_QUESTION++;
-				
-				Log.d("GAME ACTIVITY", "NEXT BUTTON CLICKED: " + GAME_PREFERENCES_CURRENT_QUESTION);			
-				
-				
-				if(GAME_PREFERENCES_CURRENT_QUESTION < 15)
-				{
-					new LoadNextQuestion().execute();
-				}
-				else if (GAME_PREFERENCES_CURRENT_QUESTION == 15)
-			    {
-					Log.d("GAME ACTIVITY", "About to load end screen intent ");			
-					new LoadEndQuiz().execute();
-			    }
+			{	
+				moveOn();
 			}
 			
 		});
+		
+		
 	
 //		//if next is clicked - qu_id++
 //		final Timer task = new Timer();
@@ -239,6 +243,55 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 //		   }
 //		});		
     }
+    
+	private void right() 
+	{
+		Toast.makeText(GameActivity.this, "That's right :)", Toast.LENGTH_SHORT).show();
+		
+		final Handler handler = new Handler();
+		handler.postDelayed(new Runnable() 
+		{
+		  public void run() 
+		  {
+			  moveOn();
+		  }
+		}, 2100);
+		
+			
+	}
+	
+	private void wrong() 
+	{
+		Toast.makeText(GameActivity.this, "Nope, that's not right :(", Toast.LENGTH_SHORT).show();
+		final Handler handler = new Handler();
+		handler.postDelayed(new Runnable() 
+		{
+		  public void run() 
+		  {
+			  moveOn();
+		  }
+		}, 2100);
+	}
+    
+    public void moveOn()
+    {
+    	//increment shared preference instead and call here and pass to sqlite
+		GAME_PREFERENCES_CURRENT_QUESTION++;
+		
+		Log.d("GAME ACTIVITY", "MOVE TO NEXT QU: " + GAME_PREFERENCES_CURRENT_QUESTION);			
+		
+		
+		if(GAME_PREFERENCES_CURRENT_QUESTION < 15)
+		{
+			new LoadNextQuestion().execute();
+		}
+		else if (GAME_PREFERENCES_CURRENT_QUESTION == 15)
+	    {
+			Log.d("GAME ACTIVITY", "About to load end screen intent ");			
+			new LoadEndQuiz().execute();
+	    }
+    }
+    
     
     class LoadNextQuestion extends AsyncTask<String, String, String>
     {
