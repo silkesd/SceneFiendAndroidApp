@@ -21,22 +21,26 @@ import android.widget.Toast;
 
 public class GameActivity extends SceneFiendAndroidAppActivity implements View.OnClickListener
 {
+	//text views to hole the question, score and timer
 	TextView textviewQu;
 	TextView textviewScore;
 	TextView tv;
 	
+	//buttons to hold the answers and the next button
 	Button buttonviewAns1;
 	Button buttonviewAns2;
 	Button buttonviewAns3;
 	Button buttonviewAns4;
 	Button next;
 	
+	//hashmaps to contain the db answers called depending on the question id
 	HashMap<String,String>  gameAns1List;
 	HashMap<String,String>  gameCorrectAns1List;
 	HashMap<String,String>  gameCorrectAns2List;
 	HashMap<String,String>  gameCorrectAns3List;
 	HashMap<String,String>  gameCorrectAns4List;
-	//MyCount counter;
+	
+	//the countdown timer lasts 8 seconds
 	private CountDownTimer timer;
 	private long total = 8000;
 	
@@ -51,46 +55,63 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		ActionBar ab = getActionBar();
 		ab.setDisplayHomeAsUpEnabled(true);
 		
+		//text views for the question and the score called from the sqlite db
         textviewQu = (TextView) findViewById(R.id.textviewQu);
         textviewScore = (TextView) findViewById(R.id.textviewScore);
 		
+        //allow user to see their score throughout the game
         textviewScore.setText("Your score is: " + GAME_PREFERENCES_PLAYER_SCORE.toString());
         
+        //call the database question info
         callQuestionInfo();
         
         //set a text view to show response from count down timer
         tv = (TextView) findViewById(R.id.tv);
-      //initialise a counter
   		
     }
     
     public void callQuestionInfo()
-    {
-    	
-  		
+    {	
+  		//calling the database quiz handler
     	final DBQuizHandler db = new DBQuizHandler(this);
-    	
-    	//Log.d("GAME ACTIVITY", "question_id BEFORE CALL TO DB: " + GAME_PREFERENCES_CURRENT_QUESTION);	
-    	
+    
+    	//hashmap containing the question values in the db
         final HashMap<String,String> gameList = db.getNextQuestion(GAME_PREFERENCES_CURRENT_QUESTION);
 				String question_id = gameList.get("question_id");
 				String question = gameList.get("question_text");
 				textviewQu.setText(question);
 				
-//		final HashMap<String,String> gameClipList = db.getClips(GAME_PREFERENCES_CURRENT_QUESTION);
-//				String question_clip_id = gameList.get("question_id");
-//				String pre_clip = gameList.get("pre_clip");
-//				String post_clip = gameList.get("post_clip");
-				
-			
-		//Log.d("GAMECLIPLIST: ", gameClipList.get("question_id"));	
+		final HashMap<String,String> gameClipList = db.getClips(GAME_PREFERENCES_CURRENT_QUESTION);
+				String question_clip_id = gameList.get("question_id");
+				String pre_clip = gameList.get("pre_clip");
+				String post_clip = gameList.get("post_clip");
 		
+		//storing the current question in a shared preference to increment on next / answering / timer ending
 		GAME_PREFERENCES_CURRENT_QUESTION = Integer.parseInt(gameList.get("question_id"));		
 		
-		//Log.d("GAME ACTIVITY", "question_id AFTER CALL TO DB: " + GAME_PREFERENCES_CURRENT_QUESTION);		
+		// check if there the db function holding clips for certain questions is null or holds a value
+		// and calling the play video function if it does
+		if(gameClipList.get("question_id") == null)
+		{
+			Log.d("NO CLIP", "NO NO NO");
+		}
+		else if(Integer.parseInt(gameClipList.get("question_id")) == GAME_PREFERENCES_CURRENT_QUESTION)
+		{
+			Log.d("HAS CLIP", gameClipList.toString());	
+					
+//				  Intent i = new Intent(getApplicationContext(),
+//							PlayVideo.class);
+//					i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//				
+//					startActivity(i);
+//					finish();
+//					Log.d("Play Video", "VIDEO ACTIVITY STARTED");
+		}
 		
+		//hashmap containing the four answers relating to the question id from the db
 		HashMap<String,String> gameAns1List = db.getFourAnswers(Integer.parseInt(question_id));	
 		
+		//button views holding the answers called from the db 
 		buttonviewAns1 = (Buttons) findViewById(R.id.buttonviewAns1);	
 				String answers1 = gameAns1List.get("answer_text1");	
 				buttonviewAns1.setText(answers1);
@@ -113,6 +134,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 				
 		next = (Button) findViewById(R.id.next);
 		
+		//starting the countdown timer when the game is called
 		startCountDownTimer();
 		
 		//Getting the id attached to each button
@@ -250,8 +272,6 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 			
 		});	
 		
-		
-		
 //		HashMap<String,String> gameClipList = db.getClips(GAME_PREFERENCES_CURRENT_QUESTION);
 //		String question_clip_id = gameClipList.get("question_id");
 //		String pre_clip = gameClipList.get("pre_clip");
@@ -291,40 +311,6 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
     		}
     	}.start();
     }
-    
-//	public class MyCount extends CountDownTimer
-//	{
-//
-//		//the timer countdown info
-//		public MyCount(long millisInFuture, long countDownInterval) 
-//		{
-//			super(millisInFuture, countDownInterval);
-//		}
-//		
-//		public void onPause() 
-//		{
-//				
-//		}
-//
-//		@Override
-//		public void onFinish() 
-//		{
-//			tv.setText("Time\'s Up! Lose 3 Points");	
-//			if(0) 
-//			{
-//				GAME_PREFERENCES_PLAYER_SCORE -= 3;
-//		    }
-//			this.cancel();
-//		}
-//
-//		@Override
-//		public void onTick(long millisUntilFinished) 
-//		{
-//			
-//			tv.setText("Time Left: " + millisUntilFinished/1000 + " seconds");
-//		}
-//		
-//	}  
     
 	public void right() 
 	{
