@@ -1,14 +1,7 @@
 package com.silke.sceneFiendAndroidApp.handlers;
 
 import java.util.HashMap;
-
-import com.silke.sceneFiendAndroidApp.GameActivity;
-import com.silke.sceneFiendAndroidApp.GameFinishActivity;
-import com.silke.sceneFiendAndroidApp.MenuActivity;
-
-
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -277,7 +270,7 @@ public class DBQuizHandler extends SQLiteOpenHelper
 				+ KEY_ANSWER_ID  + "= " + TABLE_QUIZ + "." + KEY_ANSWER_ID
 				+ " AND " + TABLE_QUESTIONS + "." + KEY_QUESTION_ID + "=" + qu_id;
 		
-		Log.d("TESTING QUERY: ", selectQuery);
+//		/Log.d("TESTING QUERY: ", selectQuery);
 		
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);
@@ -355,40 +348,40 @@ public class DBQuizHandler extends SQLiteOpenHelper
 	    }
 	    
 	    cursor.close();
-	    //getClips();
 	    db.close();
-	  
+	    getClips(current_question);
 		return questionanswers;
 	}	
 	
 	/*
 	 * Get all the game clips
 	 */
-	public HashMap<String, String>getClips()
+	public HashMap<String, String>getClips(int current_qu)
 	{
+		int current_question = current_qu;
+		
 		HashMap<String,String> clips = new HashMap<String,String>();
-		String selectQuery = "SELECT  * FROM " + TABLE_QUESTION_HAS_CLIP + ", " + TABLE_QUESTIONS 
-		+ " WHERE " + TABLE_QUESTIONS + "." + KEY_QUESTION_ID + "= " + TABLE_QUESTION_HAS_CLIP
-		+ "." + KEY_QUESTION_ID;
+		String selectQuery = "SELECT  * FROM " + TABLE_QUESTION_HAS_CLIP 
+				+ ", " + TABLE_QUESTIONS 
+		+ " WHERE " + TABLE_QUESTIONS + "." + KEY_QUESTION_ID 
+		+ "= " + TABLE_QUESTION_HAS_CLIP + "." + KEY_QUESTION_ID
+		+ " AND " + TABLE_QUESTIONS + "." + KEY_QUESTION_ID  
+		+ "= " + current_question;
 	
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);
 		
-	    // Move to first row
-	    if(cursor.moveToFirst())
+	    if(cursor.moveToLast())
 	    {
-	    	do
-	    	{
-		    	clips.put("question_id", cursor.getString(1));
-		    	clips.put("pre_clip", cursor.getString(2));
-    			clips.put("post_clip", cursor.getString(3));
-		    	Log.d("DBHandler", clips.toString());
-	    	} while (cursor.moveToNext());
+		    clips.put("question_id", cursor.getString(1));
+		   	clips.put("pre_clip", cursor.getString(2));
+    		clips.put("post_clip", cursor.getString(3));
+		    //Log.d("DBHandler", clips.toString());
 	    }
 	    cursor.close();
 	    
 	    db.close();
-		// return answers
+		// return clips
 	    return clips;
 	}
 	

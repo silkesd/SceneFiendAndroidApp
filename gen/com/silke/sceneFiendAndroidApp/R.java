@@ -91,6 +91,7 @@ public final class R {
         public static final int finishName=0x7f0a000a;
         public static final int frameLayout1=0x7f0a0025;
         public static final int header=0x7f0a002b;
+        public static final int home_container=0x7f0a0031;
         public static final int icon=0x7f0a0029;
         public static final int imageView1=0x7f0a0026;
         public static final int link_to_login=0x7f0a0030;
@@ -98,7 +99,6 @@ public final class R {
         public static final int loginPassword=0x7f0a0010;
         public static final int loginUsername=0x7f0a000e;
         public static final int login_error=0x7f0a0011;
-        public static final int myvideoview=0x7f0a0031;
         public static final int next=0x7f0a0008;
         public static final int player_id=0x7f0a0020;
         public static final int player_name=0x7f0a0021;
@@ -111,11 +111,12 @@ public final class R {
         public static final int registerPassword=0x7f0a001c;
         public static final int register_error=0x7f0a001d;
         public static final int score_date=0x7f0a0023;
+        public static final int surface=0x7f0a0032;
         public static final int text=0x7f0a002a;
         public static final int textviewQu=0x7f0a0003;
-        public static final int textviewScore=0x7f0a0002;
+        public static final int textviewScore=0x7f0a0001;
         public static final int toast_layout_root=0x7f0a0028;
-        public static final int tv=0x7f0a0001;
+        public static final int tv=0x7f0a0002;
     }
     public static final class layout {
         public static final int all_score_layout=0x7f030000;

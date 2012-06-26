@@ -44,11 +44,10 @@ public class UserFunctions extends SceneFiendAndroidAppActivity
 		params.add(new BasicNameValuePair("player_name", player_name));
 		params.add(new BasicNameValuePair("password", password));
 		
-		Log.d("UserFunctions", "sending login to file downloader");
+		//Log.d("UserFunctions", "sending login to file downloader");
 		fileDownloader = new FileDownloader(context, params);
 		fileDownloader.execute(loginURL);
 		return fileDownloader;
-		
 	}
 	
 	

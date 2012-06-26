@@ -1,13 +1,9 @@
 package com.silke.sceneFiendAndroidApp;
 
 import java.util.HashMap;
-
 import com.silke.sceneFiendAndroidApp.handlers.DBQuizHandler;
-
 import android.app.ActionBar;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -25,7 +21,6 @@ import android.widget.Toast;
 
 public class GameActivity extends SceneFiendAndroidAppActivity implements View.OnClickListener
 {
-	private ProgressDialog pDialog;
 	TextView textviewQu;
 	TextView textviewScore;
 	TextView tv;
@@ -41,7 +36,9 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 	HashMap<String,String>  gameCorrectAns2List;
 	HashMap<String,String>  gameCorrectAns3List;
 	HashMap<String,String>  gameCorrectAns4List;
-
+	//MyCount counter;
+	private CountDownTimer timer;
+	private long total = 8000;
 	
     /** Called when the activity is first created. */
     @Override
@@ -63,23 +60,34 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
         
         //set a text view to show response from count down timer
         tv = (TextView) findViewById(R.id.tv);
+      //initialise a counter
   		
     }
     
     public void callQuestionInfo()
     {
+    	
+  		
     	final DBQuizHandler db = new DBQuizHandler(this);
     	
-    	Log.d("GAME ACTIVITY", "question_id BEFORE CALL TO DB: " + GAME_PREFERENCES_CURRENT_QUESTION);	
+    	//Log.d("GAME ACTIVITY", "question_id BEFORE CALL TO DB: " + GAME_PREFERENCES_CURRENT_QUESTION);	
     	
         final HashMap<String,String> gameList = db.getNextQuestion(GAME_PREFERENCES_CURRENT_QUESTION);
 				String question_id = gameList.get("question_id");
 				String question = gameList.get("question_text");
 				textviewQu.setText(question);
+				
+//		final HashMap<String,String> gameClipList = db.getClips(GAME_PREFERENCES_CURRENT_QUESTION);
+//				String question_clip_id = gameList.get("question_id");
+//				String pre_clip = gameList.get("pre_clip");
+//				String post_clip = gameList.get("post_clip");
+				
+			
+		//Log.d("GAMECLIPLIST: ", gameClipList.get("question_id"));	
 		
 		GAME_PREFERENCES_CURRENT_QUESTION = Integer.parseInt(gameList.get("question_id"));		
 		
-		Log.d("GAME ACTIVITY", "question_id AFTER CALL TO DB: " + GAME_PREFERENCES_CURRENT_QUESTION);		
+		//Log.d("GAME ACTIVITY", "question_id AFTER CALL TO DB: " + GAME_PREFERENCES_CURRENT_QUESTION);		
 		
 		HashMap<String,String> gameAns1List = db.getFourAnswers(Integer.parseInt(question_id));	
 		
@@ -105,9 +113,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 				
 		next = (Button) findViewById(R.id.next);
 		
-		//initialise a counter
-  		MyCount counter = new MyCount(8000,1000);
-  		counter.start();
+		startCountDownTimer();
 		
 		//Getting the id attached to each button
 		buttonviewAns1.setOnClickListener(new OnClickListener()
@@ -232,45 +238,97 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 					//go to next qu / show negative response
 					wrong();
 				}
-				
 			}			
 		});
 		next.setOnClickListener( new OnClickListener()
 		{
 			public void onClick(View v) 
 			{	
+				
 				moveOn();
 			}
 			
 		});	
+		
+		
+		
+//		HashMap<String,String> gameClipList = db.getClips(GAME_PREFERENCES_CURRENT_QUESTION);
+//		String question_clip_id = gameClipList.get("question_id");
+//		String pre_clip = gameClipList.get("pre_clip");
+//		String  post_clip = gameClipList.get("post_clip");
+//		
+//		if(GAME_PREFERENCES_CURRENT_QUESTION == Integer.parseInt(question_clip_id))
+//		{
+//			Log.d("GAME ACTIVITY CLIPS QU ID", gameClipList.get("question_id"));					
+//			Log.d("GAME ACTIVITY CLIPS PRE", gameClipList.get("pre_clip"));				
+//			Log.d("GAME ACTIVITY CLIPS POST", gameClipList.get("post_clip"));				
+//		}
+//		else if (Integer.parseInt(question_clip_id) != GAME_PREFERENCES_CURRENT_QUESTION)
+//		{
+//			//do nothing
+//			Log.d("GAME ACTIVITY :( CLIPS QU ID", "nope");					
+//			Log.d("GAME ACTIVITY :( CLIPS PRE", "nope");				
+//			Log.d("GAME ACTIVITY :( CLIPS POST", "nope");
+//		}
+//    }
+    	
     }
     
-	public class MyCount extends CountDownTimer
-	{
-
-		//the timer countdown info
-		public MyCount(long millisInFuture, long countDownInterval) 
-		{
-			super(millisInFuture, countDownInterval);
-		}
-
-		@Override
-		public void onFinish() 
-		{
-			tv.setText("Time\'s Up!");
-			moveOn();
-		}
-
-		@Override
-		public void onTick(long millisUntilFinished) 
-		{
-			tv.setText("Time Left: " + millisUntilFinished/1000);
-		}
-		
-	}  
+    private void startCountDownTimer()
+    {
+    	timer = new CountDownTimer(total, 1000)
+    	{
+    		public void onTick(long millisUntilFinished)
+    		{
+    			total = millisUntilFinished;
+    			tv.setText("Time Left: " + millisUntilFinished/1000 + " seconds");
+    		}
+    		public void onFinish()
+    		{
+    			tv.setText("Time\'s Up! Lose 2 Points");
+    			GAME_PREFERENCES_PLAYER_SCORE -= 2;
+    			moveOn();
+    		}
+    	}.start();
+    }
     
-	private void right() 
+//	public class MyCount extends CountDownTimer
+//	{
+//
+//		//the timer countdown info
+//		public MyCount(long millisInFuture, long countDownInterval) 
+//		{
+//			super(millisInFuture, countDownInterval);
+//		}
+//		
+//		public void onPause() 
+//		{
+//				
+//		}
+//
+//		@Override
+//		public void onFinish() 
+//		{
+//			tv.setText("Time\'s Up! Lose 3 Points");	
+//			if(0) 
+//			{
+//				GAME_PREFERENCES_PLAYER_SCORE -= 3;
+//		    }
+//			this.cancel();
+//		}
+//
+//		@Override
+//		public void onTick(long millisUntilFinished) 
+//		{
+//			
+//			tv.setText("Time Left: " + millisUntilFinished/1000 + " seconds");
+//		}
+//		
+//	}  
+    
+	public void right() 
 	{
+		
 		LayoutInflater inflater = getLayoutInflater();
 		View layout = inflater.inflate(R.layout.toast_layout,
 		                               (ViewGroup) findViewById(R.id.toast_layout_root));
@@ -293,15 +351,17 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		{
 		  public void run() 
 		  {
-			  moveOn();
+			 timer.cancel();
+			 moveOn();
 		  }
-		}, 100);
+		}, 1000);
 		
 			
 	}
 	
-	private void wrong() 
+	public void wrong() 
 	{
+		
 		LayoutInflater inflater = getLayoutInflater();
 		View layout = inflater.inflate(R.layout.toast_layout,
 		                               (ViewGroup) findViewById(R.id.toast_layout_root));
@@ -322,9 +382,10 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		{
 		  public void run() 
 		  {
+			  timer.cancel();
 			  moveOn();
 		  }
-		}, 100);
+		}, 1000);
 	}
     
     public void moveOn()
@@ -334,95 +395,44 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		
 		Log.d("GAME ACTIVITY", "MOVE TO NEXT QU: " + GAME_PREFERENCES_CURRENT_QUESTION);			
 		
-		
+		//if the current question number is less than the total number of questions (with a delay)
 		if(GAME_PREFERENCES_CURRENT_QUESTION < 15)
 		{
-			new LoadNextQuestion().execute();
+			final Handler handler = new Handler();
+			handler.postDelayed(new Runnable() 
+			{
+			  public void run() 
+			  {
+				  Intent i = new Intent(getApplicationContext(),
+							GameActivity.class);
+					i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				
+					startActivity(i);
+					finish();
+					Log.d("GameAct", "activity started again");
+			  }
+			}, 100);
+			
+			
 		}
+		//if the current question is the last question move to the game over screen (with a delay)
 		else if (GAME_PREFERENCES_CURRENT_QUESTION == 15)
 	    {
-			Log.d("GAME ACTIVITY", "About to load end screen intent ");			
-			new LoadEndQuiz().execute();
+			final Handler handler = new Handler();
+			handler.postDelayed(new Runnable() 
+			{
+			  public void run() 
+			  {
+				  Intent i = new Intent(getApplicationContext(),
+							GameFinishActivity.class);
+					i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				
+					startActivity(i);
+					finish();
+			  }
+			}, 100);
 	    }
     }
-    
-    
-    class LoadNextQuestion extends AsyncTask<String, String, String>
-    {
-    	/**
-		 * Before starting background thread Show Progress Dialog
-		 * */
-		@Override
-		protected void onPreExecute() 
-		{
-			super.onPreExecute();
-			pDialog = new ProgressDialog(GameActivity.this);
-			pDialog.setMessage("Loading next question. Please wait...");
-			pDialog.setIndeterminate(false);
-			pDialog.setCancelable(false);
-			pDialog.show();
-		}
-		
-		@Override
-		protected String doInBackground(String... arg0) 
-		{
-			return null;
-		}
-    	
-		protected void onPostExecute(String file_url) 
-		{
-			// dismiss the dialog after getting all products
-			pDialog.dismiss();
-			//call activity again
-			Intent i = new Intent(getApplicationContext(),
-						GameActivity.class);
-			i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		
-			startActivity(i);
-			finish();
-				Log.d("GameAct", "activity started again");
-			
-				
-		}
-    }
-    
-    class LoadEndQuiz extends AsyncTask<String, String, String>
-    {
-    	/**
-		 * Before starting background thread Show Progress Dialog
-		 * */
-		@Override
-		protected void onPreExecute() 
-		{
-			super.onPreExecute();
-			pDialog = new ProgressDialog(GameActivity.this);
-			pDialog.setMessage("Loading Score Screen. Please wait...");
-			pDialog.setIndeterminate(false);
-			pDialog.setCancelable(false);
-			pDialog.show();
-		}
-		
-		@Override
-		protected String doInBackground(String... arg0) 
-		{
-			return null;
-		}
-    	
-		protected void onPostExecute(String file_url) 
-		{
-			Log.d("GameEndAct", "Game Over activity about to be called");
-			// dismiss the dialog after getting all products
-			pDialog.dismiss();
-			//call activity again
-			Intent i = new Intent(GameActivity.this,
-						GameFinishActivity.class);
-			i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		
-			startActivity(i);
-			finish();
-					
-		}
-    }   
     
 	public boolean onOptionsItemSelected(MenuItem item) 
 	{

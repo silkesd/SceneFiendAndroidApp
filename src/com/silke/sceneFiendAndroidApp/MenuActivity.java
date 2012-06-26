@@ -62,7 +62,7 @@ public class MenuActivity extends SceneFiendAndroidAppActivity
                 if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_play))) 
                 {
                     // Launch the Game Activity
-                    startActivity(new Intent(MenuActivity.this, GameActivity.class));
+                    startActivity(new Intent(MenuActivity.this, PlayVideo.class));
                 } 
                 else if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_help))) 
                 {
