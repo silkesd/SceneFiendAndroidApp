@@ -34,7 +34,7 @@
                  android:isScrollContainer="true"
                  android:scrollbarStyle="outsideOverlay"
                  android:scrollbars="vertical"
-                 android:textColor="@color/help_text"
+                 android:textColor="@color/logo_color"
                  android:textColorLink="@color/logo_color"
                  android:textSize="@dimen/help_text_size" />
              

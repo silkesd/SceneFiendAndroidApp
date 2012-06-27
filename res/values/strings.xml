@@ -44,8 +44,7 @@
     <string name="dateHeader">Date</string>
     
     <!-- Login Menu Strings -->
-    <string name="login_item_scenefiendlogin">Scene Fiend Login</string>
-    <string name="login_item_twitterlogin">Twitter Login</string>
+    <string name="login_item_scenefiendlogin">Login</string>
     <string name="login_item_register">Register</string>
     
     <!-- Register Strings-->

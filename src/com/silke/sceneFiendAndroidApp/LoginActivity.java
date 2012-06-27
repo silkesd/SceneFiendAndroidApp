@@ -37,7 +37,6 @@ public class LoginActivity extends SceneFiendAndroidAppActivity
         ListView loginList = (ListView) findViewById(R.id.ListView_Login);
         String[] loginItems = { 
                 getResources().getString(R.string.login_item_scenefiendlogin),
-                getResources().getString(R.string.login_item_twitterlogin),
         		getResources().getString(R.string.login_item_register)};
         
         //data adapter maps data to the layout templates specified via the array that stores the menu items

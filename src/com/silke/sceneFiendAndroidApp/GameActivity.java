@@ -267,8 +267,14 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		{
 			public void onClick(View v) 
 			{	
-				
-				moveOn();
+				final Handler handler = new Handler();
+				handler.postDelayed(new Runnable() 
+				{
+				  public void run() 
+				  {
+					  moveOn();
+				  }
+				}, 1000);
 			}
 			
 		});	
@@ -276,19 +282,26 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
     
     private void startCountDownTimer()
     {
+    	//total is 8000
     	timer = new CountDownTimer(total, 1000)
     	{
+    		
     		public void onTick(long millisUntilFinished)
     		{
+    			//map the number of seconds left on the time
     			total = millisUntilFinished;
     			tv.setText("Time Left: " + millisUntilFinished/1000 + " seconds");
     		}
     		public void onFinish()
     		{
+    			//inform the user that their time is up, they have lost 2 points, and
+    			//move them to the next question
     			tv.setText("Time\'s Up! Lose 2 Points");
     			GAME_PREFERENCES_PLAYER_SCORE -= 2;
     			moveOn();
     		}
+    		
+			
     	}.start();
     }
     
@@ -359,8 +372,6 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
     	//increment shared preference instead and call here and pass to sqlite
 		GAME_PREFERENCES_CURRENT_QUESTION++;
 		
-		Log.d("GAME ACTIVITY", "MOVE TO NEXT QU: " + GAME_PREFERENCES_CURRENT_QUESTION);			
-		
 		//if the current question number is less than the total number of questions (with a delay)
 		if(GAME_PREFERENCES_CURRENT_QUESTION < 15)
 		{
@@ -369,6 +380,8 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 			{
 			  public void run() 
 			  {
+				  //launch this activity again with an incremented question number affecting
+				  //the information displayed
 				  Intent i = new Intent(getApplicationContext(),
 							GameActivity.class);
 					i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -389,6 +402,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 			{
 			  public void run() 
 			  {
+				 //call the game over screen on a delay
 				  Intent i = new Intent(getApplicationContext(),
 							GameFinishActivity.class);
 					i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -406,6 +420,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		switch (item.getItemId())
 		{
 			case android.R.id.home:
+				timer.cancel();
 				Intent i = new Intent(getApplicationContext(),
  						MenuActivity.class);
 				i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
