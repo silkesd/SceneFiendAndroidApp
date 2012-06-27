@@ -16,6 +16,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 	TextView textviewQu;
 	TextView textviewScore;
 	TextView tv;
+	LinearLayout layout;
 	
 	//buttons to hold the answers and the next button
 	Button buttonviewAns1;
@@ -267,6 +269,12 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		{
 			public void onClick(View v) 
 			{	
+				buttonviewAns1.setFocusable(false);
+		    	buttonviewAns2.setFocusable(false);
+		    	buttonviewAns3.setFocusable(false);
+		    	buttonviewAns4.setFocusable(false);
+		    	next.setFocusable(false);
+				
 				final Handler handler = new Handler();
 				handler.postDelayed(new Runnable() 
 				{
@@ -324,6 +332,12 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		toast.setView(layout);
 		toast.show();
 		
+		buttonviewAns1.setFocusable(false);
+    	buttonviewAns2.setFocusable(false);
+    	buttonviewAns3.setFocusable(false);
+    	buttonviewAns4.setFocusable(false);
+    	next.setFocusable(false);
+		
 		//Toast.makeText(GameActivity.this, "That's right :)", Toast.LENGTH_SHORT).show();
 		
 		final Handler handler = new Handler();
@@ -357,6 +371,12 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		toast.setView(layout);
 		toast.show();
 		
+		buttonviewAns1.setFocusable(false);
+    	buttonviewAns2.setFocusable(false);
+    	buttonviewAns3.setFocusable(false);
+    	buttonviewAns4.setFocusable(false);
+    	next.setFocusable(false);
+		
 		final Handler handler = new Handler();
 		handler.postDelayed(new Runnable() 
 		{
@@ -370,8 +390,15 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
     
     public void moveOn()
     {
+    	buttonviewAns1.setFocusable(true);
+    	buttonviewAns2.setFocusable(true);
+    	buttonviewAns3.setFocusable(true);
+    	buttonviewAns4.setFocusable(true);
+    	next.setFocusable(true);
     	//increment shared preference instead and call here and pass to sqlite
 		GAME_PREFERENCES_CURRENT_QUESTION++;
+		
+		
 		
 		//if the current question number is less than the total number of questions (with a delay)
 		if(GAME_PREFERENCES_CURRENT_QUESTION < 15)
