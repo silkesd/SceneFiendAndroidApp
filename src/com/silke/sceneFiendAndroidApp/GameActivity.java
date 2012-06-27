@@ -272,6 +272,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 				{
 				  public void run() 
 				  {
+					  timer.cancel();
 					  moveOn();
 				  }
 				}, 1000);
