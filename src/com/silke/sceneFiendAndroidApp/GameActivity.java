@@ -108,6 +108,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 //					Log.d("Play Video", "VIDEO ACTIVITY STARTED");
 		}
 		
+		
 		//hashmap containing the four answers relating to the question id from the db
 		HashMap<String,String> gameAns1List = db.getFourAnswers(Integer.parseInt(question_id));	
 		
@@ -271,28 +272,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 			}
 			
 		});	
-		
-//		HashMap<String,String> gameClipList = db.getClips(GAME_PREFERENCES_CURRENT_QUESTION);
-//		String question_clip_id = gameClipList.get("question_id");
-//		String pre_clip = gameClipList.get("pre_clip");
-//		String  post_clip = gameClipList.get("post_clip");
-//		
-//		if(GAME_PREFERENCES_CURRENT_QUESTION == Integer.parseInt(question_clip_id))
-//		{
-//			Log.d("GAME ACTIVITY CLIPS QU ID", gameClipList.get("question_id"));					
-//			Log.d("GAME ACTIVITY CLIPS PRE", gameClipList.get("pre_clip"));				
-//			Log.d("GAME ACTIVITY CLIPS POST", gameClipList.get("post_clip"));				
-//		}
-//		else if (Integer.parseInt(question_clip_id) != GAME_PREFERENCES_CURRENT_QUESTION)
-//		{
-//			//do nothing
-//			Log.d("GAME ACTIVITY :( CLIPS QU ID", "nope");					
-//			Log.d("GAME ACTIVITY :( CLIPS PRE", "nope");				
-//			Log.d("GAME ACTIVITY :( CLIPS POST", "nope");
-//		}
-//    }
-    	
-    }
+  	}
     
     private void startCountDownTimer()
     {
@@ -417,6 +397,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 					finish();
 			  }
 			}, 100);
+			
 	    }
     }
     

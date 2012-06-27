@@ -58,11 +58,11 @@ public class LoginActivity extends SceneFiendAndroidAppActivity
                     // Launch the Scene Fiend Login Activity
                     startActivity(new Intent(LoginActivity.this, SceneFiendLoginActivity.class));
                 } 
-                else if (strText.equalsIgnoreCase(getResources().getString(R.string.login_item_twitterlogin))) 
-                {
-                    // Launch the Twitter Login Activity
-                    startActivity(new Intent(LoginActivity.this, TwitterLoginActivity.class));
-                } 
+//                else if (strText.equalsIgnoreCase(getResources().getString(R.string.login_item_twitterlogin))) 
+//                {
+//                    // Launch the Twitter Login Activity
+//                    startActivity(new Intent(LoginActivity.this, TwitterLoginActivity.class));
+//                } 
                 else if (strText.equalsIgnoreCase(getResources().getString(R.string.login_item_register))) 
                 {
                     // Launch the Register Activity
