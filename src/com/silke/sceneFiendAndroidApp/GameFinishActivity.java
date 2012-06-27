@@ -50,6 +50,8 @@ public class GameFinishActivity extends SceneFiendAndroidAppActivity implements 
 		switch (item.getItemId())
 		{
 			case android.R.id.home:
+				GAME_PREFERENCES_PLAYER_SCORE = 0;
+				GAME_PREFERENCES_CURRENT_QUESTION = 1;
 				Intent i = new Intent(getApplicationContext(),
  						MenuActivity.class);
 				i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
