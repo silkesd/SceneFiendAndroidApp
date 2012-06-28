@@ -127,6 +127,7 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity implem
 						// Clear all previous data in database
 						UserFunctions userFunction = new UserFunctions();
 						userFunction.logoutUser(getApplicationContext());
+						//add new data to db
 						db.addUser(jObj.getString(DBHandler.KEY_PLAYER_ID), json_user.getString(DBHandler.KEY_PLAYER_NAME), json_user.getString(DBHandler.KEY_PLAYER_EMAIL));						
 						GAME_PREFERENCES_PLAYER_ID = jObj.getString(DBHandler.KEY_PLAYER_ID);
 						

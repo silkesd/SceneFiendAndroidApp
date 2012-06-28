@@ -58,7 +58,6 @@ public class TwitterLoginActivity extends SceneFiendAndroidAppActivity
 //	
 //	
 //	
-	private Button btnLogin;
 //	private Button tweet;
 	
 	/** Called when the activity is first created. */

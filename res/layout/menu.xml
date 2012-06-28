@@ -28,7 +28,7 @@
 	<!-- THE CONTENT AREA - menu items -->   
     <RelativeLayout
         android:id="@+id/RelativeLayout02"
-        android:layout_height="fill_parent"
+        android:layout_height="300dp"
         android:layout_width="fill_parent">
        
        <!-- the list view contains all items in the menu list -->
@@ -38,27 +38,26 @@
             android:layout_width="fill_parent"
             android:listSelector="@drawable/textured"
             android:layout_alignParentTop="true"></ListView>
-    </RelativeLayout>
-    
-        
-    <Button android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/logout"
-        android:textSize="20dip"
-        android:textColor="#fff"
-        android:textStyle="bold" 
-        android:id="@+id/btnLogout"
-        android:layout_marginTop="80dip"
-        android:background="@null"/>
-    
-    	<Button
-            android:id="@+id/btnBack"
+	</RelativeLayout>
+	
+	<RelativeLayout
+        android:id="@+id/RelativeLayout03"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent">
+
+        <Button
+            android:id="@+id/btnLogout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dip"
-            android:layout_weight="0.37"
             android:background="@null"
-            android:text="@string/goBack"
-            android:textColor="#fff"
+            android:gravity="right"
+            android:paddingRight="20dp"
+            android:text="@string/logout"
+            android:textColor="@color/title_color"
+            android:textSize="20dip"
             android:textStyle="bold" />
+
+    </RelativeLayout>
+            
+    
 </LinearLayout>

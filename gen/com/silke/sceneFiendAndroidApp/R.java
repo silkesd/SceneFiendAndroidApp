@@ -65,22 +65,22 @@ public final class R {
     }
     public static final class id {
         public static final int CustomFont=0x7f0a0000;
-        public static final int ListView_Login=0x7f0a0017;
-        public static final int ListView_Menu=0x7f0a0018;
-        public static final int RelativeLayout01=0x7f0a000e;
-        public static final int RelativeLayout02=0x7f0a0016;
+        public static final int ListView_Login=0x7f0a0019;
+        public static final int ListView_Menu=0x7f0a001a;
+        public static final int RelativeLayout01=0x7f0a0010;
+        public static final int RelativeLayout02=0x7f0a0018;
+        public static final int RelativeLayout03=0x7f0a000d;
         public static final int TextViewBottomVersion=0x7f0a0029;
         public static final int TextViewTopTitleDesc=0x7f0a0026;
         public static final int TextView_Email=0x7f0a001c;
-        public static final int TextView_HelpText=0x7f0a000d;
-        public static final int TextView_Nickname=0x7f0a000f;
-        public static final int TextView_Password=0x7f0a0011;
-        public static final int btnBack=0x7f0a001a;
+        public static final int TextView_HelpText=0x7f0a000f;
+        public static final int TextView_Nickname=0x7f0a0011;
+        public static final int TextView_Password=0x7f0a0013;
         public static final int btnLinkToLoginScreen=0x7f0a0021;
-        public static final int btnLinkToRegisterScreen=0x7f0a0015;
+        public static final int btnLinkToRegisterScreen=0x7f0a0017;
         public static final int btnLinkToTwitterLogin=0x7f0a000c;
-        public static final int btnLogin=0x7f0a0014;
-        public static final int btnLogout=0x7f0a0019;
+        public static final int btnLogin=0x7f0a0016;
+        public static final int btnLogout=0x7f0a000e;
         public static final int btnRegister=0x7f0a0020;
         public static final int buttonviewAns1=0x7f0a0005;
         public static final int buttonviewAns2=0x7f0a0006;
@@ -94,9 +94,9 @@ public final class R {
         public static final int icon=0x7f0a002b;
         public static final int imageView1=0x7f0a0028;
         public static final int link_to_login=0x7f0a0032;
-        public static final int loginPassword=0x7f0a0012;
-        public static final int loginUsername=0x7f0a0010;
-        public static final int login_error=0x7f0a0013;
+        public static final int loginPassword=0x7f0a0014;
+        public static final int loginUsername=0x7f0a0012;
+        public static final int login_error=0x7f0a0015;
         public static final int netbutton=0x7f0a0001;
         public static final int next=0x7f0a0009;
         public static final int player_id=0x7f0a0022;

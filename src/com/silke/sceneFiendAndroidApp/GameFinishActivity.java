@@ -9,10 +9,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.silke.sceneFiendAndroidApp.handlers.DBHandler;
+import com.silke.sceneFiendAndroidApp.handlers.UserFunctions;
 
 public class GameFinishActivity extends SceneFiendAndroidAppActivity implements View.OnClickListener
 {
@@ -20,6 +22,8 @@ public class GameFinishActivity extends SceneFiendAndroidAppActivity implements 
 	TextView textviewScore;
 	TextView finishName;
 	Button btnLinkToTwitterLogin;
+	UserFunctions userFunctions;
+	Button btnLogout;
 	
     /** Called when the activity is first created. */
     @Override
@@ -60,6 +64,27 @@ public class GameFinishActivity extends SceneFiendAndroidAppActivity implements 
 				}
 			});
 		}
+		
+		 //checking whether the user is logged in before adding the logout button
+        userFunctions = new UserFunctions();
+        if(userFunctions.isUserLoggedIn(getApplicationContext()))
+        {
+	        //the logout button resets the db tables and moves user back to the login screen
+	        btnLogout = (Button) findViewById(R.id.btnLogout);
+	        btnLogout.setOnClickListener(new OnClickListener()
+	        {
+				public void onClick(View v) 
+				{
+					// TODO Auto-generated method stub
+					userFunctions.logoutUser(getApplicationContext());			
+					Intent login = new Intent(getApplicationContext(), 
+							LoginActivity.class);
+					login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					startActivity(login);
+					finish();
+				}
+	        });
+        }
     }
    
     public void callAndSendScoreInfo()

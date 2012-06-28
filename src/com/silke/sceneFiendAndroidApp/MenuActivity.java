@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -81,6 +82,26 @@ public class MenuActivity extends SceneFiendAndroidAppActivity
 			}
         });
         
+        //checking whether the user is logged in before adding the logout button
+        userFunctions = new UserFunctions();
+        if(userFunctions.isUserLoggedIn(getApplicationContext()))
+        {
+	        //the logout button resets the db tables and moves user back to the login screen
+	        btnLogout = (Button) findViewById(R.id.btnLogout);
+	        btnLogout.setOnClickListener(new OnClickListener()
+	        {
+				public void onClick(View v) 
+				{
+					// TODO Auto-generated method stub
+					userFunctions.logoutUser(getApplicationContext());			
+					Intent login = new Intent(getApplicationContext(), 
+							LoginActivity.class);
+					login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					startActivity(login);
+					finish();
+				}
+	        });
+        }
     }  
     public boolean onOptionsItemSelected(MenuItem item) 
 	{
@@ -97,6 +118,4 @@ public class MenuActivity extends SceneFiendAndroidAppActivity
  				return super.onOptionsItemSelected(item);
 		}
 	}
-    
-    //LOGOUT
 }
