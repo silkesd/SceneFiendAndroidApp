@@ -39,8 +39,7 @@ public class MenuActivity extends SceneFiendAndroidAppActivity
         String[] items = { getResources().getString(R.string.menu_item_play),
                 getResources().getString(R.string.menu_item_scores),
                 getResources().getString(R.string.menu_item_settings),
-                getResources().getString(R.string.menu_item_help),
-                getResources().getString(R.string.menu_item_login)};
+                getResources().getString(R.string.menu_item_help)};
         
     	//actionbar
 		ActionBar ab = getActionBar();

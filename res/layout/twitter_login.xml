@@ -92,18 +92,36 @@
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
 	android:background="@drawable/bkgrnd_clear">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dip"
+        android:paddingTop="5dip" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dip"
+            android:layout_weight="0.30"
+            android:src="@drawable/twitter_logo" />
+    </LinearLayout>
+
 	<Button
 		android:id="@+id/btnLogin"
 		android:onClick="buttonLogin"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:text="@string/twitter_login" />
+
 	<Button
-		android:id="@+id/tweet"
-		android:onClick="buttonTweet"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:enabled="false"
-		android:text="@string/tweet" />
+	    android:id="@+id/tweet"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:onClick="buttonTweet"
+	    android:text="@string/tweet" />
+
 </LinearLayout>
  

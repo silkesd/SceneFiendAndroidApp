@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/CustomFont"
         android:layout_width="228dp"
-        android:layout_height="64dp"
+        android:layout_height="61dp"
         android:layout_gravity="right"
         android:shadowColor="@android:color/white"
         android:shadowDx="0"

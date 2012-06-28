@@ -89,7 +89,7 @@ public final class R {
         public static final int finish=0x7f0a000a;
         public static final int finishName=0x7f0a000b;
         public static final int frameLayout1=0x7f0a0027;
-        public static final int header=0x7f0a002e;
+        public static final int header=0x7f0a002d;
         public static final int home_container=0x7f0a0034;
         public static final int icon=0x7f0a002b;
         public static final int imageView1=0x7f0a0028;
@@ -116,7 +116,7 @@ public final class R {
         public static final int textviewScore=0x7f0a0002;
         public static final int toast_layout_root=0x7f0a002a;
         public static final int tv=0x7f0a0003;
-        public static final int tweet=0x7f0a002d;
+        public static final int tweet=0x7f0a002e;
         public static final int webview=0x7f0a0033;
     }
     public static final class layout {
