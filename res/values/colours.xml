@@ -12,4 +12,5 @@
     <color name="error_color">#F00</color>
     <color name="score_color">#FFF</color>
     <color name="game_color">#47DDFE</color>
+    <color name="red">#FF0000</color>
 </resources>

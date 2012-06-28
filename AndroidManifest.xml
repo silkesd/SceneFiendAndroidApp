@@ -28,13 +28,19 @@
         <activity
             android:name=".SplashActivity"
             android:label="@string/app_name" 
-            android:description="@string/app_desc">
+            android:description="@string/app_desc"
+            android:launchMode="singleInstance">
             
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            
+            <intent-filter>
+                  <action android:name="android.intent.action.VIEW" />
+                  <category android:name="android.intent.category.DEFAULT" />
+                  <category android:name="android.intent.category.BROWSABLE" />
+                  <data android:scheme="http://www.scenefiend.silkesd.com/" />
+          </intent-filter>
         </activity>
 		
         <activity android:name="GameActivity"></activity>   
@@ -53,7 +59,7 @@
         <activity android:name="SplashActivity"></activity>
         <activity android:name="TwitterLoginActivity"></activity>
         <activity android:name="TwitterRegisterActivity"></activity>
-        
+        <activity android:name="TwitterWebviewActivity"></activity>
     </application>
   
 </manifest>

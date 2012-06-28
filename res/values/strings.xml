@@ -19,6 +19,7 @@
     <string name="logout">Logout</string>
     <string name="gameover">Game Over</string>
     <string name="gamestringover">You Just Scored</string>
+    <string name="twitter_callback">http://www.scenefiend.silkesd.com/</string>
     
     <!-- Menu Strings -->
     <string name="menu_item_settings">Settings</string>
@@ -45,6 +46,7 @@
     
     <!-- Login Menu Strings -->
     <string name="login_item_scenefiendlogin">Login</string>
+    <string name="login_item_twitterlogin">Twitter Login</string>
     <string name="login_item_register">Register</string>
     
     <!-- Register Strings-->
@@ -74,6 +76,8 @@
     <string name="twitter_email">Email</string>
     <string name="twitter_password">Password</string>
     <string name="twitter_login">Login</string>
+    <string name="tweet">Tweet</string>
+    <string name="tweetMyScore">Tweet My Score!</string>
     <string name="twitter_register_link">New to Twitter? Register here</string>
     <string name="twitter_login_link">Already have an account? Login here!</string>
     <string name="twitter_register">Register New Account</string>

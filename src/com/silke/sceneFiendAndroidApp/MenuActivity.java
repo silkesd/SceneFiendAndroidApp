@@ -1,7 +1,4 @@
 package com.silke.sceneFiendAndroidApp;
-import com.silke.sceneFiendAndroidApp.handlers.UserFunctions;
-
-
 import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -14,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.silke.sceneFiendAndroidApp.handlers.UserFunctions;
 
 public class MenuActivity extends SceneFiendAndroidAppActivity 
 {
@@ -79,45 +78,9 @@ public class MenuActivity extends SceneFiendAndroidAppActivity
                     // Launch the Scores Activity
                     startActivity(new Intent(MenuActivity.this, ScoreMenuActivity.class));
                 }
-//                else if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_login))) 
-//                {
-//                    // Launch the Login Activity
-//                    startActivity(new Intent(MenuActivity.this, LoginActivity.class));
-//                }
 			}
         });
         
-        
-        
-        //userFunctions = new UserFunctions();
-        //if(userFunctions.isUserLoggedIn(getApplicationContext()))
-     //   {        	
-        //	btnLogout = (Button) findViewById(R.id.btnLogout);
-        //	btnLogout.setOnClickListener(new View.OnClickListener() 
-        //	{
-    			
-    	//		public void onClick(View arg0) 
-    	//		{
-    				// TODO Auto-generated method stub
-    	//			userFunctions.logoutUser(getApplicationContext());
-    	//			Intent login = new Intent(getApplicationContext(), SceneFiendLoginActivity.class);
-    	//        	login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-    	//        	startActivity(login);
-    	        	// Closing menu screen
-    	//        	finish();
-    	//		}
-    	//	});
-        	
-        //}
-        //else
-        //{
-        	// user is not logged in show login screen
-        //	Intent login = new Intent(getApplicationContext(), SceneFiendLoginActivity.class);
-        //	login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        //	startActivity(login);
-        	// Closing menu screen
-        //	finish();
-        //}  
     }  
     public boolean onOptionsItemSelected(MenuItem item) 
 	{
@@ -134,4 +97,6 @@ public class MenuActivity extends SceneFiendAndroidAppActivity
  				return super.onOptionsItemSelected(item);
 		}
 	}
+    
+    //LOGOUT
 }

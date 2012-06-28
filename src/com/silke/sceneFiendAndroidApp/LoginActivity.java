@@ -1,12 +1,8 @@
 package com.silke.sceneFiendAndroidApp;
 
-import com.silke.sceneFiendAndroidApp.R;
-import android.os.Bundle;
-import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.util.Log;
-import android.view.MenuItem;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -29,14 +25,11 @@ public class LoginActivity extends SceneFiendAndroidAppActivity
         TextView tv = (TextView) findViewById(R.id.CustomFont);
         tv.setTypeface(tf);
         
-		//actionbar
-		ActionBar ab = getActionBar();
-		ab.setDisplayHomeAsUpEnabled(true);
-       
         //the login type menu items
         ListView loginList = (ListView) findViewById(R.id.ListView_Login);
         String[] loginItems = { 
                 getResources().getString(R.string.login_item_scenefiendlogin),
+                getResources().getString(R.string.login_item_twitterlogin),
         		getResources().getString(R.string.login_item_register)};
         
         //data adapter maps data to the layout templates specified via the array that stores the menu items
@@ -57,35 +50,17 @@ public class LoginActivity extends SceneFiendAndroidAppActivity
                     // Launch the Scene Fiend Login Activity
                     startActivity(new Intent(LoginActivity.this, SceneFiendLoginActivity.class));
                 } 
-//                else if (strText.equalsIgnoreCase(getResources().getString(R.string.login_item_twitterlogin))) 
-//                {
-//                    // Launch the Twitter Login Activity
-//                    startActivity(new Intent(LoginActivity.this, TwitterLoginActivity.class));
-//                } 
+                else if (strText.equalsIgnoreCase(getResources().getString(R.string.login_item_twitterlogin))) 
+                {
+                    // Launch the Twitter Login Activity
+                    startActivity(new Intent(LoginActivity.this, TwitterLoginActivity.class));
+                } 
                 else if (strText.equalsIgnoreCase(getResources().getString(R.string.login_item_register))) 
                 {
                     // Launch the Register Activity
                     startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
                 } 
-			}
-        	
-        });
-        
+			}      	
+        });       
     }  
-    
-    public boolean onOptionsItemSelected(MenuItem item) 
-	{
-		switch (item.getItemId())
-		{
-			case android.R.id.home:
-				Intent i = new Intent(getApplicationContext(),
- 						MenuActivity.class);
-				i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
- 				startActivity(i);
- 				Log.d("LoginAct", "activity started");
- 				return true;
- 			default:
- 				return super.onOptionsItemSelected(item);
-		}
-	}
 }

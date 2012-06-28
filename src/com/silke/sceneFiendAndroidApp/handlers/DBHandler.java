@@ -24,9 +24,9 @@ public class DBHandler extends SQLiteOpenHelper
 	private static final String TABLE_SCORES = "scene_scores";
 
 	// Player Table Columns names
-	private static final String KEY_PLAYER_ID = "player_id";
-	private static final String KEY_PLAYER_NAME = "player_name";
-	private static final String KEY_PLAYER_EMAIL = "player_email";
+	public static final String KEY_PLAYER_ID = "player_id";
+	public static final String KEY_PLAYER_NAME = "player_name";
+	public static final String KEY_PLAYER_EMAIL = "player_email";
 	
 	// Scores Table Columns names
 	private static final String KEY_SCORES_ID = "id";
@@ -55,11 +55,30 @@ public class DBHandler extends SQLiteOpenHelper
 				+ KEY_SCORES_ID + " CHAR(10) NOT NULL PRIMARY KEY, " 
 				+ KEY_PLAYER_ID + " CHAR(10), " 
 				+ KEY_PLAYER_SCORE + " INTEGER, "
-				+ KEY_SCORE_DATE + " DATE, " 
+				+ KEY_SCORE_DATE + " INTEGER, " 
 				+ "FOREIGN KEY" + "(" + KEY_PLAYER_ID + ")" + " REFERENCES " + TABLE_PLAYER + "( " + KEY_PLAYER_ID + " )" + ")";
 		db.execSQL(CREATE_SCORES_TABLE);
 			
 	}
+	
+	/**
+	 * Storing user details in local database
+	 * */
+	public void addScore(String player_id, Integer player_score, long score_date) 
+	{
+		SQLiteDatabase db = this.getWritableDatabase();
+
+		ContentValues values = new ContentValues();
+		values.put(KEY_SCORES_ID, 1);
+		values.put(KEY_PLAYER_ID, player_id); // Email
+		values.put(KEY_PLAYER_SCORE, player_score); // Name
+		values.put(KEY_SCORE_DATE, score_date); // Email
+
+		// Inserting Row
+		db.insert(TABLE_SCORES, null, values);
+		db.close(); // Closing database connection
+	}
+	
 	
 	// Updating database
 	@Override
@@ -89,6 +108,8 @@ public class DBHandler extends SQLiteOpenHelper
 		db.insert(TABLE_PLAYER, null, values);
 		db.close(); // Closing database connection
 	}
+	
+	
 		
 	
 	/**

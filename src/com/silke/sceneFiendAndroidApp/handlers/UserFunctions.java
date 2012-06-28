@@ -12,14 +12,13 @@ import com.silke.sceneFiendAndroidApp.asynctasks.IJsonDownloaded;
 import android.content.Context;
 import android.util.Log;
 
-
 public class UserFunctions extends SceneFiendAndroidAppActivity
 {
 	private FileDownloader fileDownloader;
 	
 	//localhost strings to connect with php files for online db connectivity
-	private static String loginURL = "http://10.0.2.2:8888/SceneFiendDatabasing/index.php";
-	private static String registerURL = "http://10.0.2.2:8888/SceneFiendDatabasing/index.php";
+	private static String loginURL = "http://www.scenefiend.silkesd.com/index.php";
+	private static String registerURL = "http://www.scenefiend.silkesd.com/index.php";
 	
 	private static String login_tag = "login";
 	private static String register_tag = "register";

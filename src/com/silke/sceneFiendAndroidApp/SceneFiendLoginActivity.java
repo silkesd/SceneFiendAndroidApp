@@ -3,20 +3,22 @@ package com.silke.sceneFiendAndroidApp;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.silke.sceneFiendAndroidApp.R;
-import com.silke.sceneFiendAndroidApp.asynctasks.FileDownloader;
-import com.silke.sceneFiendAndroidApp.asynctasks.IJsonDownloaded;
-import com.silke.sceneFiendAndroidApp.handlers.UserFunctions;
-import android.os.Bundle;
 import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.silke.sceneFiendAndroidApp.asynctasks.FileDownloader;
+import com.silke.sceneFiendAndroidApp.asynctasks.IJsonDownloaded;
+import com.silke.sceneFiendAndroidApp.handlers.DBHandler;
+import com.silke.sceneFiendAndroidApp.handlers.UserFunctions;
 
 public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity implements IJsonDownloaded
 {
@@ -25,17 +27,9 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity implem
 	static JSONObject jObj = null;
 	EditText inputUsername;
 	EditText inputPassword;
-	TextView loginErrorMsg;
+	TextView login_error;
 	private SceneFiendLoginActivity context;
-	
-	// JSON Response node names
-//	private static String KEY_SUCCESS = "success";
-//	private static String KEY_ERROR = "error";
-//	private static String KEY_ERROR_MSG = "error_msg";
-//	private static String KEY_ID = "player_id";
-//	private static String KEY_NAME = "player_name";
-//	private static String KEY_EMAIL = "player_email";
-//   
+
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) 
@@ -49,18 +43,17 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity implem
         TextView tv = (TextView) findViewById(R.id.CustomFont);
         tv.setTypeface(tf);
        
+        //actionbar
+  		ActionBar ab = getActionBar();
+  		ab.setDisplayHomeAsUpEnabled(true);
        
         // Importing all assets like buttons, text fields
      	inputUsername = (EditText) findViewById(R.id.loginUsername);
      	inputPassword = (EditText) findViewById(R.id.loginPassword);
      	btnLogin = (Button) findViewById(R.id.btnLogin);
      	btnLinkToRegister = (Button) findViewById(R.id.btnLinkToRegisterScreen);
-     	loginErrorMsg = (TextView) findViewById(R.id.login_error);
-     	
-     	//actionbar
-		ActionBar ab = getActionBar();
-		ab.setDisplayHomeAsUpEnabled(true);
-   
+     	login_error = (TextView) findViewById(R.id.login_error);
+
      	// Login button Click Event
  		btnLogin.setOnClickListener(new View.OnClickListener() 
  		{
@@ -72,9 +65,13 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity implem
  				Log.d("Button", player_name);
  				UserFunctions userFunction = new UserFunctions();
  				FileDownloader fd = userFunction.loginUser(context, player_name, password);
+ 				//Log.d("Testing JSON string for Login", fd.toString());
+ 				
  				GAME_PREFERENCES_PLAYER_NAME = player_name;
+ 				
  				String json_str = fd.getApiResponse();
- 				Log.d("Testing JSON string for Login", fd.getApiResponse());
+ 				
+ 				Log.d("Testing JSON string for Login", json_str);
  				Log.d("LOGGED IN USER PREFERENCE", GAME_PREFERENCES_PLAYER_NAME);
 
  				//parse string to json object
@@ -89,45 +86,6 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity implem
 				}
  			
  				
- 				// check for login response
-// 				try {
-// 					if (jObj.getString("success") != null) 
-// 					{
-// 						loginErrorMsg.setText("");
-// 						String res = jObj.getString("success"); 
-// 						if(Integer.parseInt(res) == 1)
-// 						{
-// 							// user successfully logged in
-// 							// Store user details in SQLite Database
-// 							DBHandler db = new DBHandler(getApplicationContext());
-// 							JSONObject json_user = jObj.getJSONObject("user");
-// 							
-// 							// Clear all previous data in database
-// 							UserFunctions userFunction = new UserFunctions();
-// 							userFunction.logoutUser(getApplicationContext());
-// 							db.addUser(jObj.getString(KEY_ID), json_user.getString(KEY_NAME), json_user.getString(KEY_EMAIL));						
-// 							
-// 						// Launch Menu Screen
-// 						Intent menu = new Intent(getApplicationContext(), MenuActivity.class);
-// 						
-// 						// Close all views before launching Menu
-// 						menu.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-// 						startActivity(menu);
-// 							
-// 							// Close Login Screen
-// 							finish();
-// 						}
-// 						else
-// 						{
-// 							// Error in login
-// 							loginErrorMsg.setText("Incorrect username/password");
-// 						}
-// 					}
-// 				} 
-// 				catch (JSONException e) 
-// 				{
-// 					e.printStackTrace();
-// 				}
  				
  			}
  		});
@@ -145,7 +103,73 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity implem
  		});
  	}
     
-    public boolean onOptionsItemSelected(MenuItem item) 
+   
+    
+    //this function passes data to the sqlite db and if success tag registered pass user to menu activity
+    private void successfulLog(JSONObject jObj)
+    {
+    	// check for login response
+			try {
+				if (jObj.getString("success") != null) 
+				{
+					login_error.setText("Hello Again!");
+					login_error.setTextColor(Color.parseColor("#FFCC66"));
+					
+					String res = jObj.getString("success"); 
+					if(Integer.parseInt(res) == 1)
+					{
+						GAME_PREFERENCES_LOGGED_IN = true;
+						// user successfully logged in
+						// Store user details in SQLite Database
+						DBHandler db = new DBHandler(getApplicationContext());
+						JSONObject json_user = jObj.getJSONObject("user");
+						
+						// Clear all previous data in database
+						UserFunctions userFunction = new UserFunctions();
+						userFunction.logoutUser(getApplicationContext());
+						db.addUser(jObj.getString(DBHandler.KEY_PLAYER_ID), json_user.getString(DBHandler.KEY_PLAYER_NAME), json_user.getString(DBHandler.KEY_PLAYER_EMAIL));						
+						GAME_PREFERENCES_PLAYER_ID = jObj.getString(DBHandler.KEY_PLAYER_ID);
+						
+						Log.d("LOGIN ACTIVITY", "Logged in player_name: " + jObj.getString("user"));
+						//GAME_PREFERENCES_PLAYER_NAME = jObj.getString("player_name");
+						Log.d("LOGIN ACTIVITY", "Logged in player_id: " + GAME_PREFERENCES_PLAYER_ID);
+						//Log.d("LOGIN ACTIVITY", "Logged in player_name: " + GAME_PREFERENCES_PLAYER_NAME);
+						
+						// Launch Menu Screen
+						Intent menu = new Intent(getApplicationContext(), MenuActivity.class);
+						
+						// Close all views before launching Menu
+						menu.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+						startActivity(menu);
+							
+						// Close Login Screen
+						finish();
+					}
+					
+					if(jObj.getInt("success") == 0)
+					{
+						// Error in login
+						login_error.setText("Incorrect username/password");
+						login_error.setTextColor(Color.parseColor("#FF0000"));	
+					}
+				}
+			} 
+			catch (JSONException e) 
+			{
+				e.printStackTrace();
+			}
+			
+    }
+
+    //Json has been downloaded now - login with user entries (context) - passed to userfunctions (context)
+    //passed to filedownloader (context) on finishing download calls this function and pass the jObj to it
+    //interface was to datatype which kind of object is being passed to filedownloader
+	public void onJsonDownloaded(JSONObject jObj) 
+	{
+		successfulLog(jObj);
+	}
+	
+	public boolean onOptionsItemSelected(MenuItem item) 
 	{
 		switch (item.getItemId())
 		{
@@ -154,29 +178,10 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity implem
  						LoginActivity.class);
 				i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
  				startActivity(i);
- 				Log.d("SFLoginAct", "activity started");
+ 				Log.d("LoginAct", "activity started");
  				return true;
  			default:
  				return super.onOptionsItemSelected(item);
-		}
-	}
-
-
-	public void onJsonDownloaded(JSONObject jObj) 
-	{
-		try 
-		{
-			
-			GAME_PREFERENCES_PLAYER_ID = jObj.getString("player_id");
-			Log.d("LOGIN ACTIVITY", "Logged in player_name: " + jObj.getString("user"));
-			//GAME_PREFERENCES_PLAYER_NAME = jObj.getString("player_name");
-			Log.d("LOGIN ACTIVITY", "Logged in player_id: " + GAME_PREFERENCES_PLAYER_ID);
-			//Log.d("LOGIN ACTIVITY", "Logged in player_name: " + GAME_PREFERENCES_PLAYER_NAME);
-		} 
-		catch (JSONException e) 
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
  }
