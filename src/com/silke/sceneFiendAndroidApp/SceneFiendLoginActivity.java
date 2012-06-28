@@ -147,10 +147,14 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity implem
 						finish();
 					}
 					
+					//if there is an error
 					if(jObj.getInt("success") == 0)
 					{
-						// Error in login
-						login_error.setText("Incorrect username/password");
+						// Error in login - reset the textfields to empty
+						inputUsername.setText("");
+						inputPassword.setText("");
+						// Error in login - provide feedback in red
+						login_error.setText("Incorrect username or password");
 						login_error.setTextColor(Color.parseColor("#FF0000"));	
 					}
 				}
