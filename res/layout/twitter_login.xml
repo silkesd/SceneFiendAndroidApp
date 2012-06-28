@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<!-- <ScrollView
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
@@ -8,7 +8,7 @@
   		android:layout_width="fill_parent"
   		android:layout_height="wrap_content" android:background="#000">
   		
-  		<!--  Header  Starts-->
+  		 Header  Starts
 
   		<LinearLayout
   		    android:id="@+id/header"
@@ -17,7 +17,7 @@
   		    android:paddingBottom="5dip"
   		    android:paddingTop="5dip" >
 
-		<!-- Logo Start -->
+		Logo Start
 		    <ImageView
 		        android:layout_width="wrap_content"
 		        android:layout_height="match_parent"
@@ -26,14 +26,14 @@
 		        android:layout_weight="0.30"
 		        android:src="@drawable/twitter_logo" />
 
-  		    <!-- Logo Ends -->
+  		    Logo Ends
   		    
 
   		</LinearLayout>
 
-  		<!--  Header Ends -->  
+  		 Header Ends  
   		
-  		<!-- Login Form -->
+  		Login Form
 
 		<LinearLayout
 		    xmlns:android="http://schemas.android.com/apk/res/android"
@@ -45,7 +45,7 @@
 		    android:orientation="vertical"
 		    android:padding="10dip" >
 
-		  <!--  Email Label -->
+		   Email Label
 		  <TextView android:layout_width="fill_parent"
 		  		android:layout_height="wrap_content"
 		  		android:textColor="#fff"
@@ -55,7 +55,7 @@
 		  		android:layout_marginTop="5dip"
 		  		android:layout_marginBottom="20dip"
 		  		android:singleLine="true"/>
-		  <!--  Password Label -->
+		   Password Label
 		  <TextView android:layout_width="fill_parent"
 		  		android:layout_height="wrap_content"
 		  		android:textColor="#fff"
@@ -65,27 +65,45 @@
 		  		android:layout_marginTop="5dip"
 		  		android:singleLine="true"
 		  		android:password="true"/>
-		  <!-- Login button -->	
+		  Login button	
 		  <Button android:id="@+id/btnLogin" 
 		  		android:layout_width="fill_parent"
 		  		android:layout_height="wrap_content"
 		  		android:layout_marginTop="10dip"
 		  		android:text="@string/twitter_login"/>
-		  <!-- Link to Registration Screen -->
+		  <Button android:id="@+id/tweet" 
+		  		android:layout_width="fill_parent"
+		  		android:layout_height="wrap_content"
+		  		android:layout_marginTop="10dip"
+		  		android:text="@string/tweet"/>
+		  
 
-		  <TextView
-		      android:id="@+id/link_to_register"
-		      android:layout_width="fill_parent"
-		      android:layout_height="wrap_content"
-		      android:layout_marginBottom="40dip"
-		      android:layout_marginTop="40dip"
-		      android:gravity="center"
-		      android:text="@string/twitter_register_link"
-		      android:textColor="#fff"
-		      android:textSize="20dip" />
+		  
 
 		</LinearLayout>
-  		<!-- Login Form Ends --> 		
+  		Login Form Ends 		
   		
   </RelativeLayout>
 </ScrollView>
+ -->
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:background="@drawable/bkgrnd_clear">
+	<Button
+		android:id="@+id/btnLogin"
+		android:onClick="buttonLogin"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/twitter_login" />
+	<Button
+		android:id="@+id/tweet"
+		android:onClick="buttonTweet"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:enabled="false"
+		android:text="@string/tweet" />
+</LinearLayout>
+ 

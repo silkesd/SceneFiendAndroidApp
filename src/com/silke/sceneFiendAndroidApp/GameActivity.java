@@ -1,7 +1,7 @@
 package com.silke.sceneFiendAndroidApp;
 
 import java.util.HashMap;
-import com.silke.sceneFiendAndroidApp.handlers.DBQuizHandler;
+
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.silke.sceneFiendAndroidApp.handlers.DBQuizHandler;
 
 public class GameActivity extends SceneFiendAndroidAppActivity implements View.OnClickListener
 {
@@ -70,6 +72,16 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
         //set a text view to show response from count down timer
         tv = (TextView) findViewById(R.id.tv);
   		
+    }
+    
+    
+    public void enableDisableButtons(Boolean state)
+    {
+    	buttonviewAns1.setEnabled(state);
+    	buttonviewAns2.setEnabled(state);
+    	buttonviewAns3.setEnabled(state);
+    	buttonviewAns4.setEnabled(state);
+    	next.setEnabled(state);
     }
     
     public void callQuestionInfo()
@@ -145,6 +157,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		{
 			public void onClick(View v) 
 			{
+				enableDisableButtons(false); //disable buttons again
 				// TODO Auto-generated method stub
 				System.out.println(buttonviewAns1.getId());
 				
@@ -177,6 +190,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		{
 			public void onClick(View v) 
 			{
+				enableDisableButtons(false); //disable buttons again
 				// TODO Auto-generated method stub
 				System.out.println(buttonviewAns2.getId());
 				
@@ -211,6 +225,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		{
 			public void onClick(View v) 
 			{
+				enableDisableButtons(false); //disable buttons again
 				// TODO Auto-generated method stub
 				System.out.println(buttonviewAns3.getId());
 				
@@ -241,6 +256,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		{
 			public void onClick(View v) 
 			{
+				enableDisableButtons(false); //disable buttons again
 				// TODO Auto-generated method stub
 				System.out.println(buttonviewAns4.getId());
 				
@@ -269,25 +285,22 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		{
 			public void onClick(View v) 
 			{	
-				buttonviewAns1.setFocusable(false);
-		    	buttonviewAns2.setFocusable(false);
-		    	buttonviewAns3.setFocusable(false);
-		    	buttonviewAns4.setFocusable(false);
-		    	next.setFocusable(false);
-				
+				enableDisableButtons(false); //disable buttons again
 				final Handler handler = new Handler();
 				handler.postDelayed(new Runnable() 
 				{
 				  public void run() 
 				  {
+					  
 					  timer.cancel();
 					  moveOn();
 				  }
-				}, 1000);
+				}, 100);
 			}
 			
 		});	
   	}
+  
     
     private void startCountDownTimer()
     {
@@ -320,7 +333,8 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		LayoutInflater inflater = getLayoutInflater();
 		View layout = inflater.inflate(R.layout.toast_layout,
 		                               (ViewGroup) findViewById(R.id.toast_layout_root));
-
+		enableDisableButtons(false); //disable buttons again
+		
 		ImageView image = (ImageView) layout.findViewById(R.id.icon);
 		image.setImageResource(R.drawable.happy);
 		TextView text = (TextView) layout.findViewById(R.id.text);
@@ -332,11 +346,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		toast.setView(layout);
 		toast.show();
 		
-		buttonviewAns1.setFocusable(false);
-    	buttonviewAns2.setFocusable(false);
-    	buttonviewAns3.setFocusable(false);
-    	buttonviewAns4.setFocusable(false);
-    	next.setFocusable(false);
+		
 		
 		//Toast.makeText(GameActivity.this, "That's right :)", Toast.LENGTH_SHORT).show();
 		
@@ -345,10 +355,11 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		{
 		  public void run() 
 		  {
+			 
 			 timer.cancel();
 			 moveOn();
 		  }
-		}, 1000);
+		}, 100);
 		
 			
 	}
@@ -356,10 +367,13 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 	public void wrong() 
 	{
 		
+		
 		LayoutInflater inflater = getLayoutInflater();
 		View layout = inflater.inflate(R.layout.toast_layout,
 		                               (ViewGroup) findViewById(R.id.toast_layout_root));
-
+		
+		enableDisableButtons(false); //disable buttons again
+		
 		ImageView image = (ImageView) layout.findViewById(R.id.icon);
 		image.setImageResource(R.drawable.sad);
 		TextView text = (TextView) layout.findViewById(R.id.text);
@@ -371,30 +385,23 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		toast.setView(layout);
 		toast.show();
 		
-		buttonviewAns1.setFocusable(false);
-    	buttonviewAns2.setFocusable(false);
-    	buttonviewAns3.setFocusable(false);
-    	buttonviewAns4.setFocusable(false);
-    	next.setFocusable(false);
+		
 		
 		final Handler handler = new Handler();
 		handler.postDelayed(new Runnable() 
 		{
 		  public void run() 
 		  {
+			  
 			  timer.cancel();
 			  moveOn();
 		  }
-		}, 1000);
+		}, 600);
 	}
     
     public void moveOn()
     {
-    	buttonviewAns1.setFocusable(true);
-    	buttonviewAns2.setFocusable(true);
-    	buttonviewAns3.setFocusable(true);
-    	buttonviewAns4.setFocusable(true);
-    	next.setFocusable(true);
+    	
     	//increment shared preference instead and call here and pass to sqlite
 		GAME_PREFERENCES_CURRENT_QUESTION++;
 		
@@ -408,6 +415,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 			{
 			  public void run() 
 			  {
+				 
 				  //launch this activity again with an incremented question number affecting
 				  //the information displayed
 				  Intent i = new Intent(getApplicationContext(),
@@ -417,8 +425,10 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 					startActivity(i);
 					finish();
 					Log.d("GameAct", "activity started again");
+					
+					
 			  }
-			}, 100);
+			}, 600);
 			
 			
 		}
@@ -438,9 +448,16 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 					startActivity(i);
 					finish();
 			  }
-			}, 100);
+			}, 600);		
 			
 	    }
+		
+		enableButtons();
+    }
+    
+    private void enableButtons()
+    {
+    	enableDisableButtons(true); //enable buttons again
     }
     
 	public boolean onOptionsItemSelected(MenuItem item) 

@@ -49,5 +49,11 @@
         android:textStyle="bold" >
         
     </TextView>
+    
+    <Button android:id="@+id/btnLinkToTwitterLogin" 
+  		android:layout_width="fill_parent"
+  		android:layout_height="wrap_content"
+  		android:layout_marginTop="10dip"
+  		android:text="@string/tweetMyScore"/>
 
 </LinearLayout>
