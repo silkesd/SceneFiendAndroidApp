@@ -69,6 +69,7 @@ public class RegisterActivity extends SceneFiendAndroidAppActivity implements IJ
 				String player_name = inputUsername.getText().toString();
 				String player_email = inputEmail.getText().toString();
 				String password = inputPassword.getText().toString();
+				
 				UserFunctions userFunction = new UserFunctions();
 				FileDownloader fd = userFunction.registerUser(context, player_name, player_email, password);
 				//userFunction.registerUser(player_name, player_email, password);
@@ -117,6 +118,8 @@ public class RegisterActivity extends SceneFiendAndroidAppActivity implements IJ
     	// check for register response			
 		try 
 		{
+			//if the JSONObject was successfully returned set feedback and game pref and
+			//store info in SQLite DB
 			if (jObj.getString("success") != null) 
 			{
 				registerErrorMsg.setText("You're Registered and Logged In!");
@@ -162,7 +165,7 @@ public class RegisterActivity extends SceneFiendAndroidAppActivity implements IJ
 					registerErrorMsg.setText("That user already exists! Please try another");
 					registerErrorMsg.setTextColor(Color.parseColor("#FF0000"));	
 				}
-				//if the username inputted already exists
+				//if there is another error
 				if(jObj.getInt("error") == 1)
 				{	
 					// Error in registration - reset the textfields to empty
@@ -190,6 +193,7 @@ public class RegisterActivity extends SceneFiendAndroidAppActivity implements IJ
 		successfulReg(jObj);
 	}
     
+	//actionbar logic
 	public boolean onOptionsItemSelected(MenuItem item) 
 	{
 		switch (item.getItemId())

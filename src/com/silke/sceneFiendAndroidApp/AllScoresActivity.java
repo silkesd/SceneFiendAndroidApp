@@ -3,11 +3,11 @@ package com.silke.sceneFiendAndroidApp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 import org.apache.http.NameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import com.silke.sceneFiendAndroidApp.handlers.JSONScoreParser;
 
 import android.app.ActionBar;
 import android.app.ListActivity;
@@ -21,6 +21,8 @@ import android.view.MenuItem;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+
+import com.silke.sceneFiendAndroidApp.handlers.JSONScoreParser;
 
 
 public class AllScoresActivity extends ListActivity 
@@ -36,7 +38,7 @@ public class AllScoresActivity extends ListActivity
 	
 	
 	// url to get all scores list
-	private static String url_all_scores = "http://10.0.2.2:8888/SceneFiendDatabasing/all_scores.php";
+	private static String url_all_scores = "http://www.scenefiend.silkesd.com/all_scores.php";
 
 	// JSON Node names
 	private static final String TAG_SUCCESS = "success";

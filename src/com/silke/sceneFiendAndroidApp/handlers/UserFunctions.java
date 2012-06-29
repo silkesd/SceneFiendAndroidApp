@@ -20,9 +20,11 @@ public class UserFunctions extends SceneFiendAndroidAppActivity
 	//localhost strings to connect with php files for online db connectivity
 	private static String loginURL = "http://www.scenefiend.silkesd.com/index.php";
 	private static String registerURL = "http://www.scenefiend.silkesd.com/index.php";
+	private static String scoreURL = "http://www.scenefiend.silkesd.com/update_scores.php";
 	
 	private static String login_tag = "login";
 	private static String register_tag = "register";
+	private static String score_tag = "score";
 	
 	// constructor
 	public UserFunctions() 
@@ -74,6 +76,27 @@ public class UserFunctions extends SceneFiendAndroidAppActivity
 		return fileDownloader;
 	}
 	
+	
+	/**
+	 * function make Login Request with username and password
+	 * @param player_name
+	 * @param player_password
+	 * @return 
+	 * */
+//	public FileDownloader updateScore(IJsonDownloaded context, String player_id, Integer player_score, Long score_date)
+//	{
+//		// Building Parameters and returning json string
+//		List<NameValuePair> params = new ArrayList<NameValuePair>();
+//		params.add(new BasicNameValuePair("tag", this.login_tag));
+//		params.add(new BasicNameValuePair("player_name", player_name));
+//		params.add(new BasicNameValuePair("password", password));
+//		
+//		//Log.d("UserFunctions", "sending login to file downloader");
+//		fileDownloader = new FileDownloader(context, params);
+//		fileDownloader.execute(loginURL);
+//		return fileDownloader;
+//	}
+	
 	/**
 	 * Function get Login status
 	 * */
@@ -96,7 +119,38 @@ public class UserFunctions extends SceneFiendAndroidAppActivity
 	public boolean logoutUser(Context context)
 	{
 		DBHandler db = new DBHandler(context);
+		DBQuizHandler db1 = new DBQuizHandler(context);
+		db.resetTables();
+		db1.resetTables();
+		return true;
+	}
+	
+	/**
+	 * Function to logout user
+	 * Reset Database
+	 * */
+	public boolean loseScore(Context context)
+	{
+		DBHandler db = new DBHandler(context);
 		db.resetTables();
 		return true;
+	}
+
+	public FileDownloader updateScore(IJsonDownloaded context, String player_id, String player_score, String score_date) 
+	{
+		//Log.d("THIS IS THE PLAYER_ID IN USERFUNCTIONS", player_id);
+		// Building Parameters and returning json string
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("tag", this.score_tag));
+		params.add(new BasicNameValuePair("player_id", player_id));
+		params.add(new BasicNameValuePair("player_score", player_score));
+		params.add(new BasicNameValuePair("score_date", score_date));
+		//Log.d("PLAYER_ID IN FILEDOWNLOADER AFTER BUILD PARAMS", player_id);
+		
+		Log.d("UserFunctions", "sending update score to file downloader");
+		fileDownloader = new FileDownloader(context, params);
+		fileDownloader.execute(scoreURL);
+		//Log.d("PLAYER_ID EXECUTE AFTER BUILD PARAMS", player_id);
+		return fileDownloader;
 	}
 }

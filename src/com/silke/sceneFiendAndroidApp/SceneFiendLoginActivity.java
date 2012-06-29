@@ -127,7 +127,8 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity implem
 						// Clear all previous data in database
 						UserFunctions userFunction = new UserFunctions();
 						userFunction.logoutUser(getApplicationContext());
-						//add new data to db
+						
+						//add new data to db - must be online to register!- need last player_id
 						db.addUser(jObj.getString(DBHandler.KEY_PLAYER_ID), json_user.getString(DBHandler.KEY_PLAYER_NAME), json_user.getString(DBHandler.KEY_PLAYER_EMAIL));						
 						GAME_PREFERENCES_PLAYER_ID = jObj.getString(DBHandler.KEY_PLAYER_ID);
 						
@@ -138,7 +139,7 @@ public class SceneFiendLoginActivity extends SceneFiendAndroidAppActivity implem
 						
 						// Launch Menu Screen
 						Intent menu = new Intent(getApplicationContext(), MenuActivity.class);
-						
+						 
 						// Close all views before launching Menu
 						menu.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						startActivity(menu);

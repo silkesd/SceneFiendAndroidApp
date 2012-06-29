@@ -34,8 +34,7 @@ public class ScoreMenuActivity extends SceneFiendAndroidAppActivity
   		//the menu items 
         ListView scoreMenuList = (ListView) findViewById(R.id.ListView_Menu);
         String[] items = { getResources().getString(R.string.high_scores),
-                getResources().getString(R.string.all_scores),
-                getResources().getString(R.string.my_scores)};
+                getResources().getString(R.string.all_scores)};
 	
       //data adapter maps data to the layout templates specified via the array that stores the menu items
         ArrayAdapter<String> adapt = new ArrayAdapter<String>(this, R.layout.menu_item, items);
@@ -55,11 +54,11 @@ public class ScoreMenuActivity extends SceneFiendAndroidAppActivity
                     // Launch the Game Activity
                     startActivity(new Intent(ScoreMenuActivity.this, AllScoresActivity.class));
                 } 
-                else if (strText.equalsIgnoreCase(getResources().getString(R.string.my_scores))) 
-                {
-                    // Launch the Help Activity
-                    startActivity(new Intent(ScoreMenuActivity.this, MyScoresActivity.class));
-                } 
+//                else if (strText.equalsIgnoreCase(getResources().getString(R.string.my_scores))) 
+//                {
+//                    // Launch the Help Activity
+//                    startActivity(new Intent(ScoreMenuActivity.this, MyScoresActivity.class));
+//                } 
                 else if (strText.equalsIgnoreCase(getResources().getString(R.string.high_scores))) 
                 {
                     // Launch the Settings Activity

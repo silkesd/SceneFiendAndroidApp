@@ -31,11 +31,11 @@ public class HighScoresActivity extends ListActivity
 
 	// Creating JSON Parser object
 	JSONScoreParser jParser = new JSONScoreParser();
-
+ 
 	ArrayList<HashMap<String, String>> scoresList;
 	
 	// url to get all scores list
-	private static String url_high_scores = "http://10.0.2.2:8888/SceneFiendDatabasing/high_scores.php";
+	private static String url_high_scores = "http://www.scenefiend.silkesd.com/high_scores.php";
 
 	// JSON Node names
 	private static final String TAG_SUCCESS = "success";

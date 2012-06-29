@@ -88,14 +88,16 @@ public class FileDownloader extends AsyncTask<String, Integer, String>
 	
 	public String getApiResponse()
 	{
+		Log.d("PLAYER_ID EXECUTE AFTER BUILD PARAMS", apiResponse);
 		return apiResponse;
 	}
 	
 	protected void onPostExecute(String apiResponse)
-	{
+	{  
 		try 
 		{
 			jObj = new JSONObject(apiResponse);
+			Log.d("GETTING JSON OBJECT", jObj.toString());
 			context.onJsonDownloaded(jObj);
 		} 
 		catch (JSONException e) 
@@ -106,5 +108,5 @@ public class FileDownloader extends AsyncTask<String, Integer, String>
 		
 		Log.d("ASYNCTASK", apiResponse + ": is the response from the api");	
 	}	
-}
+}      
 

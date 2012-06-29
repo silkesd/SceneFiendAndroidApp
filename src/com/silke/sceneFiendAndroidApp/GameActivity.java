@@ -285,7 +285,25 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 		{
 			public void onClick(View v) 
 			{	
+				LayoutInflater inflater = getLayoutInflater();
+				View layout = inflater.inflate(R.layout.toast_layout,
+				                               (ViewGroup) findViewById(R.id.toast_layout_root));
+				
 				enableDisableButtons(false); //disable buttons again
+				
+				ImageView image = (ImageView) layout.findViewById(R.id.icon);
+				image.setImageResource(R.drawable.sad);
+				TextView text = (TextView) layout.findViewById(R.id.text);
+				text.setText("On to the Next Question!");
+
+				
+				Toast toast = new Toast(getApplicationContext());
+				toast.setGravity(Gravity.CENTER_VERTICAL, 0, 147);
+				toast.setDuration(Toast.LENGTH_SHORT);
+				toast.setView(layout);
+				toast.show();
+				
+
 				final Handler handler = new Handler();
 				handler.postDelayed(new Runnable() 
 				{
@@ -295,7 +313,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 					  timer.cancel();
 					  moveOn();
 				  }
-				}, 100);
+				}, 500);
 			}
 			
 		});	
@@ -359,7 +377,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 			 timer.cancel();
 			 moveOn();
 		  }
-		}, 100);
+		}, 500);
 		
 			
 	}
@@ -396,7 +414,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 			  timer.cancel();
 			  moveOn();
 		  }
-		}, 600);
+		}, 500);
 	}
     
     public void moveOn()
@@ -428,7 +446,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 					
 					
 			  }
-			}, 600);
+			}, 10);
 			
 			
 		}

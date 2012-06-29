@@ -56,6 +56,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         />
+        
+        <TextView
+            android:id="@+id/update_error"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dip"
+            android:textColor="#fff"
+            android:textStyle="bold" />
     
     <RelativeLayout
         android:id="@+id/RelativeLayout03"

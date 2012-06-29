@@ -1,7 +1,10 @@
 package com.silke.sceneFiendAndroidApp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,9 +31,8 @@ public class LoginActivity extends SceneFiendAndroidAppActivity
         TextView tv = (TextView) findViewById(R.id.CustomFont);
         tv.setTypeface(tf);
         
-        Log.d("ABOUT TO SEND TO", "IS NETWORK AVAILABLE");
         
-        
+        isNetworkAvailable();
         
         //the login type menu items
         ListView loginList = (ListView) findViewById(R.id.ListView_Login);
@@ -80,6 +82,20 @@ public class LoginActivity extends SceneFiendAndroidAppActivity
 			}      	
         });       
     }  
+
+    private boolean isNetworkAvailable() 
+    {
+    	Log.d("NOW IN", "IS NETWORK AVAILABLE");
+        ConnectivityManager connectivityManager 
+              = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        Log.d("WIFI IS ON", "ABOUT TO CALL ADDTWITTER FUNCITON");
+        //Toast.makeText(this, "WIFI IS ON :)", Toast.LENGTH_LONG).show();
+        
+        activeNetworkInfo = GAME_PREFERENCES_WIFI_ON_OFF;
+        return false;
+
+    }
     
     
 }

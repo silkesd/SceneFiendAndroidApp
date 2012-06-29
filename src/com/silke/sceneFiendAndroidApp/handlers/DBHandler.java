@@ -30,8 +30,8 @@ public class DBHandler extends SQLiteOpenHelper
 	
 	// Scores Table Columns names
 	private static final String KEY_SCORES_ID = "id";
-	private static final String KEY_PLAYER_SCORE = "player_score";
-	private static final String KEY_SCORE_DATE = "score_date";
+	public static final String KEY_PLAYER_SCORE = "player_score";
+	public static final String KEY_SCORE_DATE = "score_date";
 
 	public DBHandler(Context context) 
 	{
@@ -64,7 +64,7 @@ public class DBHandler extends SQLiteOpenHelper
 	/**
 	 * Storing user details in local database
 	 * */
-	public void addScore(String player_id, Integer player_score, long score_date) 
+	public void addScore(String player_id, String player_score, String score_date) 
 	{
 		SQLiteDatabase db = this.getWritableDatabase();
 

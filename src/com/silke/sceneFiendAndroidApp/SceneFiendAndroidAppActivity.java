@@ -1,6 +1,7 @@
 package com.silke.sceneFiendAndroidApp;
 
 import android.app.Activity;
+import android.net.NetworkInfo;
 
 public class SceneFiendAndroidAppActivity extends Activity 
 {
@@ -18,6 +19,8 @@ public class SceneFiendAndroidAppActivity extends Activity
     public static boolean GAME_PREFERENCES_WIFI = false;
     public static boolean GAME_PREFERENCES_MOBILE = false;
 	
+    public static NetworkInfo GAME_PREFERENCES_WIFI_ON_OFF;
+    
     public static boolean GAME_PREFERENCES_TWITTER_LOGGED_IN = false;
     public static boolean GAME_PREFERENCES_LOGGED_IN = false;
 	

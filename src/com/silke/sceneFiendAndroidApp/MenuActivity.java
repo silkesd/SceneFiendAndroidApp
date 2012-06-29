@@ -38,7 +38,6 @@ public class MenuActivity extends SceneFiendAndroidAppActivity
         ListView menuList = (ListView) findViewById(R.id.ListView_Menu);
         String[] items = { getResources().getString(R.string.menu_item_play),
                 getResources().getString(R.string.menu_item_scores),
-                getResources().getString(R.string.menu_item_settings),
                 getResources().getString(R.string.menu_item_help)};
         
     	//actionbar
@@ -68,11 +67,11 @@ public class MenuActivity extends SceneFiendAndroidAppActivity
                     // Launch the Help Activity
                     startActivity(new Intent(MenuActivity.this, HelpActivity.class));
                 } 
-                else if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_settings))) 
-                {
-                    // Launch the Settings Activity
-                    startActivity(new Intent(MenuActivity.this, SettingsActivity.class));
-                } 
+//                else if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_settings))) 
+//                {
+//                    // Launch the Settings Activity
+//                    startActivity(new Intent(MenuActivity.this, SettingsActivity.class));
+//                } 
                 else if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_scores))) 
                 {
                     // Launch the Scores Activity
