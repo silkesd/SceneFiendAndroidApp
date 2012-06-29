@@ -197,7 +197,7 @@ public class TwitterLoginActivity extends SceneFiendAndroidAppActivity
 
             try 
             {
-                t.updateStatus( GAME_PREFERENCES_PLAYER_NAME + " just scored " + GAME_PREFERENCES_PLAYER_SCORE + " on SceneFiend - the fiednishly good trivia game for film fanatics!");
+                t.updateStatus( GAME_PREFERENCES_PLAYER_NAME + " just scored " + GAME_PREFERENCES_PLAYER_SCORE + " on SceneFiend - the fiendishly fun trivia game for film fanatics!");
                 GAME_PREFERENCES_TWITTER_LOGGED_IN = true;
             }
             catch (TwitterException e) 

@@ -3,8 +3,11 @@ package com.silke.sceneFiendAndroidApp;
 import java.util.Calendar;
 
 import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -21,9 +24,9 @@ public class GameFinishActivity extends SceneFiendAndroidAppActivity implements 
 	
 	TextView textviewScore;
 	TextView finishName;
-	Button btnLinkToTwitterLogin;
 	UserFunctions userFunctions;
 	Button btnLogout;
+	Button twitter;
 	
     /** Called when the activity is first created. */
     @Override
@@ -38,6 +41,9 @@ public class GameFinishActivity extends SceneFiendAndroidAppActivity implements 
         TextView tv = (TextView) findViewById(R.id.CustomFont);
         tv.setTypeface(tf);
        
+        //CHECK WHETHER THE DEVICE IS ONLINE
+        isNetworkAvailable();
+        
 		//actionbar
 		ActionBar ab = getActionBar();
 		ab.setDisplayHomeAsUpEnabled(true);
@@ -48,22 +54,7 @@ public class GameFinishActivity extends SceneFiendAndroidAppActivity implements 
 		callAndSendScoreInfo();
 		
 		
-		if(GAME_PREFERENCES_WIFI == true || GAME_PREFERENCES_MOBILE == true)
-		{
-			btnLinkToTwitterLogin = (Buttons) findViewById(R.id.btnLinkToTwitterLogin);
-			
-		    // Link to Twitter Login
-			btnLinkToTwitterLogin.setOnClickListener(new View.OnClickListener() 
-			{
-				public void onClick(View view) 
-				{
-					Intent i = new Intent(getApplicationContext(),
-							TwitterLoginActivity.class);
-					startActivity(i);
-					finish();
-				}
-			});
-		}
+		
 		
 		 //checking whether the user is logged in before adding the logout button
         userFunctions = new UserFunctions();
@@ -125,4 +116,49 @@ public class GameFinishActivity extends SceneFiendAndroidAppActivity implements 
 		// TODO Auto-generated method stub
 	}
 
+	private boolean isNetworkAvailable() 
+    {
+    	Log.d("NOW IN", "IS NETWORK AVAILABLE");
+        ConnectivityManager connectivityManager 
+              = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        Log.d("WIFI IS ON", "ABOUT TO CALL ADDTWITTER FUNCITON");
+        addTwitter(activeNetworkInfo);
+        
+        
+        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();    
+    }
+  
+   
+  
+    private void addTwitter(NetworkInfo activeNetworkInfo)
+    {
+    	
+    	// TODO Auto-generated method stub
+		if (activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting())
+        {	
+			
+        	GAME_PREFERENCES_WIFI = true;
+        	
+        	Log.d("GAME WIFI", "ON");
+        	
+        	twitter = (Button) findViewById(R.id.twitter);
+        	twitter.setText(R.string.tweetMyScore);
+            
+        	Log.d("TWITTER CALL", "twitter button called");
+        	twitter.setOnClickListener(new OnClickListener()
+        	{
+				public void onClick(View v) 
+				{	
+					// TODO Auto-generated method stub
+					 startActivity(new Intent(GameFinishActivity.this, TwitterLoginActivity.class));
+				}       		
+        	});       	
+        }
+        else
+        {
+        	Log.d("GAME WIFI", "Nope");
+        }
+		   	
+    }
 }

@@ -1,23 +1,18 @@
 package com.silke.sceneFiendAndroidApp;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 public class LoginActivity extends SceneFiendAndroidAppActivity
 {
-	Button twitter;
+	
 	
 	/** Called when the activity is first created. */
     @Override
@@ -34,8 +29,7 @@ public class LoginActivity extends SceneFiendAndroidAppActivity
         tv.setTypeface(tf);
         
         Log.d("ABOUT TO SEND TO", "IS NETWORK AVAILABLE");
-        //CHECK WHETHER THE DEVICE IS ONLINE
-        isNetworkAvailable();
+        
         
         
         //the login type menu items
@@ -87,49 +81,5 @@ public class LoginActivity extends SceneFiendAndroidAppActivity
         });       
     }  
     
-    private boolean isNetworkAvailable() 
-    {
-    	Log.d("NOW IN", "IS NETWORK AVAILABLE");
-        ConnectivityManager connectivityManager 
-              = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        Log.d("WIFI IS ON", "ABOUT TO CALL ADDTWITTER FUNCITON");
-        addTwitter(activeNetworkInfo);
-        
-        
-        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();    
-    }
-  
-   
-  
-    private void addTwitter(NetworkInfo activeNetworkInfo)
-    {
-    	
-    	// TODO Auto-generated method stub
-		if (activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting())
-        {	
-			
-        	GAME_PREFERENCES_WIFI = true;
-        	
-        	Log.d("GAME WIFI", "ON");
-        	
-        	twitter = (Button) findViewById(R.id.twitter);
-        	twitter.setText(R.string.tweetMyScore);
-            
-        	Log.d("TWITTER CALL", "twitter button called");
-        	twitter.setOnClickListener(new OnClickListener()
-        	{
-				public void onClick(View v) 
-				{	
-					// TODO Auto-generated method stub
-					 startActivity(new Intent(LoginActivity.this, TwitterLoginActivity.class));
-				}       		
-        	});       	
-        }
-        else
-        {
-        	Log.d("GAME WIFI", "Nope");
-        }
-		   	
-    }
+    
 }
