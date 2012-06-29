@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -14,6 +15,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -102,10 +104,7 @@ public class FileDownloader extends AsyncTask<String, Integer, String>
 			e.printStackTrace();
 		}
 		
-		Log.d("ASYNCTASK", apiResponse + ": is the response from the api");
-		
-	}
-
-	
+		Log.d("ASYNCTASK", apiResponse + ": is the response from the api");	
+	}	
 }
 

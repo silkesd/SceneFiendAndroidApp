@@ -41,7 +41,7 @@ public class CheckNetAccess extends SceneFiendAndroidAppActivity
         });
     }
 
-    private boolean haveNetworkConnection() 
+    boolean haveNetworkConnection() 
     {
     	GAME_PREFERENCES_WIFI = false;
         GAME_PREFERENCES_MOBILE = false;

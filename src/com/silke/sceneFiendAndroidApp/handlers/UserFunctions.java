@@ -2,15 +2,16 @@ package com.silke.sceneFiendAndroidApp.handlers;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+
+import android.content.Context;
+import android.util.Log;
 
 import com.silke.sceneFiendAndroidApp.SceneFiendAndroidAppActivity;
 import com.silke.sceneFiendAndroidApp.asynctasks.FileDownloader;
 import com.silke.sceneFiendAndroidApp.asynctasks.IJsonDownloaded;
-
-import android.content.Context;
-import android.util.Log;
 
 public class UserFunctions extends SceneFiendAndroidAppActivity
 {
@@ -56,8 +57,9 @@ public class UserFunctions extends SceneFiendAndroidAppActivity
 	 * @param player_email
 	 * @param password
 	 * @param player_avatar
+	 * @return 
 	 * */
-	public void registerUser(IJsonDownloaded context, String player_name, String player_email, String password)
+	public FileDownloader registerUser(IJsonDownloaded context, String player_name, String player_email, String password)
 	{
 		// Building Parameters
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -69,6 +71,7 @@ public class UserFunctions extends SceneFiendAndroidAppActivity
 		Log.d("UserFunctions", "sending register to file downloader");
 		fileDownloader = new FileDownloader(context, params);
 		fileDownloader.execute(registerURL);
+		return fileDownloader;
 	}
 	
 	/**

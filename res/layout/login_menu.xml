@@ -2,6 +2,7 @@
 
 <!-- the main layout box for the menu screen -->
 <LinearLayout
+    android:id="@+id/layout"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -26,10 +27,11 @@
    
 	
 	<!-- THE CONTENT AREA - menu items -->   
+
     <RelativeLayout
         android:id="@+id/RelativeLayout02"
-        android:layout_height="fill_parent"
-        android:layout_width="fill_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="264dp" >
        
        <!-- the list view contains all items in the login menu list -->
 
@@ -38,6 +40,15 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:listSelector="@drawable/textured" >
-</ListView>
+        </ListView>    
+      
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/twitter"
+        android:layout_width="147dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        />
+        
 </LinearLayout>

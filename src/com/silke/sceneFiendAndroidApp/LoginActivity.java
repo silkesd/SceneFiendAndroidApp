@@ -1,16 +1,23 @@
 package com.silke.sceneFiendAndroidApp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 public class LoginActivity extends SceneFiendAndroidAppActivity
 {
+	Button twitter;
 	
 	/** Called when the activity is first created. */
     @Override
@@ -19,17 +26,22 @@ public class LoginActivity extends SceneFiendAndroidAppActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_menu);
         
+        
         //the custom title font
         Typeface tf = Typeface.createFromAsset(getAssets(),
                 "fonts/lucindablack.ttf");
         TextView tv = (TextView) findViewById(R.id.CustomFont);
         tv.setTypeface(tf);
         
+        Log.d("ABOUT TO SEND TO", "IS NETWORK AVAILABLE");
+        //CHECK WHETHER THE DEVICE IS ONLINE
+        isNetworkAvailable();
+        
+        
         //the login type menu items
         ListView loginList = (ListView) findViewById(R.id.ListView_Login);
         String[] loginItems = { 
                 getResources().getString(R.string.login_item_scenefiendlogin),
-                getResources().getString(R.string.login_item_twitterlogin),
         		getResources().getString(R.string.login_item_register)};
         
         //data adapter maps data to the layout templates specified via the array that stores the menu items
@@ -43,24 +55,81 @@ public class LoginActivity extends SceneFiendAndroidAppActivity
         		//getting the text view and passing the text to that view
                 TextView textView = (TextView) loginItemClicked;
                 String strText = textView.getText().toString();
-                
+                 
                 //if the menu item selected is menu_item_play launch the game activity
                 if (strText.equalsIgnoreCase(getResources().getString(R.string.login_item_scenefiendlogin))) 
                 {
                     // Launch the Scene Fiend Login Activity
                     startActivity(new Intent(LoginActivity.this, SceneFiendLoginActivity.class));
                 } 
-                else if (strText.equalsIgnoreCase(getResources().getString(R.string.login_item_twitterlogin))) 
-                {
-                    // Launch the Twitter Login Activity
-                    startActivity(new Intent(LoginActivity.this, TwitterLoginActivity.class));
-                } 
                 else if (strText.equalsIgnoreCase(getResources().getString(R.string.login_item_register))) 
                 {
                     // Launch the Register Activity
                     startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
                 } 
+                
+                
+                
+                
+               
+                   
+                
+//                if(GAME_PREFERENCES_WIFI == true || GAME_PREFERENCES_MOBILE == true)
+//                { 
+//                	Log.d("CHECKING NET ACCESS", "ARE TURNED ON");
+//                	if (strText.equalsIgnoreCase(getResources().getString(R.string.login_item_twitterlogin))) 
+//	                {
+//	                    // Launch the Twitter Login Activity
+//	                    startActivity(new Intent(LoginActivity.this, TwitterLoginActivity.class));
+//	                } 
+//                }
 			}      	
         });       
     }  
+    
+    private boolean isNetworkAvailable() 
+    {
+    	Log.d("NOW IN", "IS NETWORK AVAILABLE");
+        ConnectivityManager connectivityManager 
+              = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        Log.d("WIFI IS ON", "ABOUT TO CALL ADDTWITTER FUNCITON");
+        addTwitter(activeNetworkInfo);
+        
+        
+        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();    
+    }
+  
+   
+  
+    private void addTwitter(NetworkInfo activeNetworkInfo)
+    {
+    	
+    	// TODO Auto-generated method stub
+		if (activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting())
+        {	
+			
+        	GAME_PREFERENCES_WIFI = true;
+        	
+        	Log.d("GAME WIFI", "ON");
+        	
+        	twitter = (Button) findViewById(R.id.twitter);
+        	twitter.setText(R.string.tweetMyScore);
+            
+        	Log.d("TWITTER CALL", "twitter button called");
+        	twitter.setOnClickListener(new OnClickListener()
+        	{
+				public void onClick(View v) 
+				{	
+					// TODO Auto-generated method stub
+					 startActivity(new Intent(LoginActivity.this, TwitterLoginActivity.class));
+				}       		
+        	});       	
+        }
+        else
+        {
+        	Log.d("GAME WIFI", "Nope");
+        }
+		   	
+    }
 }
