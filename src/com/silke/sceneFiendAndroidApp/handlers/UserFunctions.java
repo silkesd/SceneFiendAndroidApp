@@ -119,9 +119,7 @@ public class UserFunctions extends SceneFiendAndroidAppActivity
 	public boolean logoutUser(Context context)
 	{
 		DBHandler db = new DBHandler(context);
-		DBQuizHandler db1 = new DBQuizHandler(context);
 		db.resetTables();
-		db1.resetTables();
 		return true;
 	}
 	

@@ -88,17 +88,21 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
     {	
   		//calling the database quiz handler
     	final DBQuizHandler db = new DBQuizHandler(this);
-    
+    	
     	//hashmap containing the question values in the db
         final HashMap<String,String> gameList = db.getNextQuestion(GAME_PREFERENCES_CURRENT_QUESTION);
 				String question_id = gameList.get("question_id");
 				String question = gameList.get("question_text");
 				textviewQu.setText(question);
+					
 				
 		final HashMap<String,String> gameClipList = db.getClips(GAME_PREFERENCES_CURRENT_QUESTION);
-				String question_clip_id = gameList.get("question_id");
-				String pre_clip = gameList.get("pre_clip");
-				String post_clip = gameList.get("post_clip");
+				String question_clip_id = gameClipList.get("question_id");
+				String pre_clip = gameClipList.get("pre_clip");
+				String post_clip = gameClipList.get("post_clip");
+				
+				
+		
 		
 		//storing the current question in a shared preference to increment on next / answering / timer ending
 		GAME_PREFERENCES_CURRENT_QUESTION = Integer.parseInt(gameList.get("question_id"));		
