@@ -94,7 +94,7 @@ public class GameActivity extends SceneFiendAndroidAppActivity implements View.O
 				String question_id = gameList.get("question_id");
 				String question = gameList.get("question_text");
 				textviewQu.setText(question);
-					
+		
 				
 		final HashMap<String,String> gameClipList = db.getClips(GAME_PREFERENCES_CURRENT_QUESTION);
 				String question_clip_id = gameClipList.get("question_id");

@@ -126,10 +126,8 @@ public class GameFinishActivity extends SceneFiendAndroidAppActivity implements 
 			e.printStackTrace();
 		}
     }
-    
-    
-    
-  //Json has been downloaded now - login with user entries (context) - passed to userfunctions (context)
+       
+    //Json has been downloaded now - login with user entries (context) - passed to userfunctions (context)
     //passed to filedownloader (context) on finishing download calls this function and pass the jObj to it
     //interface was to datatype which kind of object is being passed to filedownloader
 	public void onJsonDownloaded(JSONObject jObj) 

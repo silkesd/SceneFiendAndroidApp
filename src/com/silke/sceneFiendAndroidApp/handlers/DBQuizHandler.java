@@ -1,6 +1,7 @@
 package com.silke.sceneFiendAndroidApp.handlers;
 
 import java.util.HashMap;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -15,7 +16,6 @@ public class DBQuizHandler extends SQLiteOpenHelper
 	// Database Version
 	private static final int DATABASE_VERSION = 1;
 
-	
 	// Database Name
 	private static final String DATABASE_NAME = "scenefiendlocaldb";
 
@@ -54,7 +54,7 @@ public class DBQuizHandler extends SQLiteOpenHelper
 	{
 		
 		//Scene Questions Table
-		String CREATE_QUESTIONS_TABLE = "CREATE TABLE " + TABLE_QUESTIONS + "("
+		String CREATE_QUESTIONS_TABLE = "CREATE TABLE IF NOT EXISTS" + TABLE_QUESTIONS + "("
 				+ KEY_QUESTION_ID + " CHAR(10) NOT NULL PRIMARY KEY," 
 				+ KEY_QUESTION_TEXT + " VARCHAR(255)" + ")";
 		db.execSQL(CREATE_QUESTIONS_TABLE);
@@ -80,7 +80,7 @@ public class DBQuizHandler extends SQLiteOpenHelper
 		//+ "FOREIGN KEY" + "(" + KEY_PLAYER_ID + ")" + " REFERENCES " + TABLE_PLAYER + "( " + KEY_PLAYER_ID + " )" + ")";
 		
 		//Scene Quiz Table
-		String CREATE_QUIZ_TABLE = "CREATE TABLE " + TABLE_QUIZ + "("
+		String CREATE_QUIZ_TABLE = "CREATE TABLE IF NOT EXISTS" + TABLE_QUIZ + "("
 				+ KEY_QUESTION_ID + " CHAR(10)," 
 				+ KEY_ANSWER_ID + " CHAR(10)," 
 				+ KEY_CORRECT_ANSWER + " TINYINT(1)," 
@@ -154,7 +154,7 @@ public class DBQuizHandler extends SQLiteOpenHelper
 							
 		
 		//Scene Answers Table
-		String CREATE_ANSWERS_TABLE = "CREATE TABLE " + TABLE_ANSWERS + "("
+		String CREATE_ANSWERS_TABLE = "CREATE TABLE IF NOT EXISTS" + TABLE_ANSWERS + "("
 				+ KEY_ANSWER_ID + " CHAR(10) NOT NULL PRIMARY KEY," 
 				+ KEY_ANSWER_TEXT + " VARCHAR(255)" + ")";
 		db.execSQL(CREATE_ANSWERS_TABLE);
@@ -223,7 +223,7 @@ public class DBQuizHandler extends SQLiteOpenHelper
 		db.execSQL(InsertAnswersTable);				
 		
 		//question had clip table
-		String CREATE_QUESTION_HAS_CLIP_TABLE = "CREATE TABLE " + TABLE_QUESTION_HAS_CLIP + "("
+		String CREATE_QUESTION_HAS_CLIP_TABLE = "CREATE TABLE IF NOT EXISTS" + TABLE_QUESTION_HAS_CLIP + "("
 				+ KEY_QUESTION_HAS_CLIP_ID + " CHAR(10) NOT NULL PRIMARY KEY," 
 				+ KEY_QUESTION_ID + " CHAR(10),"
 				+ KEY_PRE_CLIP + " VARCHAR(200),"
@@ -345,7 +345,7 @@ public class DBQuizHandler extends SQLiteOpenHelper
 	    	 // Retrieve the shared preferences
     		questionanswers.put("question_text", cursor.getString(3));
     		questionanswers.put("question_id", cursor.getString(4));	    	
-	    }
+	    } 
 	    
 	    cursor.close();
 	    db.close();
